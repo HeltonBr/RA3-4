@@ -17,6 +17,20 @@ A Fase 3 reaproveita a base da Fase 2 e acrescenta analise semantica. O programa
 
 ## Execucao
 
+Todos os comandos devem ser executados dentro da pasta do repositorio local:
+
+```powershell
+cd "C:\Users\Helton\OneDrive - Grupo Marista\Puc PR\Nono Período\Linguagens Formais e Compiladores 2026\Trabalhos\Fase 3 - Analisador Semântico\GitHub"
+```
+
+Os tres arquivos oficiais de teste ficam na mesma pasta do codigo-fonte, ao lado de `AnalisadorSemantico.py`:
+
+- `teste1.txt`
+- `teste2.txt`
+- `teste3.txt`
+
+Para executar um arquivo oficial da raiz:
+
 ```powershell
 python AnalisadorSemantico.py teste1.txt
 ```
@@ -37,6 +51,26 @@ python AnalisadorSemantico.py teste3.txt --relatorio-completo
 O Assembly ARMv7 nao e despejado no console; o programa apenas confirma se ele foi gerado ou bloqueado, e o conteudo fica em `generated/ultimo_assembly.s`.
 
 ## Testes
+
+As copias sincronizadas dos tres arquivos oficiais tambem ficam em `tests/` para uso da suite automatizada:
+
+- `tests/teste1.txt`
+- `tests/teste2.txt`
+- `tests/teste3.txt`
+
+Casos complementares ficam separados por finalidade:
+
+- `tests/invalidos/`: entradas com erros lexicos, sintaticos e semanticos intencionais.
+- `tests/variacoes/`: entradas com variacoes de formato, comentarios e espacamento.
+
+Exemplos de execucao manual:
+
+```powershell
+python AnalisadorSemantico.py tests\variacoes\comentario_multilinha.txt
+python AnalisadorSemantico.py tests\invalidos\semantico_mod_com_real.txt
+```
+
+Suite completa:
 
 ```powershell
 python -m unittest discover -s tests -p "test_*.py" -v
