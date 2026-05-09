@@ -9,7 +9,7 @@ Projeto da disciplina de Linguagens Formais e Compiladores da Pontificia Univers
 - Disciplina: Linguagens Formais e Compiladores
 - Professor: Frank Coelho de Alcantara
 - Integrante: Helton Tessari Brandao - `HeltonBr`
-- Grupo no Canvas: `RA3-4` (confirmar nome exato no Canvas antes de publicar o repositorio)
+- Grupo no Canvas: `RA3-4`
 
 ## Objetivo
 
@@ -36,7 +36,7 @@ python -m unittest discover -s tests -p "test_*.py" -v
 ## Linguagem suportada
 
 - Programa completo: `(START)` ate `(END)`.
-- Comentarios: `*{ comentario }*`, em linha inteira, fim de linha ou entre tokens.
+- Comentarios: `*{ comentario }*`, em linha inteira, fim de linha, entre tokens ou em bloco multilinha entre declaracoes.
 - Leitura de memoria: `(MEM)`.
 - Escrita/definicao de memoria: `(V MEM)`, onde `V` pode ser `int`, `real` ou `bool`.
 - Resultado anterior: `(N RES)`, com `N > 0`.

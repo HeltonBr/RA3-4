@@ -15,6 +15,7 @@ from analisador_sintatico_ll1 import gerarArvore
 from analisador_sintatico_ll1 import gerarAssembly
 from analisador_sintatico_ll1 import lerTokens
 from analisador_sintatico_ll1 import parsear
+from analisador_sintatico_ll1 import prepararEntradaSemanticaComDiagnosticos
 from analisador_sintatico_ll1.errors import LexicalTokenError
 from analisador_sintatico_ll1.errors import SyntaxAnalysisError
 
@@ -47,6 +48,28 @@ class VariacoesFormatoTests(unittest.TestCase):
 
         self.assertEqual(resultado.returncode, 0, resultado.stderr)
         self.assertIn("Analise concluida para:", resultado.stdout)
+
+    def test_comentario_multilinha_e_descartado_sem_perder_posicoes(self) -> None:
+        caminho = ROOT / "tests" / "variacoes" / "comentario_multilinha.txt"
+        tokens = lerTokens(caminho)
+        lexemas = [token.lexeme for linha in tokens for token in linha]
+
+        self.assertEqual(tokens[1][0].line, 5)
+        self.assertEqual(tokens[1][2].lexeme, "M")
+        self.assertNotIn("comentario", lexemas)
+        self.assertNotIn("declaracoes", lexemas)
+
+    def test_palavras_reservadas_nao_sao_identificadores_de_memoria(self) -> None:
+        caminho = ROOT / "tests" / "invalidos" / "sintaxe_palavra_reservada_memoria.txt"
+        entrada = prepararEntradaSemanticaComDiagnosticos(str(caminho))
+        mensagens = "\n".join(diagnostic.format() for diagnostic in entrada.diagnostics)
+
+        self.assertGreaterEqual(len(entrada.diagnostics), 2)
+        self.assertIn("Erro SINTATICO", mensagens)
+        self.assertIn("linha 2", mensagens)
+        self.assertIn("linha 3", mensagens)
+        self.assertIn("'START'", mensagens)
+        self.assertIn("'AND'", mensagens)
 
     def test_numero_malformado_e_erro_lexico(self) -> None:
         caminho = ROOT / "tests" / "invalidos" / "lexico_numero_malformado.txt"

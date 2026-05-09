@@ -30,3 +30,9 @@
 ```powershell
 python AnalisadorSemantico.py tests/teste3.txt
 ```
+
+## Checkpoint 5 - Entrada e comentarios
+
+- Cobertura reforcada para comentario multilinha valido entre declaracoes.
+- Caso invalido explicito para palavra reservada usada como nome de memoria.
+- README e checklist atualizados para remover pendencia administrativa ja superada.
