@@ -18,14 +18,23 @@ A Fase 3 reaproveita a base da Fase 2 e acrescenta analise semantica. O programa
 ## Execucao
 
 ```powershell
-python AnalisadorSemantico.py tests/teste1.txt
+python AnalisadorSemantico.py teste1.txt
 ```
 
 Tambem e possivel manter compatibilidade com o nome antigo:
 
 ```powershell
-python AnalisadorSintatico.py tests/teste1.txt
+python AnalisadorSintatico.py teste1.txt
 ```
+
+A execucao padrao imprime um relatorio de validacao com as fases executadas, caracteristicas detectadas no arquivo e confirmacao dos artefatos. A arvore sintatica pode ser mostrada no console quando necessario:
+
+```powershell
+python AnalisadorSemantico.py teste3.txt --mostrar-arvore
+python AnalisadorSemantico.py teste3.txt --relatorio-completo
+```
+
+O Assembly ARMv7 nao e despejado no console; o programa apenas confirma se ele foi gerado ou bloqueado, e o conteudo fica em `generated/ultimo_assembly.s`.
 
 ## Testes
 
@@ -69,6 +78,7 @@ As regras formais em calculo de sequentes estao em `docs/regras_tipos_sequentes.
 - `generated/tabela_simbolos_ultima_execucao.json`
 - `generated/arvore_atribuida_ultima_execucao.json`
 - `generated/relatorio_erros_ultima_execucao.txt`
+- `generated/relatorio_execucao_ultima_execucao.txt`
 - `generated/ultimo_assembly.s`
 
 ## Documentacao
@@ -82,6 +92,7 @@ As regras formais em calculo de sequentes estao em `docs/regras_tipos_sequentes.
 - `docs/tabela_simbolos.md`: tabela de simbolos da ultima execucao.
 - `docs/arvore_atribuida_ultima_execucao.md`: arvore sintatica atribuida.
 - `docs/relatorio_erros_semanticos.md`: erros semanticos da ultima execucao.
+- `docs/relatorio_validacao_arquivos_teste.md`: roteiro de validacao dos arquivos de teste.
 
 ## CPulator
 

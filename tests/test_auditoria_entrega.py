@@ -33,10 +33,14 @@ from analisador_sintatico_ll1.core import prepararEntradaSemantica
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PROGRAMAS_VALIDOS = [ROOT / "tests" / nome for nome in ("teste1.txt", "teste2.txt", "teste3.txt")]
+NOMES_PROGRAMAS_VALIDOS = ("teste1.txt", "teste2.txt", "teste3.txt")
+PROGRAMAS_VALIDOS = [ROOT / nome for nome in NOMES_PROGRAMAS_VALIDOS]
 ARQUIVOS_OBRIGATORIOS = [
     ROOT / "README.md",
     ROOT / "AnalisadorSemantico.py",
+    ROOT / "teste1.txt",
+    ROOT / "teste2.txt",
+    ROOT / "teste3.txt",
     ROOT / "docs" / "decisoes_inconformidades_fase3.md",
     ROOT / "docs" / "estrategia_diagnosticos_acumulados.md",
     ROOT / "docs" / "gramatica_atribuida.md",
@@ -49,6 +53,7 @@ ARQUIVOS_OBRIGATORIOS = [
     ROOT / "generated" / "tabela_simbolos_ultima_execucao.json",
     ROOT / "generated" / "arvore_atribuida_ultima_execucao.json",
     ROOT / "generated" / "relatorio_erros_ultima_execucao.txt",
+    ROOT / "generated" / "relatorio_execucao_ultima_execucao.txt",
     ROOT / "generated" / "ultimo_assembly.s",
 ]
 
@@ -88,8 +93,19 @@ class AuditoriaEntregaTests(unittest.TestCase):
             "varre o arquivo inteiro",
             "arvore sintatica atribuida",
             "cpulator",
+            "relatorio de validacao",
         ]:
             self.assertIn(trecho, readme)
+
+    def test_arquivos_de_teste_obrigatorios_ficam_na_raiz_e_sincronizados(self) -> None:
+        for nome in NOMES_PROGRAMAS_VALIDOS:
+            with self.subTest(programa=nome):
+                raiz = ROOT / nome
+                suite = ROOT / "tests" / nome
+
+                self.assertTrue(raiz.exists())
+                self.assertTrue(suite.exists())
+                self.assertEqual(raiz.read_text(encoding="utf-8"), suite.read_text(encoding="utf-8"))
 
     def test_documentacao_registra_decisoes_para_inconformidades(self) -> None:
         decisoes = (ROOT / "docs" / "decisoes_inconformidades_fase3.md").read_text(encoding="utf-8")
@@ -123,7 +139,7 @@ class AuditoriaEntregaTests(unittest.TestCase):
 
     def test_cli_processa_programa_valido_e_atualiza_artefatos(self) -> None:
         resultado = subprocess.run(
-            [sys.executable, "AnalisadorSemantico.py", str(PROGRAMAS_VALIDOS[0])],
+            [sys.executable, "AnalisadorSemantico.py", PROGRAMAS_VALIDOS[0].name],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -132,6 +148,29 @@ class AuditoriaEntregaTests(unittest.TestCase):
         self.assertEqual(resultado.returncode, 0, resultado.stderr)
         self.assertIn("Analise completa concluida: 0 erro(s).", resultado.stdout)
         self.assertIn("Assembly ARMv7 gerado", resultado.stdout)
+        self.assertIn("Relatorio de validacao da execucao", resultado.stdout)
+        self.assertIn("Lexico: OK", resultado.stdout)
+        self.assertIn("Sintatico LL(1): OK", resultado.stdout)
+        self.assertIn("Semantico: OK", resultado.stdout)
+        self.assertIn("Operadores aritmeticos: + - * | / % ^", resultado.stdout)
+        self.assertIn("Assembly nao e impresso no console", resultado.stdout)
+        self.assertNotIn("_start:", resultado.stdout)
+        self.assertNotIn("puts_jtag", resultado.stdout)
+
+    def test_cli_mostra_arvore_sem_imprimir_assembly(self) -> None:
+        resultado = subprocess.run(
+            [sys.executable, "AnalisadorSemantico.py", "teste3.txt", "--mostrar-arvore"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+
+        self.assertEqual(resultado.returncode, 0, resultado.stderr)
+        self.assertIn("Arvore sintatica reconhecida:", resultado.stdout)
+        self.assertIn("Program", resultado.stdout)
+        self.assertIn("Statement[1]", resultado.stdout)
+        self.assertNotIn("_start:", resultado.stdout)
+        self.assertNotIn("puts_jtag", resultado.stdout)
 
     def test_cli_rejeita_programa_semantico_invalido(self) -> None:
         resultado = subprocess.run(

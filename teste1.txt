@@ -1,0 +1,18 @@
+*{ teste valido 1: comentario de linha inteira }*
+(START)
+(10 X) *{ comentario no final da linha }*
+(3 Y)
+(2.5 R)
+(TRUE FLAG)
+((X) *{ comentario entre tokens }* (Y) +)
+((X) 2 -)
+((X) 2 *)
+(9 2 /)
+(9.0 2 |)
+(9 4 %)
+((X) 2 ^)
+((1 RES) 2 +)
+(((X) 0 >) (FLAG) AND)
+(((X) 0 >) (((Y) 1 +) Y) IF)
+(((X) 0 >) (((X) 1 -) X) WHILE)
+(END)

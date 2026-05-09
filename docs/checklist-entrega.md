@@ -7,6 +7,7 @@
 - [x] Ponto de entrada principal: `AnalisadorSemantico.py`.
 - [x] Cabecalho obrigatorio nos arquivos principais.
 - [x] README com instituicao, disciplina, professor, integrante, execucao e CPulator.
+- [x] `teste1.txt`, `teste2.txt` e `teste3.txt` disponiveis na mesma pasta do codigo-fonte.
 
 ## Funcoes exigidas
 
@@ -37,11 +38,14 @@
 - [x] `docs/tabela_simbolos.md`
 - [x] `docs/arvore_atribuida_ultima_execucao.md`
 - [x] `docs/relatorio_erros_semanticos.md`
+- [x] `docs/relatorio_validacao_arquivos_teste.md`
+- [x] `generated/relatorio_execucao_ultima_execucao.txt`
 - [x] `generated/ultimo_assembly.s`
 
 ## Testes
 
 - [x] Tres programas validos com 10+ linhas.
+- [x] Copias dos tres programas validos na raiz sincronizadas com `tests/`.
 - [x] Testes invalidos lexicos, sintaticos e semanticos.
 - [x] Teste com multiplos erros misturados no mesmo arquivo.
 - [x] Comentarios em linha inteira, fim de linha, entre tokens e bloco multilinha.
@@ -52,7 +56,8 @@
 ## Validacao local
 
 ```powershell
-python AnalisadorSemantico.py tests/teste3.txt
+python AnalisadorSemantico.py teste3.txt
+python AnalisadorSemantico.py teste3.txt --mostrar-arvore
 python -m unittest discover -s tests -p "test_*.py" -v
 .\sincronizar_para_githubmirror.ps1
 ```
