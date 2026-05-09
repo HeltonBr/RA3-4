@@ -21,7 +21,7 @@ class CronogramaCongelamentoTests(unittest.TestCase):
         self.assertIn("19/05/2026 a 25/05/2026", cronograma)
         for dia in range(9, 19):
             self.assertIn(f"{dia:02d}/05/2026", cronograma)
-        self.assertIn("PR 10 - Pre-auditoria final", cronograma)
+        self.assertIn("PR 11 - Pre-auditoria final", cronograma)
 
     def test_bateria_pesada_cobre_sete_dias_finais(self) -> None:
         bateria = (ROOT / "docs" / "bateria_pesada_testes_fase3.md").read_text(encoding="utf-8")

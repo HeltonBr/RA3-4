@@ -1,0 +1,18 @@
+*{ teste valido 2: mistura numeros, bool e controle }*
+(START)
+(8 A) *{ comentario no final da linha }*
+(5 B)
+(1.5 C)
+(FALSE DONE)
+((A) *{ comentario entre tokens }* (B) +)
+((A) 3 -)
+((B) 4 *)
+(20 3 /)
+(20.0 6 |)
+(20 6 %)
+((B) 3 ^)
+((1 RES) 10 >)
+(((A) (B) >) ((DONE) NOT) AND)
+(((A) (B) >) (((A) (B) -) A) (((B) (A) -) B) IFELSE)
+(((A) 0 >) (((A) 1 -) A) WHILE)
+(END)

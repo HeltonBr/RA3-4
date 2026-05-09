@@ -1,0 +1,19 @@
+Relatorio de validacao da execucao
+- Arquivo analisado: teste3.txt
+- Fases executadas:
+  - Lexico: OK
+  - Sintatico LL(1): OK
+  - Semantico: OK
+- Declaracoes reconhecidas: 15
+- Simbolos na tabela: 4
+- Profundidade maxima da AST: 4
+- Caracteristicas detectadas:
+  - Operadores aritmeticos: + - * | / % ^
+  - Operadores relacionais: > >= | ausentes: < <= == !=
+  - Operadores logicos: AND | ausentes: OR NOT
+  - Literais: int=sim, real=sim, bool=sim
+  - Memoria e RES: (MEM)=sim, (V MEM)=sim, (N RES)=sim
+  - Controle: IF=sim, IFELSE=nao, WHILE=sim, SEQ=nao
+  - Comentarios: linha inteira=1, fim de linha=1, entre tokens=1, multilinha=0
+- Assembly ARMv7: gerado em generated/ultimo_assembly.s
+- Observacao: o Assembly nao e impresso no console; consulte o arquivo gerado quando aplicavel.

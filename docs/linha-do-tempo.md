@@ -36,3 +36,10 @@ python AnalisadorSemantico.py tests/teste3.txt
 - Cobertura reforcada para comentario multilinha valido entre declaracoes.
 - Caso invalido explicito para palavra reservada usada como nome de memoria.
 - README e checklist atualizados para remover pendencia administrativa ja superada.
+
+## Checkpoint 6 - Relatorio de execucao e conformidade
+
+- `teste1.txt`, `teste2.txt` e `teste3.txt` publicados tambem na raiz do codigo-fonte.
+- CLI passou a imprimir relatorio de validacao com lexico, sintatico, semantico, cobertura detectada e status do Assembly.
+- Arvore sintatica pode ser exibida por `--mostrar-arvore` ou `--relatorio-completo`.
+- Assembly permanece apenas em arquivo, com confirmacao de geracao ou bloqueio no console.
