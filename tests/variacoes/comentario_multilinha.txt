@@ -1,0 +1,20 @@
+(START)
+*{ comentario valido
+   ocupando mais de uma linha
+   antes de novas declaracoes }*
+(10 M)
+(3 N)
+(2.5 R)
+(TRUE FLAG)
+((M) (N) +)
+((M) 2 -)
+((M) 2 *)
+(9 2 /)
+(9.0 2 |)
+(9 4 %)
+((M) 2 ^)
+((1 RES) 2 +)
+(((M) 0 >) (FLAG) AND)
+(((M) 0 >) (((N) 1 +) N) IF)
+(((M) 0 >) (((M) 1 -) M) WHILE)
+(END)

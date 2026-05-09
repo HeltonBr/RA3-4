@@ -44,7 +44,8 @@
 - [x] Tres programas validos com 10+ linhas.
 - [x] Testes invalidos lexicos, sintaticos e semanticos.
 - [x] Teste com multiplos erros misturados no mesmo arquivo.
-- [x] Comentarios em linha inteira, fim de linha e entre tokens.
+- [x] Comentarios em linha inteira, fim de linha, entre tokens e bloco multilinha.
+- [x] Palavras reservadas nao aceitas como identificadores de memoria.
 - [x] Todos os operadores aritmeticos nos tres arquivos validos.
 - [x] `IF`/`IFELSE`, `WHILE`, `SEQ`, `RES`, leitura e escrita de memoria.
 
