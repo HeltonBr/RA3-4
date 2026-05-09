@@ -1,0 +1,11 @@
+(START)
+((NAODECLARADA) 2 +)
+(TRUE FLAG)
+((FLAG) 1 +)
+(1..2 MAL)
+(10 X)
+((X) 1
+(TRUE X)
+((X) (((X) 1 -) X) WHILE)
+(3 RES)
+(END)

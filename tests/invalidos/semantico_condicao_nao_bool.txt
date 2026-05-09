@@ -1,0 +1,4 @@
+(START)
+(10 X)
+((X) (((X) 1 -) X) WHILE)
+(END)

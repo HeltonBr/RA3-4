@@ -1,0 +1,82 @@
+# Arvore Sintatica Atribuida da Ultima Execucao
+
+Status semantico: `ok`
+
+```text
+Statement[1] line=3 type=int
+  MemoryWrite line=3 type=int
+    Number line=3 type=int
+Statement[2] line=4 type=int
+  MemoryWrite line=4 type=int
+    Number line=4 type=int
+Statement[3] line=5 type=real
+  MemoryWrite line=5 type=real
+    Number line=5 type=real
+Statement[4] line=6 type=bool
+  MemoryWrite line=6 type=bool
+    Bool line=6 type=bool
+Statement[5] line=7 type=int
+  BinaryOp line=7 type=int
+    MemoryRead line=7 type=int
+    MemoryRead line=7 type=int
+Statement[6] line=8 type=int
+  BinaryOp line=8 type=int
+    BinaryOp line=8 type=int
+      MemoryRead line=8 type=int
+      MemoryRead line=8 type=int
+    Number line=8 type=int
+Statement[7] line=9 type=int
+  BinaryOp line=9 type=int
+    BinaryOp line=9 type=int
+      MemoryRead line=9 type=int
+      Number line=9 type=int
+    BinaryOp line=9 type=int
+      MemoryRead line=9 type=int
+      Number line=9 type=int
+Statement[8] line=10 type=int
+  BinaryOp line=10 type=int
+    Number line=10 type=int
+    Number line=10 type=int
+Statement[9] line=11 type=real
+  BinaryOp line=11 type=real
+    Number line=11 type=real
+    Number line=11 type=int
+Statement[10] line=12 type=int
+  BinaryOp line=12 type=int
+    Number line=12 type=int
+    Number line=12 type=int
+Statement[11] line=13 type=int
+  BinaryOp line=13 type=int
+    MemoryRead line=13 type=int
+    Number line=13 type=int
+Statement[12] line=14 type=int
+  BinaryOp line=14 type=int
+    ResultRef line=14 type=int
+    ResultRef line=14 type=int
+Statement[13] line=15 type=bool
+  LogicalOp line=15 type=bool
+    RelationalOp line=15 type=bool
+      MemoryRead line=15 type=int
+      MemoryRead line=15 type=int
+    MemoryRead line=15 type=bool
+Statement[14] line=16 type=void
+  If line=16 type=void
+    LogicalOp line=16 type=bool
+      RelationalOp line=16 type=bool
+        MemoryRead line=16 type=int
+        MemoryRead line=16 type=int
+      MemoryRead line=16 type=bool
+    MemoryWrite line=16 type=int
+      BinaryOp line=16 type=int
+        MemoryRead line=16 type=int
+        MemoryRead line=16 type=int
+Statement[15] line=17 type=void
+  While line=17 type=void
+    RelationalOp line=17 type=bool
+      MemoryRead line=17 type=int
+      Number line=17 type=int
+    MemoryWrite line=17 type=int
+      BinaryOp line=17 type=int
+        MemoryRead line=17 type=int
+        Number line=17 type=int
+```

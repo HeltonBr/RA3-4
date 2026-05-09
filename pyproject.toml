@@ -1,0 +1,9 @@
+[project]
+name = "analisador-semantico"
+version = "0.1.0"
+description = "Fase 3 - analisador semantico com tabela de simbolos, tipos, AST atribuida e Assembly ARMv7"
+requires-python = ">=3.9"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

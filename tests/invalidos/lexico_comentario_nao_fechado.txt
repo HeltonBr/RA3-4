@@ -1,0 +1,4 @@
+*{ comentario sem fechamento
+(START)
+(10 X)
+(END)

@@ -1,0 +1,136 @@
+{
+  "symbols": [
+    {
+      "name": "ATIVO",
+      "type": "bool",
+      "category": "variable",
+      "defined_at": {
+        "line": 6,
+        "column": 7
+      },
+      "used_at": [
+        {
+          "line": 15,
+          "column": 16
+        },
+        {
+          "line": 16,
+          "column": 16
+        }
+      ],
+      "initialized": true,
+      "declared": true,
+      "redefined_at": []
+    },
+    {
+      "name": "D",
+      "type": "int",
+      "category": "variable",
+      "defined_at": {
+        "line": 4,
+        "column": 4
+      },
+      "used_at": [
+        {
+          "line": 7,
+          "column": 37
+        },
+        {
+          "line": 8,
+          "column": 8
+        },
+        {
+          "line": 9,
+          "column": 14
+        },
+        {
+          "line": 13,
+          "column": 3
+        },
+        {
+          "line": 15,
+          "column": 8
+        },
+        {
+          "line": 16,
+          "column": 9
+        },
+        {
+          "line": 16,
+          "column": 35
+        }
+      ],
+      "initialized": true,
+      "declared": true,
+      "redefined_at": []
+    },
+    {
+      "name": "N",
+      "type": "int",
+      "category": "variable",
+      "defined_at": {
+        "line": 3,
+        "column": 5
+      },
+      "used_at": [
+        {
+          "line": 7,
+          "column": 3
+        },
+        {
+          "line": 8,
+          "column": 4
+        },
+        {
+          "line": 9,
+          "column": 4
+        },
+        {
+          "line": 15,
+          "column": 4
+        },
+        {
+          "line": 16,
+          "column": 5
+        },
+        {
+          "line": 16,
+          "column": 31
+        },
+        {
+          "line": 17,
+          "column": 4
+        },
+        {
+          "line": 17,
+          "column": 15
+        }
+      ],
+      "initialized": true,
+      "declared": true,
+      "redefined_at": [
+        {
+          "line": 16,
+          "column": 41
+        },
+        {
+          "line": 17,
+          "column": 23
+        }
+      ]
+    },
+    {
+      "name": "TAXA",
+      "type": "real",
+      "category": "variable",
+      "defined_at": {
+        "line": 5,
+        "column": 7
+      },
+      "used_at": [],
+      "initialized": true,
+      "declared": true,
+      "redefined_at": []
+    }
+  ]
+}
