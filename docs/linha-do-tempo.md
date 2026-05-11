@@ -56,5 +56,6 @@ python AnalisadorSemantico.py tests/teste3.txt
 
 - PR 04 integrado na `main`, atualizando a pagina principal do GitHub com README e arquivos oficiais na raiz.
 - Cronograma replanejado apos a cobertura central ja implementada, evitando etapas duplicadas.
+- Dossie de inconformidades relido e convertido em quadro de auditoria com decisoes, evidencias e perguntas ao professor.
 - Proximas etapas reorganizadas para auditoria gramatical, semantica, Assembly, entradas externas, documentacao de defesa e pre-auditoria final.
 - Semana pesada de testes mantida de 19/05/2026 a 25/05/2026, sem novas features e com foco em regressao, evidencias e congelamento.

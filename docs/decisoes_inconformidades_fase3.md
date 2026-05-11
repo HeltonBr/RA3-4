@@ -20,7 +20,7 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 | INC-14 | Os artefatos semanticos obrigatorios foram explicitados: tabela de simbolos, arvore atribuida, relatorio de erros e Assembly da ultima execucao valida. |
 | INC-15 | Os testes automatizados incluem cenarios lexicos, sintaticos e semanticos, com foco na Fase 3. |
 | INC-16 | A matriz de tipos esta documentada em `docs/regras_tipos_sequentes.md` e implementada em `src/analisador_sintatico_ll1/type_system.py`. |
-| INC-17 | Potenciacao exige expoente `int`. A positividade so e verificavel diretamente quando houver literal; a linguagem nao possui literal negativo canonico. |
+| INC-17 | Potenciacao exige expoente `int`. A regra antiga de expoente positivo permanece como ponto de auditoria: PR 07 deve decidir se expoente literal `0` sera rejeitado e documentar o limite da verificacao estatica quando o expoente vier de memoria. |
 | INC-18 | A entrada principal e o arquivo-fonte bruto. A leitura de tokens serializados foi mantida apenas por compatibilidade com as fases anteriores. |
 | INC-19 | Como o projeto e Python, o cabecalho obrigatorio usa `#`. |
 | INC-20 | Comentarios foram implementados no scanner caractere a caractere, sem expressoes regulares. |
@@ -30,3 +30,5 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 Frase operacional: Assembly nao e gerado para programas invalidos; primeiro vem lexico, parser, tabela de simbolos, verificacao de tipos e arvore sintatica atribuida.
 
 Decisao adicional de robustez: a execucao principal deve varrer o arquivo inteiro e acumular diagnosticos. Um erro em uma linha nao pode impedir a identificacao de outros erros recuperaveis nas linhas seguintes.
+
+Quadro detalhado para defesa e perguntas ao professor: `docs/auditoria_dossie_inconformidades_fase3.md`.

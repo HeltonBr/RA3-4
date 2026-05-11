@@ -33,6 +33,7 @@
 
 - [x] `docs/cronograma_commits_prs_fase3.md`
 - [x] `docs/bateria_pesada_testes_fase3.md`
+- [x] `docs/auditoria_dossie_inconformidades_fase3.md`
 - [x] `docs/gramatica_atribuida.md`
 - [x] `docs/matriz_cobertura_requisitos.md`
 - [x] `docs/regras_tipos_sequentes.md`
