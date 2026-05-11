@@ -70,8 +70,8 @@ python -m unittest discover -s tests -p "test_*.py" -v
 
 ## Congelamento
 
-- [ ] PRs diarios planejados ate 18/05/2026.
-- [ ] Bateria pesada planejada de 19/05/2026 a 25/05/2026.
+- [x] PRs diarios planejados ate 18/05/2026.
+- [x] Bateria pesada planejada de 19/05/2026 a 25/05/2026.
 - [ ] `GitHubmirror` sincronizado apos cada merge aprovado.
 - [ ] Pasta principal local congelada em 25/05/2026 as 23:59.
 - [ ] Repositorio GitHub congelado em 25/05/2026 as 23:59.
