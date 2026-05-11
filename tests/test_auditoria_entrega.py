@@ -214,6 +214,7 @@ class AuditoriaEntregaTests(unittest.TestCase):
         self.assertIn("Program", resultado.stdout)
         self.assertIn("|-- Statement[1]", resultado.stdout)
         self.assertIn("`--", resultado.stdout)
+        self.assertIn("|       `-- MemoryWrite name=D\n|           `-- BinaryOp operator='+'", resultado.stdout)
         self.assertNotIn("_start:", resultado.stdout)
         self.assertNotIn("puts_jtag", resultado.stdout)
 
@@ -229,6 +230,9 @@ class AuditoriaEntregaTests(unittest.TestCase):
         self.assertIn("Erro SEMANTICO", resultado.stdout)
         self.assertIn("operador '%'", resultado.stdout)
         self.assertIn("NAOEXISTE", resultado.stdout)
+        linhas_erro = [line for line in resultado.stdout.splitlines() if line.startswith("Erro SEMANTICO")]
+        self.assertEqual(len(linhas_erro), 8)
+        self.assertNotIn(".Erro SEMANTICO", resultado.stdout)
         self.assertNotIn("Arvore sintatica desenhada:", resultado.stdout)
         self.assertNotIn("Erro SEMANTICO", resultado.stderr)
 

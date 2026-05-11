@@ -398,7 +398,8 @@ def main() -> int:
             print(execution.tree_text.rstrip())
         if execution.diagnostics:
             # Mantem relatorio e diagnosticos no mesmo fluxo para preservar ordem no PowerShell.
-            print(render_analysis_diagnostics(execution.diagnostics).rstrip())
+            for line in render_analysis_diagnostics(execution.diagnostics).splitlines():
+                print(line, flush=True)
             return 1
         print("Analise completa concluida: 0 erro(s).")
         print("Assembly ARMv7 gerado em: generated/ultimo_assembly.s")
