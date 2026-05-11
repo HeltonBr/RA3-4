@@ -43,6 +43,7 @@
 - [x] `docs/relatorio_validacao_arquivos_teste.md`
 - [x] `generated/relatorio_execucao_ultima_execucao.txt`
 - [x] `generated/ultimo_assembly.s`
+- [x] Arvore sintatica desenhada no console para todo programa valido que gera Assembly.
 
 ## Testes
 

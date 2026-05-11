@@ -278,70 +278,87 @@ def program_to_dict(program: ProgramNode) -> dict[str, object]:
 
 def render_program_tree(program: ProgramNode) -> str:
     linhas = ["Program"]
-    for statement in program.statements:
-        linhas.append(f"  Statement[{statement.ordinal}] line={statement.source_line}")
-        _render_node_tree(statement.node, linhas, 4)
+    total = len(program.statements)
+    for index, statement in enumerate(program.statements):
+        is_last = index == total - 1
+        _append_tree_line(linhas, "", is_last, f"Statement[{statement.ordinal}] line={statement.source_line}")
+        _render_node_tree(statement.node, linhas, _child_prefix("", is_last), True)
     return "\n".join(linhas) + "\n"
 
 
-def _render_node_tree(node: AstNode, linhas: list[str], indent: int) -> None:
-    prefixo = " " * indent
+def _append_tree_line(linhas: list[str], prefix: str, is_last: bool, label: str) -> None:
+    connector = "`-- " if is_last else "|-- "
+    linhas.append(f"{prefix}{connector}{label}")
+
+
+def _child_prefix(prefix: str, is_last: bool) -> str:
+    return prefix + ("    " if is_last else "|   ")
+
+
+def _render_node_tree(node: AstNode, linhas: list[str], prefix: str, is_last: bool) -> None:
     if isinstance(node, NumberNode):
-        linhas.append(f"{prefixo}Number value={node.lexeme}")
+        _append_tree_line(linhas, prefix, is_last, f"Number value={node.lexeme}")
         return
     if isinstance(node, BoolNode):
-        linhas.append(f"{prefixo}Bool value={node.lexeme}")
+        _append_tree_line(linhas, prefix, is_last, f"Bool value={node.lexeme}")
         return
     if isinstance(node, MemoryReadNode):
-        linhas.append(f"{prefixo}MemoryRead name={node.name}")
+        _append_tree_line(linhas, prefix, is_last, f"MemoryRead name={node.name}")
         return
     if isinstance(node, ResultRefNode):
-        linhas.append(f"{prefixo}ResultRef offset={node.offset}")
+        _append_tree_line(linhas, prefix, is_last, f"ResultRef offset={node.offset}")
         return
     if isinstance(node, MemoryWriteNode):
-        linhas.append(f"{prefixo}MemoryWrite name={node.name}")
-        _render_node_tree(node.value, linhas, indent + 2)
+        _append_tree_line(linhas, prefix, is_last, f"MemoryWrite name={node.name}")
+        _render_node_tree(node.value, linhas, _child_prefix(prefix, is_last), True)
         return
     if isinstance(node, BinaryOpNode):
-        linhas.append(f"{prefixo}BinaryOp operator={node.operator}")
-        _render_node_tree(node.left, linhas, indent + 2)
-        _render_node_tree(node.right, linhas, indent + 2)
+        _append_tree_line(linhas, prefix, is_last, f"BinaryOp operator='{node.operator}'")
+        child_prefix = _child_prefix(prefix, is_last)
+        _render_node_tree(node.left, linhas, child_prefix, False)
+        _render_node_tree(node.right, linhas, child_prefix, True)
         return
     if isinstance(node, RelationalOpNode):
-        linhas.append(f"{prefixo}RelationalOp operator={node.operator}")
-        _render_node_tree(node.left, linhas, indent + 2)
-        _render_node_tree(node.right, linhas, indent + 2)
+        _append_tree_line(linhas, prefix, is_last, f"RelationalOp operator='{node.operator}'")
+        child_prefix = _child_prefix(prefix, is_last)
+        _render_node_tree(node.left, linhas, child_prefix, False)
+        _render_node_tree(node.right, linhas, child_prefix, True)
         return
     if isinstance(node, LogicalOpNode):
-        linhas.append(f"{prefixo}LogicalOp operator={node.operator}")
-        _render_node_tree(node.left, linhas, indent + 2)
-        _render_node_tree(node.right, linhas, indent + 2)
+        _append_tree_line(linhas, prefix, is_last, f"LogicalOp operator='{node.operator}'")
+        child_prefix = _child_prefix(prefix, is_last)
+        _render_node_tree(node.left, linhas, child_prefix, False)
+        _render_node_tree(node.right, linhas, child_prefix, True)
         return
     if isinstance(node, LogicalNotNode):
-        linhas.append(f"{prefixo}LogicalNot")
-        _render_node_tree(node.operand, linhas, indent + 2)
+        _append_tree_line(linhas, prefix, is_last, "LogicalNot")
+        _render_node_tree(node.operand, linhas, _child_prefix(prefix, is_last), True)
         return
     if isinstance(node, SequenceNode):
-        linhas.append(f"{prefixo}Sequence")
-        _render_node_tree(node.first, linhas, indent + 2)
-        _render_node_tree(node.second, linhas, indent + 2)
+        _append_tree_line(linhas, prefix, is_last, "Sequence")
+        child_prefix = _child_prefix(prefix, is_last)
+        _render_node_tree(node.first, linhas, child_prefix, False)
+        _render_node_tree(node.second, linhas, child_prefix, True)
         return
     if isinstance(node, IfNode):
-        linhas.append(f"{prefixo}{'IfElse' if node.else_branch is not None else 'If'}")
-        linhas.append(f"{prefixo}  Condition")
-        _render_node_tree(node.condition, linhas, indent + 4)
-        linhas.append(f"{prefixo}  Then")
-        _render_node_tree(node.then_branch, linhas, indent + 4)
+        _append_tree_line(linhas, prefix, is_last, "IfElse" if node.else_branch is not None else "If")
+        child_prefix = _child_prefix(prefix, is_last)
+        has_else = node.else_branch is not None
+        _append_tree_line(linhas, child_prefix, False, "Condition")
+        _render_node_tree(node.condition, linhas, _child_prefix(child_prefix, False), True)
+        _append_tree_line(linhas, child_prefix, not has_else, "Then")
+        _render_node_tree(node.then_branch, linhas, _child_prefix(child_prefix, not has_else), True)
         if node.else_branch is not None:
-            linhas.append(f"{prefixo}  Else")
-            _render_node_tree(node.else_branch, linhas, indent + 4)
+            _append_tree_line(linhas, child_prefix, True, "Else")
+            _render_node_tree(node.else_branch, linhas, _child_prefix(child_prefix, True), True)
         return
     if isinstance(node, WhileNode):
-        linhas.append(f"{prefixo}While")
-        linhas.append(f"{prefixo}  Condition")
-        _render_node_tree(node.condition, linhas, indent + 4)
-        linhas.append(f"{prefixo}  Body")
-        _render_node_tree(node.body, linhas, indent + 4)
+        _append_tree_line(linhas, prefix, is_last, "While")
+        child_prefix = _child_prefix(prefix, is_last)
+        _append_tree_line(linhas, child_prefix, False, "Condition")
+        _render_node_tree(node.condition, linhas, _child_prefix(child_prefix, False), True)
+        _append_tree_line(linhas, child_prefix, True, "Body")
+        _render_node_tree(node.body, linhas, _child_prefix(child_prefix, True), True)
         return
 
 

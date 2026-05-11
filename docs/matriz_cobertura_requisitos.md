@@ -56,6 +56,7 @@ Os tres arquivos validos tambem ficam sincronizados em `tests/teste1.txt`, `test
 | Varredura completa do arquivo | Diagnosticos acumulados e `docs/estrategia_diagnosticos_acumulados.md` | `test_cli_varre_arquivo_inteiro_e_lista_multiplos_erros` |
 | Tabela de simbolos | `generated/tabela_simbolos_ultima_execucao.json` e `docs/tabela_simbolos.md` | `test_pipeline_semantico_end_to_end_em_memoria` |
 | Arvore sintatica atribuida | `generated/arvore_atribuida_ultima_execucao.json` e `docs/arvore_atribuida_ultima_execucao.md` | `test_pipeline_semantico_end_to_end_em_memoria` |
+| Arvore sintatica desenhada no console | Saida padrao de programas validos imprime raiz, ramos e folhas em ASCII | `test_cli_processa_programa_valido_e_atualiza_artefatos` |
 | Assembly apenas para programa valido | `generated/ultimo_assembly.s` | `test_semantico_bloqueia_assembly_com_erro` |
 | Assembly nao impresso no console | CLI apenas confirma caminho do arquivo | `test_cli_processa_programa_valido_e_atualiza_artefatos` |
 

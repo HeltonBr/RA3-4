@@ -20,6 +20,7 @@ As execucoes validas devem apresentar:
 - quantidade de simbolos na tabela;
 - profundidade maxima da AST;
 - operadores, literais, memoria, `RES`, controle e comentarios detectados;
+- arvore sintatica desenhada com raiz, ramos e folhas;
 - confirmacao de Assembly gerado.
 
 A execucao de `teste4_semantico_invalido.txt` deve listar erros semanticos e bloquear o Assembly.
@@ -27,10 +28,11 @@ A execucao de `teste4_semantico_invalido.txt` deve listar erros semanticos e blo
 ## Arvore no console
 
 ```powershell
+python AnalisadorSemantico.py teste3.txt
 python AnalisadorSemantico.py teste3.txt --mostrar-arvore
 ```
 
-A arvore tambem fica persistida em:
+Para programas validos, a saida padrao imprime a arvore sintatica desenhada. A arvore tambem fica persistida em:
 
 - `docs/arvore_ultima_execucao.md`;
 - `generated/arvore_ultima_execucao.json`;
@@ -59,5 +61,5 @@ A suite valida que:
 - as copias da raiz e de `tests/` permanecem sincronizadas;
 - cada valido cobre todos os operadores aritmeticos, relacionais, logicos e controles obrigatorios;
 - a saida padrao nao despeja Assembly no console;
-- a arvore pode ser impressa sob demanda;
+- a saida padrao imprime a arvore desenhada para programas validos que geram Assembly;
 - os erros continuam acumulados sem interromper no primeiro problema.

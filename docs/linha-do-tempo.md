@@ -50,3 +50,4 @@ python AnalisadorSemantico.py tests/teste3.txt
 - Os tres programas validos passaram a cobrir `IF`, `IFELSE`, `WHILE`, `SEQ`, `RES`, leitura/escrita de memoria e todos os tipos.
 - `teste4_semantico_invalido.txt` adicionado na raiz para erros semanticos intencionais com lexico e sintaxe validos.
 - `docs/matriz_cobertura_requisitos.md` criada para rastrear requisitos, evidencias e testes automatizados.
+- A arvore sintatica passou a ser desenhada por padrao no console para todo programa valido que gera Assembly.

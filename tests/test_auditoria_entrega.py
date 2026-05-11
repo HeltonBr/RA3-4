@@ -96,6 +96,7 @@ class AuditoriaEntregaTests(unittest.TestCase):
             "calculo de sequentes",
             "varre o arquivo inteiro",
             "arvore sintatica atribuida",
+            "arvore sintatica desenhada",
             "cpulator",
             "relatorio de validacao",
             "teste4_semantico_invalido.txt",
@@ -193,6 +194,9 @@ class AuditoriaEntregaTests(unittest.TestCase):
         self.assertIn("Sintatico LL(1): OK", resultado.stdout)
         self.assertIn("Semantico: OK", resultado.stdout)
         self.assertIn("Operadores aritmeticos: + - * | / % ^", resultado.stdout)
+        self.assertIn("Arvore sintatica desenhada:", resultado.stdout)
+        self.assertIn("|-- Statement[1]", resultado.stdout)
+        self.assertIn("`--", resultado.stdout)
         self.assertIn("Assembly nao e impresso no console", resultado.stdout)
         self.assertNotIn("_start:", resultado.stdout)
         self.assertNotIn("puts_jtag", resultado.stdout)
@@ -206,9 +210,10 @@ class AuditoriaEntregaTests(unittest.TestCase):
         )
 
         self.assertEqual(resultado.returncode, 0, resultado.stderr)
-        self.assertIn("Arvore sintatica reconhecida:", resultado.stdout)
+        self.assertIn("Arvore sintatica desenhada:", resultado.stdout)
         self.assertIn("Program", resultado.stdout)
-        self.assertIn("Statement[1]", resultado.stdout)
+        self.assertIn("|-- Statement[1]", resultado.stdout)
+        self.assertIn("`--", resultado.stdout)
         self.assertNotIn("_start:", resultado.stdout)
         self.assertNotIn("puts_jtag", resultado.stdout)
 
@@ -224,6 +229,7 @@ class AuditoriaEntregaTests(unittest.TestCase):
         self.assertIn("Erro SEMANTICO", resultado.stdout)
         self.assertIn("operador '%'", resultado.stdout)
         self.assertIn("NAOEXISTE", resultado.stdout)
+        self.assertNotIn("Arvore sintatica desenhada:", resultado.stdout)
         self.assertNotIn("Erro SEMANTICO", resultado.stderr)
 
     def test_import_publico_funciona_sem_py_path_externo(self) -> None:

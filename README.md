@@ -50,7 +50,7 @@ Tambem e possivel manter compatibilidade com o nome antigo:
 python AnalisadorSintatico.py teste1.txt
 ```
 
-A execucao padrao imprime um relatorio de validacao com as fases executadas, caracteristicas detectadas no arquivo e confirmacao dos artefatos. A arvore sintatica pode ser mostrada no console quando necessario:
+A execucao padrao imprime um relatorio de validacao com as fases executadas, caracteristicas detectadas no arquivo, confirmacao dos artefatos e, para todo programa valido que gera Assembly, a arvore sintatica desenhada com ramos e folhas em ASCII. As opcoes abaixo mantem a arvore explicita em execucoes de verificacao:
 
 ```powershell
 python AnalisadorSemantico.py teste3.txt --mostrar-arvore

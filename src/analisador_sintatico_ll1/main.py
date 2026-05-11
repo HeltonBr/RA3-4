@@ -80,12 +80,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--mostrar-arvore",
         action="store_true",
-        help="Mostra a arvore sintatica textual no console. O Assembly continua apenas em arquivo.",
+        help="Mostra a arvore sintatica desenhada no console. Em programas validos ela ja aparece por padrao.",
     )
     parser.add_argument(
         "--relatorio-completo",
         action="store_true",
-        help="Mostra o relatorio de validacao e a arvore sintatica textual no console.",
+        help="Mostra o relatorio de validacao e a arvore sintatica desenhada no console.",
     )
     return parser
 
@@ -393,8 +393,8 @@ def main() -> int:
         print(f"Analise concluida para: {args.arquivo}")
         print(f"Artefatos atualizados em: {execution.generated_dir}")
         print(render_execution_report(execution.report).rstrip())
-        if args.mostrar_arvore or args.relatorio_completo:
-            print("Arvore sintatica reconhecida:")
+        if execution.report.assembly_generated or args.mostrar_arvore or args.relatorio_completo:
+            print("Arvore sintatica desenhada:")
             print(execution.tree_text.rstrip())
         if execution.diagnostics:
             # Mantem relatorio e diagnosticos no mesmo fluxo para preservar ordem no PowerShell.
