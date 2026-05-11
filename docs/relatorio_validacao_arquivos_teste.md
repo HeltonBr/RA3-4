@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Este roteiro demonstra como validar os tres arquivos obrigatorios na mesma pasta do codigo-fonte e como conferir os artefatos produzidos.
+Este roteiro demonstra como validar os arquivos oficiais na mesma pasta do codigo-fonte e como conferir os artefatos produzidos.
 
 ## Comandos principais
 
@@ -10,24 +10,29 @@ Este roteiro demonstra como validar os tres arquivos obrigatorios na mesma pasta
 python AnalisadorSemantico.py teste1.txt
 python AnalisadorSemantico.py teste2.txt
 python AnalisadorSemantico.py teste3.txt
+python AnalisadorSemantico.py teste4_semantico_invalido.txt
 ```
 
-Cada execucao deve apresentar:
+As execucoes validas devem apresentar:
 
 - fases lexico, sintatico LL(1) e semantico;
 - quantidade de declaracoes reconhecidas;
 - quantidade de simbolos na tabela;
 - profundidade maxima da AST;
 - operadores, literais, memoria, `RES`, controle e comentarios detectados;
-- confirmacao de Assembly gerado ou bloqueado.
+- arvore sintatica desenhada com raiz, ramos e folhas;
+- confirmacao de Assembly gerado.
+
+A execucao de `teste4_semantico_invalido.txt` deve listar erros semanticos e bloquear o Assembly.
 
 ## Arvore no console
 
 ```powershell
+python AnalisadorSemantico.py teste3.txt
 python AnalisadorSemantico.py teste3.txt --mostrar-arvore
 ```
 
-A arvore tambem fica persistida em:
+Para programas validos, a saida padrao imprime a arvore sintatica desenhada. A arvore tambem fica persistida em:
 
 - `docs/arvore_ultima_execucao.md`;
 - `generated/arvore_ultima_execucao.json`;
@@ -52,7 +57,9 @@ python -m unittest discover -s tests -p "test_*.py" -v
 A suite valida que:
 
 - `teste1.txt`, `teste2.txt` e `teste3.txt` existem na raiz;
+- `teste4_semantico_invalido.txt` existe na raiz e e rejeitado semanticamente;
 - as copias da raiz e de `tests/` permanecem sincronizadas;
+- cada valido cobre todos os operadores aritmeticos, relacionais, logicos e controles obrigatorios;
 - a saida padrao nao despeja Assembly no console;
-- a arvore pode ser impressa sob demanda;
+- a saida padrao imprime a arvore desenhada para programas validos que geram Assembly;
 - os erros continuam acumulados sem interromper no primeiro problema.

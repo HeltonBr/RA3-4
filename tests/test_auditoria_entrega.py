@@ -8,6 +8,7 @@ from __future__ import annotations
 import subprocess
 import sys
 import unittest
+import re
 from pathlib import Path
 
 from analisador_sintatico_ll1 import construirGramatica
@@ -35,15 +36,18 @@ from analisador_sintatico_ll1.core import prepararEntradaSemantica
 ROOT = Path(__file__).resolve().parents[1]
 NOMES_PROGRAMAS_VALIDOS = ("teste1.txt", "teste2.txt", "teste3.txt")
 PROGRAMAS_VALIDOS = [ROOT / nome for nome in NOMES_PROGRAMAS_VALIDOS]
+PROGRAMA_SEMANTICO_INVALIDO_RAIZ = ROOT / "teste4_semantico_invalido.txt"
 ARQUIVOS_OBRIGATORIOS = [
     ROOT / "README.md",
     ROOT / "AnalisadorSemantico.py",
     ROOT / "teste1.txt",
     ROOT / "teste2.txt",
     ROOT / "teste3.txt",
+    PROGRAMA_SEMANTICO_INVALIDO_RAIZ,
     ROOT / "docs" / "decisoes_inconformidades_fase3.md",
     ROOT / "docs" / "estrategia_diagnosticos_acumulados.md",
     ROOT / "docs" / "gramatica_atribuida.md",
+    ROOT / "docs" / "matriz_cobertura_requisitos.md",
     ROOT / "docs" / "regras_tipos_sequentes.md",
     ROOT / "docs" / "tabela_simbolos.md",
     ROOT / "docs" / "arvore_atribuida_ultima_execucao.md",
@@ -92,10 +96,32 @@ class AuditoriaEntregaTests(unittest.TestCase):
             "calculo de sequentes",
             "varre o arquivo inteiro",
             "arvore sintatica atribuida",
+            "arvore sintatica desenhada",
             "cpulator",
             "relatorio de validacao",
+            "teste4_semantico_invalido.txt",
+            "tests/invalidos",
+            "tests/variacoes",
         ]:
             self.assertIn(trecho, readme)
+
+    def test_matriz_cobertura_requisitos_existe_e_cita_pontos_criticos(self) -> None:
+        matriz = (ROOT / "docs" / "matriz_cobertura_requisitos.md").read_text(encoding="utf-8")
+
+        for trecho in [
+            "Arquivos oficiais na raiz",
+            "teste1.txt",
+            "teste2.txt",
+            "teste3.txt",
+            "teste4_semantico_invalido.txt",
+            "Operadores aritmeticos",
+            "Operadores relacionais",
+            "Operadores logicos",
+            "Comentarios",
+            "Varredura completa",
+            "Assembly",
+        ]:
+            self.assertIn(trecho, matriz)
 
     def test_arquivos_de_teste_obrigatorios_ficam_na_raiz_e_sincronizados(self) -> None:
         for nome in NOMES_PROGRAMAS_VALIDOS:
@@ -106,6 +132,13 @@ class AuditoriaEntregaTests(unittest.TestCase):
                 self.assertTrue(raiz.exists())
                 self.assertTrue(suite.exists())
                 self.assertEqual(raiz.read_text(encoding="utf-8"), suite.read_text(encoding="utf-8"))
+
+    def test_arquivo_semantico_invalido_oficial_fica_na_raiz(self) -> None:
+        self.assertTrue(PROGRAMA_SEMANTICO_INVALIDO_RAIZ.exists())
+        self.assertGreaterEqual(
+            len([linha for linha in PROGRAMA_SEMANTICO_INVALIDO_RAIZ.read_text(encoding="utf-8").splitlines() if linha.strip()]),
+            10,
+        )
 
     def test_documentacao_registra_decisoes_para_inconformidades(self) -> None:
         decisoes = (ROOT / "docs" / "decisoes_inconformidades_fase3.md").read_text(encoding="utf-8")
@@ -125,17 +158,25 @@ class AuditoriaEntregaTests(unittest.TestCase):
 
                 program = self._parse_program(caminho)
                 inventario = self._inventariar_programa(program)
+                comentarios = self._inventariar_comentarios(texto)
 
                 self.assertTrue({"+", "-", "*", "|", "/", "%", "^"}.issubset(inventario["binary_ops"]))
-                self.assertTrue({"AND"} & inventario["logical_ops"])
+                self.assertTrue({">", "<", ">=", "<=", "==", "!="}.issubset(inventario["relational_ops"]))
+                self.assertTrue({"AND", "OR", "NOT"}.issubset(inventario["logical_ops"]))
                 self.assertTrue(inventario["has_memory_read"])
                 self.assertTrue(inventario["has_memory_write"])
                 self.assertTrue(inventario["has_res"])
                 self.assertTrue(inventario["has_if"])
+                self.assertTrue(inventario["has_ifelse"])
                 self.assertTrue(inventario["has_while"])
+                self.assertTrue(inventario["has_seq"])
                 self.assertTrue(inventario["has_integer_literal"])
                 self.assertTrue(inventario["has_real_literal"])
                 self.assertTrue(inventario["has_bool_literal"])
+                self.assertGreater(comentarios["linha_inteira"], 0)
+                self.assertGreater(comentarios["fim_de_linha"], 0)
+                self.assertGreater(comentarios["entre_tokens"], 0)
+                self.assertGreater(comentarios["multilinha"], 0)
 
     def test_cli_processa_programa_valido_e_atualiza_artefatos(self) -> None:
         resultado = subprocess.run(
@@ -153,6 +194,9 @@ class AuditoriaEntregaTests(unittest.TestCase):
         self.assertIn("Sintatico LL(1): OK", resultado.stdout)
         self.assertIn("Semantico: OK", resultado.stdout)
         self.assertIn("Operadores aritmeticos: + - * | / % ^", resultado.stdout)
+        self.assertIn("Arvore sintatica desenhada:", resultado.stdout)
+        self.assertIn("|-- Statement[1]", resultado.stdout)
+        self.assertIn("`--", resultado.stdout)
         self.assertIn("Assembly nao e impresso no console", resultado.stdout)
         self.assertNotIn("_start:", resultado.stdout)
         self.assertNotIn("puts_jtag", resultado.stdout)
@@ -166,23 +210,33 @@ class AuditoriaEntregaTests(unittest.TestCase):
         )
 
         self.assertEqual(resultado.returncode, 0, resultado.stderr)
-        self.assertIn("Arvore sintatica reconhecida:", resultado.stdout)
+        self.assertIn("Arvore sintatica desenhada:", resultado.stdout)
         self.assertIn("Program", resultado.stdout)
-        self.assertIn("Statement[1]", resultado.stdout)
+        self.assertIn("|-- Statement[1]", resultado.stdout)
+        self.assertIn("`--", resultado.stdout)
+        self.assertIn("|       `-- MemoryWrite name=D\n|           `-- BinaryOp operator='+'", resultado.stdout)
         self.assertNotIn("_start:", resultado.stdout)
         self.assertNotIn("puts_jtag", resultado.stdout)
 
     def test_cli_rejeita_programa_semantico_invalido(self) -> None:
         resultado = subprocess.run(
-            [sys.executable, "AnalisadorSemantico.py", "tests/invalidos/semantico_mod_com_real.txt"],
+            [sys.executable, "AnalisadorSemantico.py", PROGRAMA_SEMANTICO_INVALIDO_RAIZ.name],
             cwd=ROOT,
             capture_output=True,
             text=True,
         )
 
         self.assertEqual(resultado.returncode, 1)
-        self.assertIn("Erro SEMANTICO", resultado.stderr)
-        self.assertIn("operador '%'", resultado.stderr)
+        self.assertIn("Erro SEMANTICO", resultado.stdout)
+        self.assertIn("operador '%'", resultado.stdout)
+        self.assertIn("NAOEXISTE", resultado.stdout)
+        linhas_erro = [line for line in resultado.stdout.splitlines() if line.startswith("Erro SEMANTICO")]
+        self.assertEqual(len(linhas_erro), 8)
+        self.assertIn("  linha: 11", resultado.stdout)
+        self.assertIn("  detalhe: variavel 'X' ja foi definida como int e nao pode receber real.", resultado.stdout)
+        self.assertNotIn(".Erro SEMANTICO", resultado.stdout)
+        self.assertNotIn("Arvore sintatica desenhada:", resultado.stdout)
+        self.assertNotIn("Erro SEMANTICO", resultado.stderr)
 
     def test_import_publico_funciona_sem_py_path_externo(self) -> None:
         resultado = subprocess.run(
@@ -220,12 +274,15 @@ class AuditoriaEntregaTests(unittest.TestCase):
     def _inventariar_programa(self, program: ProgramNode) -> dict[str, object]:
         inventario = {
             "binary_ops": set(),
+            "relational_ops": set(),
             "logical_ops": set(),
             "has_memory_read": False,
             "has_memory_write": False,
             "has_res": False,
             "has_if": False,
+            "has_ifelse": False,
             "has_while": False,
+            "has_seq": False,
             "has_integer_literal": False,
             "has_real_literal": False,
             "has_bool_literal": False,
@@ -260,6 +317,7 @@ class AuditoriaEntregaTests(unittest.TestCase):
             self._visitar(node.right, inventario)
             return
         if isinstance(node, RelationalOpNode):
+            inventario["relational_ops"].add(node.operator)
             self._visitar(node.left, inventario)
             self._visitar(node.right, inventario)
             return
@@ -273,11 +331,14 @@ class AuditoriaEntregaTests(unittest.TestCase):
             self._visitar(node.operand, inventario)
             return
         if isinstance(node, SequenceNode):
+            inventario["has_seq"] = True
             self._visitar(node.first, inventario)
             self._visitar(node.second, inventario)
             return
         if isinstance(node, IfNode):
             inventario["has_if"] = True
+            if node.else_branch is not None:
+                inventario["has_ifelse"] = True
             self._visitar(node.condition, inventario)
             self._visitar(node.then_branch, inventario)
             if node.else_branch is not None:
@@ -287,6 +348,26 @@ class AuditoriaEntregaTests(unittest.TestCase):
             inventario["has_while"] = True
             self._visitar(node.condition, inventario)
             self._visitar(node.body, inventario)
+
+    def _inventariar_comentarios(self, text: str) -> dict[str, int]:
+        counts = {"linha_inteira": 0, "fim_de_linha": 0, "entre_tokens": 0, "multilinha": 0}
+        for match in re.finditer(r"\*\{.*?\}\*", text, flags=re.DOTALL):
+            comment = match.group(0)
+            before_line = text[text.rfind("\n", 0, match.start()) + 1 : match.start()]
+            after_line_end = text.find("\n", match.end())
+            if after_line_end == -1:
+                after_line_end = len(text)
+            after_line = text[match.end() : after_line_end]
+
+            if "\n" in comment:
+                counts["multilinha"] += 1
+            elif not before_line.strip() and not after_line.strip():
+                counts["linha_inteira"] += 1
+            elif before_line.strip() and not after_line.strip():
+                counts["fim_de_linha"] += 1
+            else:
+                counts["entre_tokens"] += 1
+        return counts
 
 
 if __name__ == "__main__":

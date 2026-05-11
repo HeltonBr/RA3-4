@@ -34,6 +34,7 @@ from analisador_sintatico_ll1.core import prepararEntradaSemanticaComDiagnostico
 from analisador_sintatico_ll1.core import salvar_tokens_em_arquivo
 from analisador_sintatico_ll1.diagnostics import AnalysisDiagnostic
 from analisador_sintatico_ll1.diagnostics import render_analysis_diagnostics
+from analisador_sintatico_ll1.diagnostics import render_console_diagnostics
 from analisador_sintatico_ll1.errors import AnalisadorSintaticoError
 from analisador_sintatico_ll1.grammar import salvar_documentacao_gramatica
 from analisador_sintatico_ll1.type_system import SemanticAnalysisResult
@@ -80,12 +81,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--mostrar-arvore",
         action="store_true",
-        help="Mostra a arvore sintatica textual no console. O Assembly continua apenas em arquivo.",
+        help="Mostra a arvore sintatica desenhada no console. Em programas validos ela ja aparece por padrao.",
     )
     parser.add_argument(
         "--relatorio-completo",
         action="store_true",
-        help="Mostra o relatorio de validacao e a arvore sintatica textual no console.",
+        help="Mostra o relatorio de validacao e a arvore sintatica desenhada no console.",
     )
     return parser
 
@@ -393,11 +394,13 @@ def main() -> int:
         print(f"Analise concluida para: {args.arquivo}")
         print(f"Artefatos atualizados em: {execution.generated_dir}")
         print(render_execution_report(execution.report).rstrip())
-        if args.mostrar_arvore or args.relatorio_completo:
-            print("Arvore sintatica reconhecida:")
+        if execution.report.assembly_generated or args.mostrar_arvore or args.relatorio_completo:
+            print("Arvore sintatica desenhada:")
             print(execution.tree_text.rstrip())
         if execution.diagnostics:
-            print(render_analysis_diagnostics(execution.diagnostics).rstrip(), file=sys.stderr)
+            # Mantem relatorio e diagnosticos no mesmo fluxo para preservar ordem no PowerShell.
+            for line in render_console_diagnostics(execution.diagnostics).splitlines():
+                print(line, flush=True)
             return 1
         print("Analise completa concluida: 0 erro(s).")
         print("Assembly ARMv7 gerado em: generated/ultimo_assembly.s")

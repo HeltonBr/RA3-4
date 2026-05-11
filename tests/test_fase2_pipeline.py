@@ -128,9 +128,10 @@ class Fase2PipelineTests(unittest.TestCase):
         )
 
         self.assertEqual(resultado.returncode, 1)
-        self.assertIn("Erro SEMANTICO", resultado.stderr)
-        self.assertIn("condicao de WHILE deve ser bool", resultado.stderr)
-        self.assertNotIn("Traceback", resultado.stderr)
+        saida = resultado.stdout + resultado.stderr
+        self.assertIn("Erro SEMANTICO", saida)
+        self.assertIn("condicao de WHILE deve ser bool", saida)
+        self.assertNotIn("Traceback", saida)
 
     def test_cli_varre_arquivo_inteiro_e_lista_multiplos_erros(self) -> None:
         caminho = ROOT / "tests" / "invalidos" / "auditoria_multiplos_erros.txt"
@@ -142,15 +143,16 @@ class Fase2PipelineTests(unittest.TestCase):
         )
 
         self.assertEqual(resultado.returncode, 1)
-        self.assertIn("Analise completa concluida com", resultado.stderr)
-        self.assertIn("Erro LEXICO", resultado.stderr)
-        self.assertIn("Erro SINTATICO", resultado.stderr)
-        self.assertIn("Erro SEMANTICO", resultado.stderr)
-        self.assertIn("NAODECLARADA", resultado.stderr)
-        self.assertIn("numero malformado", resultado.stderr)
-        self.assertIn("variavel 'X' ja foi definida", resultado.stderr)
-        self.assertIn("condicao de WHILE deve ser bool", resultado.stderr)
-        self.assertNotIn("Traceback", resultado.stderr)
+        saida = resultado.stdout + resultado.stderr
+        self.assertIn("Analise completa concluida com", saida)
+        self.assertIn("Erro LEXICO", saida)
+        self.assertIn("Erro SINTATICO", saida)
+        self.assertIn("Erro SEMANTICO", saida)
+        self.assertIn("NAODECLARADA", saida)
+        self.assertIn("numero malformado", saida)
+        self.assertIn("variavel 'X' ja foi definida", saida)
+        self.assertIn("condicao de WHILE deve ser bool", saida)
+        self.assertNotIn("Traceback", saida)
 
     def test_cli_retorna_mensagem_clara_para_end_ausente(self) -> None:
         caminho = ROOT / "tests" / "invalidos" / "sintaxe_sem_end.txt"
@@ -162,8 +164,9 @@ class Fase2PipelineTests(unittest.TestCase):
         )
 
         self.assertEqual(resultado.returncode, 1)
-        self.assertIn("Programa incompleto: faltou a linha final (END).", resultado.stderr)
-        self.assertNotIn("Traceback", resultado.stderr)
+        saida = resultado.stdout + resultado.stderr
+        self.assertIn("Programa incompleto: faltou a linha final (END).", saida)
+        self.assertNotIn("Traceback", saida)
 
 
 if __name__ == "__main__":

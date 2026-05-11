@@ -17,26 +17,63 @@ A Fase 3 reaproveita a base da Fase 2 e acrescenta analise semantica. O programa
 
 ## Execucao
 
+Todos os comandos devem ser executados na pasta que contem `AnalisadorSemantico.py`. No ambiente local desta entrega, essa pasta e:
+
+```powershell
+cd "C:\Users\Helton\OneDrive - Grupo Marista\Puc PR\Nono Período\Linguagens Formais e Compiladores 2026\Trabalhos\Fase 3 - Analisador Semântico\GitHub"
+```
+
+Os arquivos oficiais da entrega ficam na mesma pasta do codigo-fonte, ao lado de `AnalisadorSemantico.py`:
+
+- `teste1.txt`
+- `teste2.txt`
+- `teste3.txt`
+- `teste4_semantico_invalido.txt`
+
+Os tres primeiros sao programas semanticamente validos. O quarto contem erros semanticos intencionais para demonstrar mensagens claras, varredura completa e bloqueio de Assembly.
+
+Para executar um arquivo valido da raiz:
+
 ```powershell
 python AnalisadorSemantico.py teste1.txt
 ```
 
-Tambem e possivel manter compatibilidade com o nome antigo:
+Para executar o arquivo semantico invalido oficial:
 
 ```powershell
-python AnalisadorSintatico.py teste1.txt
+python AnalisadorSemantico.py teste4_semantico_invalido.txt
 ```
 
-A execucao padrao imprime um relatorio de validacao com as fases executadas, caracteristicas detectadas no arquivo e confirmacao dos artefatos. A arvore sintatica pode ser mostrada no console quando necessario:
+A execucao padrao imprime um relatorio de validacao com as fases executadas, caracteristicas detectadas no arquivo, confirmacao dos artefatos e, para todo programa valido que gera Assembly, a arvore sintatica desenhada com ramos e folhas em ASCII. O Assembly nao e impresso no console; o conteudo fica em `generated/ultimo_assembly.s`.
+
+Comandos auxiliares para auditoria da arvore:
 
 ```powershell
 python AnalisadorSemantico.py teste3.txt --mostrar-arvore
 python AnalisadorSemantico.py teste3.txt --relatorio-completo
 ```
 
-O Assembly ARMv7 nao e despejado no console; o programa apenas confirma se ele foi gerado ou bloqueado, e o conteudo fica em `generated/ultimo_assembly.s`.
-
 ## Testes
+
+As copias sincronizadas dos tres arquivos validos oficiais tambem ficam em `tests/` para uso da suite automatizada:
+
+- `tests/teste1.txt`
+- `tests/teste2.txt`
+- `tests/teste3.txt`
+
+Casos complementares ficam separados por finalidade:
+
+- `tests/invalidos/`: entradas com erros lexicos, sintaticos e semanticos intencionais.
+- `tests/variacoes/`: entradas com variacoes de formato, comentarios e espacamento.
+
+Exemplos de execucao manual:
+
+```powershell
+python AnalisadorSemantico.py tests\variacoes\comentario_multilinha.txt
+python AnalisadorSemantico.py tests\invalidos\semantico_mod_com_real.txt
+```
+
+Suite completa:
 
 ```powershell
 python -m unittest discover -s tests -p "test_*.py" -v
@@ -87,6 +124,7 @@ As regras formais em calculo de sequentes estao em `docs/regras_tipos_sequentes.
 - `docs/gramatica_atribuida.md`: gramatica LL(1) aumentada.
 - `docs/first_follow.md`: conjuntos FIRST/FOLLOW.
 - `docs/tabela_ll1.md`: tabela LL(1).
+- `docs/matriz_cobertura_requisitos.md`: rastreabilidade entre enunciado, testes, implementacao e artefatos.
 - `docs/regras_tipos_sequentes.md`: sistema de tipos em calculo de sequentes.
 - `docs/estrategia_diagnosticos_acumulados.md`: varredura completa e acumulacao de erros.
 - `docs/tabela_simbolos.md`: tabela de simbolos da ultima execucao.
@@ -100,15 +138,10 @@ O Assembly e emitido para ARMv7 DE1-SoC com `.syntax unified`, `.arch armv7-a`, 
 
 ## Rastreabilidade
 
-O repositorio deve ser publico, nomeado com o grupo exato do Canvas e trabalhado por branches e pull requests. Mesmo em grupo individual, os PRs documentam autoria, revisao e integracao.
+Repositorio GitHub: `https://github.com/HeltonBr/RA3-4`.
 
-## Cronograma e congelamento
+O desenvolvimento e documentado por commits, branches e pull requests. Os registros de cronograma, auditoria e congelamento estao nos documentos de apoio:
 
-- Data final de congelamento da pasta principal e do GitHub: **25/05/2026 as 23:59**.
-- Desenvolvimento com commits e pull requests diarios: `docs/cronograma_commits_prs_fase3.md`.
-- Bateria pesada dos 7 dias finais: `docs/bateria_pesada_testes_fase3.md`.
-- Espelho local exato ate o congelamento: `GitHubmirror`, atualizado por:
-
-```powershell
-.\sincronizar_para_githubmirror.ps1
-```
+- `docs/cronograma_commits_prs_fase3.md`
+- `docs/bateria_pesada_testes_fase3.md`
+- `docs/checklist-entrega.md`

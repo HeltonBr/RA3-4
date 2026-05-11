@@ -1,9 +1,11 @@
-*{ teste valido 2: mistura numeros, bool e controle }*
+*{ teste valido 2: mistura numeros, booleanos, memoria e controle }*
 (START)
 (8 A) *{ comentario no final da linha }*
 (5 B)
 (1.5 C)
 (FALSE DONE)
+*{ comentario multilinha
+   antes das expressoes principais }*
 ((A) *{ comentario entre tokens }* (B) +)
 ((A) 3 -)
 ((B) 4 *)
@@ -13,6 +15,13 @@
 ((B) 3 ^)
 ((1 RES) 10 >)
 (((A) (B) >) ((DONE) NOT) AND)
+(((A) (B) <) (DONE) OR)
+((A) (B) >=)
+((A) (B) <=)
+((A) (B) ==)
+((A) (B) !=)
+(((A) (B) >) (((A) (B) -) A) IF)
 (((A) (B) >) (((A) (B) -) A) (((B) (A) -) B) IFELSE)
+((((A) 1 -) A) (((B) 1 +) B) SEQ)
 (((A) 0 >) (((A) 1 -) A) WHILE)
 (END)

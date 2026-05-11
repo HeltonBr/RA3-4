@@ -1,6 +1,6 @@
 {
   "type": "Program",
-  "statement_count": 15,
+  "statement_count": 22,
   "semantic_status": "ok",
   "statements": [
     {
@@ -121,18 +121,18 @@
     },
     {
       "ordinal": 5,
-      "source_line": 7,
+      "source_line": 9,
       "inferred_type": "int",
       "rpn": "((N) (D) +)",
       "tree": {
-        "line": 7,
+        "line": 9,
         "column": 40,
         "inferred_type": "int",
         "semantic_status": "ok",
         "kind": "BinaryOp",
         "operator": "+",
         "left": {
-          "line": 7,
+          "line": 9,
           "column": 3,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -146,7 +146,7 @@
           }
         },
         "right": {
-          "line": 7,
+          "line": 9,
           "column": 37,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -163,25 +163,25 @@
     },
     {
       "ordinal": 6,
-      "source_line": 8,
+      "source_line": 10,
       "inferred_type": "int",
       "rpn": "(((N) (D) +) 2 -)",
       "tree": {
-        "line": 8,
+        "line": 10,
         "column": 16,
         "inferred_type": "int",
         "semantic_status": "ok",
         "kind": "BinaryOp",
         "operator": "-",
         "left": {
-          "line": 8,
+          "line": 10,
           "column": 11,
           "inferred_type": "int",
           "semantic_status": "ok",
           "kind": "BinaryOp",
           "operator": "+",
           "left": {
-            "line": 8,
+            "line": 10,
             "column": 4,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -195,7 +195,7 @@
             }
           },
           "right": {
-            "line": 8,
+            "line": 10,
             "column": 8,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -210,7 +210,7 @@
           }
         },
         "right": {
-          "line": 8,
+          "line": 10,
           "column": 14,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -222,25 +222,25 @@
     },
     {
       "ordinal": 7,
-      "source_line": 9,
+      "source_line": 11,
       "inferred_type": "int",
       "rpn": "(((N) 2 *) ((D) 3 *) +)",
       "tree": {
-        "line": 9,
+        "line": 11,
         "column": 22,
         "inferred_type": "int",
         "semantic_status": "ok",
         "kind": "BinaryOp",
         "operator": "+",
         "left": {
-          "line": 9,
+          "line": 11,
           "column": 9,
           "inferred_type": "int",
           "semantic_status": "ok",
           "kind": "BinaryOp",
           "operator": "*",
           "left": {
-            "line": 9,
+            "line": 11,
             "column": 4,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -254,7 +254,7 @@
             }
           },
           "right": {
-            "line": 9,
+            "line": 11,
             "column": 7,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -264,14 +264,14 @@
           }
         },
         "right": {
-          "line": 9,
+          "line": 11,
           "column": 19,
           "inferred_type": "int",
           "semantic_status": "ok",
           "kind": "BinaryOp",
           "operator": "*",
           "left": {
-            "line": 9,
+            "line": 11,
             "column": 14,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -285,7 +285,7 @@
             }
           },
           "right": {
-            "line": 9,
+            "line": 11,
             "column": 17,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -298,18 +298,18 @@
     },
     {
       "ordinal": 8,
-      "source_line": 10,
+      "source_line": 12,
       "inferred_type": "int",
       "rpn": "(27 5 /)",
       "tree": {
-        "line": 10,
+        "line": 12,
         "column": 7,
         "inferred_type": "int",
         "semantic_status": "ok",
         "kind": "BinaryOp",
         "operator": "/",
         "left": {
-          "line": 10,
+          "line": 12,
           "column": 2,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -318,7 +318,7 @@
           "value": 27.0
         },
         "right": {
-          "line": 10,
+          "line": 12,
           "column": 5,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -330,18 +330,18 @@
     },
     {
       "ordinal": 9,
-      "source_line": 11,
+      "source_line": 13,
       "inferred_type": "real",
       "rpn": "(27.0 5 |)",
       "tree": {
-        "line": 11,
+        "line": 13,
         "column": 9,
         "inferred_type": "real",
         "semantic_status": "ok",
         "kind": "BinaryOp",
         "operator": "|",
         "left": {
-          "line": 11,
+          "line": 13,
           "column": 2,
           "inferred_type": "real",
           "semantic_status": "ok",
@@ -350,7 +350,7 @@
           "value": 27.0
         },
         "right": {
-          "line": 11,
+          "line": 13,
           "column": 7,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -362,18 +362,18 @@
     },
     {
       "ordinal": 10,
-      "source_line": 12,
+      "source_line": 14,
       "inferred_type": "int",
       "rpn": "(27 5 %)",
       "tree": {
-        "line": 12,
+        "line": 14,
         "column": 7,
         "inferred_type": "int",
         "semantic_status": "ok",
         "kind": "BinaryOp",
         "operator": "%",
         "left": {
-          "line": 12,
+          "line": 14,
           "column": 2,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -382,7 +382,7 @@
           "value": 27.0
         },
         "right": {
-          "line": 12,
+          "line": 14,
           "column": 5,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -394,18 +394,18 @@
     },
     {
       "ordinal": 11,
-      "source_line": 13,
+      "source_line": 15,
       "inferred_type": "int",
       "rpn": "((D) 2 ^)",
       "tree": {
-        "line": 13,
+        "line": 15,
         "column": 8,
         "inferred_type": "int",
         "semantic_status": "ok",
         "kind": "BinaryOp",
         "operator": "^",
         "left": {
-          "line": 13,
+          "line": 15,
           "column": 3,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -419,7 +419,7 @@
           }
         },
         "right": {
-          "line": 13,
+          "line": 15,
           "column": 6,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -431,18 +431,18 @@
     },
     {
       "ordinal": 12,
-      "source_line": 14,
+      "source_line": 16,
       "inferred_type": "int",
       "rpn": "((2 RES) (1 RES) +)",
       "tree": {
-        "line": 14,
+        "line": 16,
         "column": 18,
         "inferred_type": "int",
         "semantic_status": "ok",
         "kind": "BinaryOp",
         "operator": "+",
         "left": {
-          "line": 14,
+          "line": 16,
           "column": 5,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -450,7 +450,7 @@
           "offset": 2
         },
         "right": {
-          "line": 14,
+          "line": 16,
           "column": 13,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -461,25 +461,25 @@
     },
     {
       "ordinal": 13,
-      "source_line": 15,
+      "source_line": 17,
       "inferred_type": "bool",
       "rpn": "(((N) (D) >=) (ATIVO) AND)",
       "tree": {
-        "line": 15,
+        "line": 17,
         "column": 23,
         "inferred_type": "bool",
         "semantic_status": "ok",
         "kind": "LogicalOp",
         "operator": "AND",
         "left": {
-          "line": 15,
+          "line": 17,
           "column": 11,
           "inferred_type": "bool",
           "semantic_status": "ok",
           "kind": "RelationalOp",
           "operator": ">=",
           "left": {
-            "line": 15,
+            "line": 17,
             "column": 4,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -493,7 +493,7 @@
             }
           },
           "right": {
-            "line": 15,
+            "line": 17,
             "column": 8,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -508,7 +508,7 @@
           }
         },
         "right": {
-          "line": 15,
+          "line": 17,
           "column": 16,
           "inferred_type": "bool",
           "semantic_status": "ok",
@@ -525,31 +525,271 @@
     },
     {
       "ordinal": 14,
-      "source_line": 16,
+      "source_line": 18,
+      "inferred_type": "bool",
+      "rpn": "(((N) (D) <) ((ATIVO) NOT) OR)",
+      "tree": {
+        "line": 18,
+        "column": 28,
+        "inferred_type": "bool",
+        "semantic_status": "ok",
+        "kind": "LogicalOp",
+        "operator": "OR",
+        "left": {
+          "line": 18,
+          "column": 11,
+          "inferred_type": "bool",
+          "semantic_status": "ok",
+          "kind": "RelationalOp",
+          "operator": "<",
+          "left": {
+            "line": 18,
+            "column": 4,
+            "inferred_type": "int",
+            "semantic_status": "ok",
+            "kind": "MemoryRead",
+            "name": "N",
+            "symbol_ref": {
+              "name": "N",
+              "type": "int",
+              "declared": true,
+              "initialized": true
+            }
+          },
+          "right": {
+            "line": 18,
+            "column": 8,
+            "inferred_type": "int",
+            "semantic_status": "ok",
+            "kind": "MemoryRead",
+            "name": "D",
+            "symbol_ref": {
+              "name": "D",
+              "type": "int",
+              "declared": true,
+              "initialized": true
+            }
+          }
+        },
+        "right": {
+          "line": 18,
+          "column": 23,
+          "inferred_type": "bool",
+          "semantic_status": "ok",
+          "kind": "LogicalNot",
+          "operator": "NOT",
+          "operand": {
+            "line": 18,
+            "column": 16,
+            "inferred_type": "bool",
+            "semantic_status": "ok",
+            "kind": "MemoryRead",
+            "name": "ATIVO",
+            "symbol_ref": {
+              "name": "ATIVO",
+              "type": "bool",
+              "declared": true,
+              "initialized": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 15,
+      "source_line": 19,
+      "inferred_type": "bool",
+      "rpn": "((N) (D) >)",
+      "tree": {
+        "line": 19,
+        "column": 10,
+        "inferred_type": "bool",
+        "semantic_status": "ok",
+        "kind": "RelationalOp",
+        "operator": ">",
+        "left": {
+          "line": 19,
+          "column": 3,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryRead",
+          "name": "N",
+          "symbol_ref": {
+            "name": "N",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          }
+        },
+        "right": {
+          "line": 19,
+          "column": 7,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryRead",
+          "name": "D",
+          "symbol_ref": {
+            "name": "D",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 16,
+      "source_line": 20,
+      "inferred_type": "bool",
+      "rpn": "((N) (D) <=)",
+      "tree": {
+        "line": 20,
+        "column": 10,
+        "inferred_type": "bool",
+        "semantic_status": "ok",
+        "kind": "RelationalOp",
+        "operator": "<=",
+        "left": {
+          "line": 20,
+          "column": 3,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryRead",
+          "name": "N",
+          "symbol_ref": {
+            "name": "N",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          }
+        },
+        "right": {
+          "line": 20,
+          "column": 7,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryRead",
+          "name": "D",
+          "symbol_ref": {
+            "name": "D",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 17,
+      "source_line": 21,
+      "inferred_type": "bool",
+      "rpn": "((N) (D) ==)",
+      "tree": {
+        "line": 21,
+        "column": 10,
+        "inferred_type": "bool",
+        "semantic_status": "ok",
+        "kind": "RelationalOp",
+        "operator": "==",
+        "left": {
+          "line": 21,
+          "column": 3,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryRead",
+          "name": "N",
+          "symbol_ref": {
+            "name": "N",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          }
+        },
+        "right": {
+          "line": 21,
+          "column": 7,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryRead",
+          "name": "D",
+          "symbol_ref": {
+            "name": "D",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 18,
+      "source_line": 22,
+      "inferred_type": "bool",
+      "rpn": "((N) (D) !=)",
+      "tree": {
+        "line": 22,
+        "column": 10,
+        "inferred_type": "bool",
+        "semantic_status": "ok",
+        "kind": "RelationalOp",
+        "operator": "!=",
+        "left": {
+          "line": 22,
+          "column": 3,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryRead",
+          "name": "N",
+          "symbol_ref": {
+            "name": "N",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          }
+        },
+        "right": {
+          "line": 22,
+          "column": 7,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryRead",
+          "name": "D",
+          "symbol_ref": {
+            "name": "D",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 19,
+      "source_line": 23,
       "inferred_type": "void",
       "rpn": "((((N) (D) >) (ATIVO) AND) (((N) (D) -) N) IF)",
       "tree": {
-        "line": 16,
+        "line": 23,
         "column": 44,
         "inferred_type": "void",
         "semantic_status": "ok",
         "kind": "If",
         "condition": {
-          "line": 16,
+          "line": 23,
           "column": 23,
           "inferred_type": "bool",
           "semantic_status": "ok",
           "kind": "LogicalOp",
           "operator": "AND",
           "left": {
-            "line": 16,
+            "line": 23,
             "column": 12,
             "inferred_type": "bool",
             "semantic_status": "ok",
             "kind": "RelationalOp",
             "operator": ">",
             "left": {
-              "line": 16,
+              "line": 23,
               "column": 5,
               "inferred_type": "int",
               "semantic_status": "ok",
@@ -563,7 +803,7 @@
               }
             },
             "right": {
-              "line": 16,
+              "line": 23,
               "column": 9,
               "inferred_type": "int",
               "semantic_status": "ok",
@@ -578,7 +818,7 @@
             }
           },
           "right": {
-            "line": 16,
+            "line": 23,
             "column": 16,
             "inferred_type": "bool",
             "semantic_status": "ok",
@@ -593,7 +833,7 @@
           }
         },
         "then": {
-          "line": 16,
+          "line": 23,
           "column": 41,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -606,14 +846,14 @@
             "initialized": true
           },
           "value": {
-            "line": 16,
+            "line": 23,
             "column": 38,
             "inferred_type": "int",
             "semantic_status": "ok",
             "kind": "BinaryOp",
             "operator": "-",
             "left": {
-              "line": 16,
+              "line": 23,
               "column": 31,
               "inferred_type": "int",
               "semantic_status": "ok",
@@ -627,7 +867,7 @@
               }
             },
             "right": {
-              "line": 16,
+              "line": 23,
               "column": 35,
               "inferred_type": "int",
               "semantic_status": "ok",
@@ -645,25 +885,25 @@
       }
     },
     {
-      "ordinal": 15,
-      "source_line": 17,
-      "inferred_type": "void",
-      "rpn": "(((N) 0 >) (((N) 1 -) N) WHILE)",
+      "ordinal": 20,
+      "source_line": 24,
+      "inferred_type": "int",
+      "rpn": "(((N) (D) >=) (((N) (D) -) N) (((D) 1 +) D) IFELSE)",
       "tree": {
-        "line": 17,
-        "column": 26,
-        "inferred_type": "void",
+        "line": 24,
+        "column": 45,
+        "inferred_type": "int",
         "semantic_status": "ok",
-        "kind": "While",
+        "kind": "IfElse",
         "condition": {
-          "line": 17,
-          "column": 9,
+          "line": 24,
+          "column": 11,
           "inferred_type": "bool",
           "semantic_status": "ok",
           "kind": "RelationalOp",
-          "operator": ">",
+          "operator": ">=",
           "left": {
-            "line": 17,
+            "line": 24,
             "column": 4,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -677,7 +917,254 @@
             }
           },
           "right": {
-            "line": 17,
+            "line": 24,
+            "column": 8,
+            "inferred_type": "int",
+            "semantic_status": "ok",
+            "kind": "MemoryRead",
+            "name": "D",
+            "symbol_ref": {
+              "name": "D",
+              "type": "int",
+              "declared": true,
+              "initialized": true
+            }
+          }
+        },
+        "then": {
+          "line": 24,
+          "column": 28,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryWrite",
+          "name": "N",
+          "symbol_ref": {
+            "name": "N",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          },
+          "value": {
+            "line": 24,
+            "column": 25,
+            "inferred_type": "int",
+            "semantic_status": "ok",
+            "kind": "BinaryOp",
+            "operator": "-",
+            "left": {
+              "line": 24,
+              "column": 18,
+              "inferred_type": "int",
+              "semantic_status": "ok",
+              "kind": "MemoryRead",
+              "name": "N",
+              "symbol_ref": {
+                "name": "N",
+                "type": "int",
+                "declared": true,
+                "initialized": true
+              }
+            },
+            "right": {
+              "line": 24,
+              "column": 22,
+              "inferred_type": "int",
+              "semantic_status": "ok",
+              "kind": "MemoryRead",
+              "name": "D",
+              "symbol_ref": {
+                "name": "D",
+                "type": "int",
+                "declared": true,
+                "initialized": true
+              }
+            }
+          }
+        },
+        "else": {
+          "line": 24,
+          "column": 42,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryWrite",
+          "name": "D",
+          "symbol_ref": {
+            "name": "D",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          },
+          "value": {
+            "line": 24,
+            "column": 39,
+            "inferred_type": "int",
+            "semantic_status": "ok",
+            "kind": "BinaryOp",
+            "operator": "+",
+            "left": {
+              "line": 24,
+              "column": 34,
+              "inferred_type": "int",
+              "semantic_status": "ok",
+              "kind": "MemoryRead",
+              "name": "D",
+              "symbol_ref": {
+                "name": "D",
+                "type": "int",
+                "declared": true,
+                "initialized": true
+              }
+            },
+            "right": {
+              "line": 24,
+              "column": 37,
+              "inferred_type": "int",
+              "semantic_status": "ok",
+              "kind": "Number",
+              "lexeme": "1",
+              "value": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 21,
+      "source_line": 25,
+      "inferred_type": "int",
+      "rpn": "((((N) 1 -) N) (((D) 1 +) D) SEQ)",
+      "tree": {
+        "line": 25,
+        "column": 30,
+        "inferred_type": "int",
+        "semantic_status": "ok",
+        "kind": "Sequence",
+        "first": {
+          "line": 25,
+          "column": 13,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryWrite",
+          "name": "N",
+          "symbol_ref": {
+            "name": "N",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          },
+          "value": {
+            "line": 25,
+            "column": 10,
+            "inferred_type": "int",
+            "semantic_status": "ok",
+            "kind": "BinaryOp",
+            "operator": "-",
+            "left": {
+              "line": 25,
+              "column": 5,
+              "inferred_type": "int",
+              "semantic_status": "ok",
+              "kind": "MemoryRead",
+              "name": "N",
+              "symbol_ref": {
+                "name": "N",
+                "type": "int",
+                "declared": true,
+                "initialized": true
+              }
+            },
+            "right": {
+              "line": 25,
+              "column": 8,
+              "inferred_type": "int",
+              "semantic_status": "ok",
+              "kind": "Number",
+              "lexeme": "1",
+              "value": 1.0
+            }
+          }
+        },
+        "second": {
+          "line": 25,
+          "column": 27,
+          "inferred_type": "int",
+          "semantic_status": "ok",
+          "kind": "MemoryWrite",
+          "name": "D",
+          "symbol_ref": {
+            "name": "D",
+            "type": "int",
+            "declared": true,
+            "initialized": true
+          },
+          "value": {
+            "line": 25,
+            "column": 24,
+            "inferred_type": "int",
+            "semantic_status": "ok",
+            "kind": "BinaryOp",
+            "operator": "+",
+            "left": {
+              "line": 25,
+              "column": 19,
+              "inferred_type": "int",
+              "semantic_status": "ok",
+              "kind": "MemoryRead",
+              "name": "D",
+              "symbol_ref": {
+                "name": "D",
+                "type": "int",
+                "declared": true,
+                "initialized": true
+              }
+            },
+            "right": {
+              "line": 25,
+              "column": 22,
+              "inferred_type": "int",
+              "semantic_status": "ok",
+              "kind": "Number",
+              "lexeme": "1",
+              "value": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 22,
+      "source_line": 26,
+      "inferred_type": "void",
+      "rpn": "(((N) 0 >) (((N) 1 -) N) WHILE)",
+      "tree": {
+        "line": 26,
+        "column": 26,
+        "inferred_type": "void",
+        "semantic_status": "ok",
+        "kind": "While",
+        "condition": {
+          "line": 26,
+          "column": 9,
+          "inferred_type": "bool",
+          "semantic_status": "ok",
+          "kind": "RelationalOp",
+          "operator": ">",
+          "left": {
+            "line": 26,
+            "column": 4,
+            "inferred_type": "int",
+            "semantic_status": "ok",
+            "kind": "MemoryRead",
+            "name": "N",
+            "symbol_ref": {
+              "name": "N",
+              "type": "int",
+              "declared": true,
+              "initialized": true
+            }
+          },
+          "right": {
+            "line": 26,
             "column": 7,
             "inferred_type": "int",
             "semantic_status": "ok",
@@ -687,7 +1174,7 @@
           }
         },
         "body": {
-          "line": 17,
+          "line": 26,
           "column": 23,
           "inferred_type": "int",
           "semantic_status": "ok",
@@ -700,14 +1187,14 @@
             "initialized": true
           },
           "value": {
-            "line": 17,
+            "line": 26,
             "column": 20,
             "inferred_type": "int",
             "semantic_status": "ok",
             "kind": "BinaryOp",
             "operator": "-",
             "left": {
-              "line": 17,
+              "line": 26,
               "column": 15,
               "inferred_type": "int",
               "semantic_status": "ok",
@@ -721,7 +1208,7 @@
               }
             },
             "right": {
-              "line": 17,
+              "line": 26,
               "column": 18,
               "inferred_type": "int",
               "semantic_status": "ok",

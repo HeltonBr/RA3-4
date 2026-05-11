@@ -73,7 +73,7 @@ _start:
 
     .balign 4
     @ ================================================
-    @ LINHA 7
+    @ LINHA 9
     @ ((N) (D) +)
     @ ================================================
     ldr r0, =mem_N
@@ -98,7 +98,7 @@ _start:
 
     .balign 4
     @ ================================================
-    @ LINHA 8
+    @ LINHA 10
     @ (((N) (D) +) 2 -)
     @ ================================================
     ldr r0, =mem_N
@@ -134,7 +134,7 @@ _start:
 
     .balign 4
     @ ================================================
-    @ LINHA 9
+    @ LINHA 11
     @ (((N) 2 *) ((D) 3 *) +)
     @ ================================================
     ldr r0, =mem_N
@@ -181,7 +181,7 @@ _start:
 
     .balign 4
     @ ================================================
-    @ LINHA 10
+    @ LINHA 12
     @ (27 5 /)
     @ ================================================
     ldr r0, =const_6
@@ -206,7 +206,7 @@ _start:
 
     .balign 4
     @ ================================================
-    @ LINHA 11
+    @ LINHA 13
     @ (27.0 5 |)
     @ ================================================
     ldr r0, =const_6
@@ -231,7 +231,7 @@ _start:
 
     .balign 4
     @ ================================================
-    @ LINHA 12
+    @ LINHA 14
     @ (27 5 %)
     @ ================================================
     ldr r0, =const_6
@@ -256,7 +256,7 @@ _start:
 
     .balign 4
     @ ================================================
-    @ LINHA 13
+    @ LINHA 15
     @ ((D) 2 ^)
     @ ================================================
     ldr r0, =mem_D
@@ -281,7 +281,7 @@ _start:
 
     .balign 4
     @ ================================================
-    @ LINHA 14
+    @ LINHA 16
     @ ((2 RES) (1 RES) +)
     @ ================================================
     ldr r0, =result_line_10
@@ -306,7 +306,7 @@ _start:
 
     .balign 4
     @ ================================================
-    @ LINHA 15
+    @ LINHA 17
     @ (((N) (D) >=) (ATIVO) AND)
     @ ================================================
     ldr r0, =mem_N
@@ -369,8 +369,8 @@ logic_end_4:
 
     .balign 4
     @ ================================================
-    @ LINHA 16
-    @ ((((N) (D) >) (ATIVO) AND) (((N) (D) -) N) IF)
+    @ LINHA 18
+    @ (((N) (D) <) ((ATIVO) NOT) OR)
     @ ================================================
     ldr r0, =mem_N
     vldr d0, [r0]
@@ -386,18 +386,30 @@ logic_end_4:
     vldr d1, [r0]
     vcmp.f64 d0, d1
     vmrs APSR_nzcv, fpscr
-    bgt rel_true_7
+    blt rel_true_5
     ldr r0, =const_8
     vldr d0, [r0]
-    b rel_end_8
-rel_true_7:
+    b rel_end_6
+rel_true_5:
     ldr r0, =const_3
     vldr d0, [r0]
-rel_end_8:
+rel_end_6:
     ldr r0, =tmp_slot_0
     vstr d0, [r0]
     ldr r0, =mem_ATIVO
     vldr d0, [r0]
+    ldr r0, =const_8
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    beq not_true_7
+    ldr r0, =const_8
+    vldr d0, [r0]
+    b not_end_8
+not_true_7:
+    ldr r0, =const_3
+    vldr d0, [r0]
+not_end_8:
     ldr r0, =tmp_slot_1
     vstr d0, [r0]
     ldr r0, =tmp_slot_0
@@ -406,7 +418,7 @@ rel_end_8:
     vldr d1, [r0]
     vcmp.f64 d0, d1
     vmrs APSR_nzcv, fpscr
-    beq logic_false_10
+    bne logic_true_9
     ldr r0, =tmp_slot_1
     vldr d0, [r0]
     ldr r0, =const_8
@@ -423,11 +435,210 @@ logic_false_10:
     ldr r0, =const_8
     vldr d0, [r0]
 logic_end_11:
+    ldr r0, =result_line_14
+    vstr d0, [r0]
+    ldr r0, =msg_line_14
+    bl puts_jtag
+    bl print_qword_hex_d0
+    bl print_newline
+
+    .balign 4
+    @ ================================================
+    @ LINHA 19
+    @ ((N) (D) >)
+    @ ================================================
+    ldr r0, =mem_N
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =mem_D
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    bgt rel_true_12
+    ldr r0, =const_8
+    vldr d0, [r0]
+    b rel_end_13
+rel_true_12:
+    ldr r0, =const_3
+    vldr d0, [r0]
+rel_end_13:
+    ldr r0, =result_line_15
+    vstr d0, [r0]
+    ldr r0, =msg_line_15
+    bl puts_jtag
+    bl print_qword_hex_d0
+    bl print_newline
+
+    .balign 4
+    @ ================================================
+    @ LINHA 20
+    @ ((N) (D) <=)
+    @ ================================================
+    ldr r0, =mem_N
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =mem_D
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    ble rel_true_14
+    ldr r0, =const_8
+    vldr d0, [r0]
+    b rel_end_15
+rel_true_14:
+    ldr r0, =const_3
+    vldr d0, [r0]
+rel_end_15:
+    ldr r0, =result_line_16
+    vstr d0, [r0]
+    ldr r0, =msg_line_16
+    bl puts_jtag
+    bl print_qword_hex_d0
+    bl print_newline
+
+    .balign 4
+    @ ================================================
+    @ LINHA 21
+    @ ((N) (D) ==)
+    @ ================================================
+    ldr r0, =mem_N
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =mem_D
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    beq rel_true_16
+    ldr r0, =const_8
+    vldr d0, [r0]
+    b rel_end_17
+rel_true_16:
+    ldr r0, =const_3
+    vldr d0, [r0]
+rel_end_17:
+    ldr r0, =result_line_17
+    vstr d0, [r0]
+    ldr r0, =msg_line_17
+    bl puts_jtag
+    bl print_qword_hex_d0
+    bl print_newline
+
+    .balign 4
+    @ ================================================
+    @ LINHA 22
+    @ ((N) (D) !=)
+    @ ================================================
+    ldr r0, =mem_N
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =mem_D
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    bne rel_true_18
+    ldr r0, =const_8
+    vldr d0, [r0]
+    b rel_end_19
+rel_true_18:
+    ldr r0, =const_3
+    vldr d0, [r0]
+rel_end_19:
+    ldr r0, =result_line_18
+    vstr d0, [r0]
+    ldr r0, =msg_line_18
+    bl puts_jtag
+    bl print_qword_hex_d0
+    bl print_newline
+
+    .balign 4
+    @ ================================================
+    @ LINHA 23
+    @ ((((N) (D) >) (ATIVO) AND) (((N) (D) -) N) IF)
+    @ ================================================
+    ldr r0, =mem_N
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_2
+    vstr d0, [r0]
+    ldr r0, =mem_D
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_3
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_2
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_3
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    bgt rel_true_22
+    ldr r0, =const_8
+    vldr d0, [r0]
+    b rel_end_23
+rel_true_22:
+    ldr r0, =const_3
+    vldr d0, [r0]
+rel_end_23:
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =mem_ATIVO
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
     ldr r0, =const_8
     vldr d1, [r0]
     vcmp.f64 d0, d1
     vmrs APSR_nzcv, fpscr
-    beq if_else_5
+    beq logic_false_25
+    ldr r0, =tmp_slot_1
+    vldr d0, [r0]
+    ldr r0, =const_8
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    bne logic_true_24
+    b logic_false_25
+logic_true_24:
+    ldr r0, =const_3
+    vldr d0, [r0]
+    b logic_end_26
+logic_false_25:
+    ldr r0, =const_8
+    vldr d0, [r0]
+logic_end_26:
+    ldr r0, =const_8
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    beq if_else_20
     ldr r0, =mem_N
     vldr d0, [r0]
     ldr r0, =tmp_slot_0
@@ -443,28 +654,142 @@ logic_end_11:
     vsub.f64 d0, d0, d1
     ldr r0, =mem_N
     vstr d0, [r0]
-    b if_end_6
-if_else_5:
+    b if_end_21
+if_else_20:
     ldr r0, =const_8
     vldr d0, [r0]
-if_end_6:
-    ldr r0, =result_line_14
+if_end_21:
+    ldr r0, =result_line_19
     vstr d0, [r0]
-    ldr r0, =msg_line_14
+    ldr r0, =msg_line_19
     bl puts_jtag
     bl print_qword_hex_d0
     bl print_newline
 
     .balign 4
     @ ================================================
-    @ LINHA 17
+    @ LINHA 24
+    @ (((N) (D) >=) (((N) (D) -) N) (((D) 1 +) D) IFELSE)
+    @ ================================================
+    ldr r0, =mem_N
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =mem_D
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    bge rel_true_29
+    ldr r0, =const_8
+    vldr d0, [r0]
+    b rel_end_30
+rel_true_29:
+    ldr r0, =const_3
+    vldr d0, [r0]
+rel_end_30:
+    ldr r0, =const_8
+    vldr d1, [r0]
+    vcmp.f64 d0, d1
+    vmrs APSR_nzcv, fpscr
+    beq if_else_27
+    ldr r0, =mem_N
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =mem_D
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vldr d1, [r0]
+    vsub.f64 d0, d0, d1
+    ldr r0, =mem_N
+    vstr d0, [r0]
+    b if_end_28
+if_else_27:
+    ldr r0, =mem_D
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =const_3
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vldr d1, [r0]
+    vadd.f64 d0, d0, d1
+    ldr r0, =mem_D
+    vstr d0, [r0]
+if_end_28:
+    ldr r0, =result_line_20
+    vstr d0, [r0]
+    ldr r0, =msg_line_20
+    bl puts_jtag
+    bl print_qword_hex_d0
+    bl print_newline
+
+    .balign 4
+    @ ================================================
+    @ LINHA 25
+    @ ((((N) 1 -) N) (((D) 1 +) D) SEQ)
+    @ ================================================
+    ldr r0, =mem_N
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =const_3
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vldr d1, [r0]
+    vsub.f64 d0, d0, d1
+    ldr r0, =mem_N
+    vstr d0, [r0]
+    ldr r0, =mem_D
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vstr d0, [r0]
+    ldr r0, =const_3
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vstr d0, [r0]
+    ldr r0, =tmp_slot_0
+    vldr d0, [r0]
+    ldr r0, =tmp_slot_1
+    vldr d1, [r0]
+    vadd.f64 d0, d0, d1
+    ldr r0, =mem_D
+    vstr d0, [r0]
+    ldr r0, =result_line_21
+    vstr d0, [r0]
+    ldr r0, =msg_line_21
+    bl puts_jtag
+    bl print_qword_hex_d0
+    bl print_newline
+
+    .balign 4
+    @ ================================================
+    @ LINHA 26
     @ (((N) 0 >) (((N) 1 -) N) WHILE)
     @ ================================================
     ldr r0, =const_8
     vldr d0, [r0]
     ldr r0, =tmp_slot_0
     vstr d0, [r0]
-while_start_12:
+while_start_31:
     ldr r0, =mem_N
     vldr d0, [r0]
     ldr r0, =tmp_slot_1
@@ -479,19 +804,19 @@ while_start_12:
     vldr d1, [r0]
     vcmp.f64 d0, d1
     vmrs APSR_nzcv, fpscr
-    bgt rel_true_14
+    bgt rel_true_33
     ldr r0, =const_8
     vldr d0, [r0]
-    b rel_end_15
-rel_true_14:
+    b rel_end_34
+rel_true_33:
     ldr r0, =const_3
     vldr d0, [r0]
-rel_end_15:
+rel_end_34:
     ldr r0, =const_8
     vldr d1, [r0]
     vcmp.f64 d0, d1
     vmrs APSR_nzcv, fpscr
-    beq while_end_13
+    beq while_end_32
     ldr r0, =mem_N
     vldr d0, [r0]
     ldr r0, =tmp_slot_1
@@ -509,13 +834,13 @@ rel_end_15:
     vstr d0, [r0]
     ldr r0, =tmp_slot_0
     vstr d0, [r0]
-    b while_start_12
-while_end_13:
+    b while_start_31
+while_end_32:
     ldr r0, =tmp_slot_0
     vldr d0, [r0]
-    ldr r0, =result_line_15
+    ldr r0, =result_line_22
     vstr d0, [r0]
-    ldr r0, =msg_line_15
+    ldr r0, =msg_line_22
     bl puts_jtag
     bl print_qword_hex_d0
     bl print_newline
@@ -716,37 +1041,58 @@ msg_line_4:
     .asciz "L6: 0x"
     .balign 4
 msg_line_5:
-    .asciz "L7: 0x"
-    .balign 4
-msg_line_6:
-    .asciz "L8: 0x"
-    .balign 4
-msg_line_7:
     .asciz "L9: 0x"
     .balign 4
-msg_line_8:
+msg_line_6:
     .asciz "L10: 0x"
     .balign 4
-msg_line_9:
+msg_line_7:
     .asciz "L11: 0x"
     .balign 4
-msg_line_10:
+msg_line_8:
     .asciz "L12: 0x"
     .balign 4
-msg_line_11:
+msg_line_9:
     .asciz "L13: 0x"
     .balign 4
-msg_line_12:
+msg_line_10:
     .asciz "L14: 0x"
     .balign 4
-msg_line_13:
+msg_line_11:
     .asciz "L15: 0x"
     .balign 4
-msg_line_14:
+msg_line_12:
     .asciz "L16: 0x"
     .balign 4
-msg_line_15:
+msg_line_13:
     .asciz "L17: 0x"
+    .balign 4
+msg_line_14:
+    .asciz "L18: 0x"
+    .balign 4
+msg_line_15:
+    .asciz "L19: 0x"
+    .balign 4
+msg_line_16:
+    .asciz "L20: 0x"
+    .balign 4
+msg_line_17:
+    .asciz "L21: 0x"
+    .balign 4
+msg_line_18:
+    .asciz "L22: 0x"
+    .balign 4
+msg_line_19:
+    .asciz "L23: 0x"
+    .balign 4
+msg_line_20:
+    .asciz "L24: 0x"
+    .balign 4
+msg_line_21:
+    .asciz "L25: 0x"
+    .balign 4
+msg_line_22:
+    .asciz "L26: 0x"
 
     .balign 8
 result_line_1:
@@ -778,6 +1124,20 @@ result_line_13:
 result_line_14:
     .double 0.0
 result_line_15:
+    .double 0.0
+result_line_16:
+    .double 0.0
+result_line_17:
+    .double 0.0
+result_line_18:
+    .double 0.0
+result_line_19:
+    .double 0.0
+result_line_20:
+    .double 0.0
+result_line_21:
+    .double 0.0
+result_line_22:
     .double 0.0
 
     .balign 8

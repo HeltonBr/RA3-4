@@ -13,9 +13,18 @@ Esta entrega evita a penalizacao de interromper a analise no primeiro problema e
 
 ```text
 Analise completa concluida com N erro(s):
-Erro LEXICO na linha L, coluna C: ...
-Erro SINTATICO na linha L, coluna C: ...
-Erro SEMANTICO na linha L, coluna C: ...
+Erro LEXICO
+  linha: L
+  coluna: C
+  detalhe: ...
+Erro SINTATICO
+  linha: L
+  coluna: C
+  detalhe: ...
+Erro SEMANTICO
+  linha: L
+  coluna: C
+  detalhe: ...
 Assembly nao gerado porque ha erros lexicos, sintaticos ou semanticos.
 ```
 

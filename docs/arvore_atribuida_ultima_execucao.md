@@ -15,68 +15,114 @@ Statement[3] line=5 type=real
 Statement[4] line=6 type=bool
   MemoryWrite line=6 type=bool
     Bool line=6 type=bool
-Statement[5] line=7 type=int
-  BinaryOp line=7 type=int
-    MemoryRead line=7 type=int
-    MemoryRead line=7 type=int
-Statement[6] line=8 type=int
-  BinaryOp line=8 type=int
-    BinaryOp line=8 type=int
-      MemoryRead line=8 type=int
-      MemoryRead line=8 type=int
-    Number line=8 type=int
-Statement[7] line=9 type=int
+Statement[5] line=9 type=int
   BinaryOp line=9 type=int
-    BinaryOp line=9 type=int
-      MemoryRead line=9 type=int
-      Number line=9 type=int
-    BinaryOp line=9 type=int
-      MemoryRead line=9 type=int
-      Number line=9 type=int
-Statement[8] line=10 type=int
+    MemoryRead line=9 type=int
+    MemoryRead line=9 type=int
+Statement[6] line=10 type=int
   BinaryOp line=10 type=int
+    BinaryOp line=10 type=int
+      MemoryRead line=10 type=int
+      MemoryRead line=10 type=int
     Number line=10 type=int
-    Number line=10 type=int
-Statement[9] line=11 type=real
-  BinaryOp line=11 type=real
-    Number line=11 type=real
-    Number line=11 type=int
-Statement[10] line=12 type=int
+Statement[7] line=11 type=int
+  BinaryOp line=11 type=int
+    BinaryOp line=11 type=int
+      MemoryRead line=11 type=int
+      Number line=11 type=int
+    BinaryOp line=11 type=int
+      MemoryRead line=11 type=int
+      Number line=11 type=int
+Statement[8] line=12 type=int
   BinaryOp line=12 type=int
     Number line=12 type=int
     Number line=12 type=int
-Statement[11] line=13 type=int
-  BinaryOp line=13 type=int
-    MemoryRead line=13 type=int
+Statement[9] line=13 type=real
+  BinaryOp line=13 type=real
+    Number line=13 type=real
     Number line=13 type=int
-Statement[12] line=14 type=int
+Statement[10] line=14 type=int
   BinaryOp line=14 type=int
-    ResultRef line=14 type=int
-    ResultRef line=14 type=int
-Statement[13] line=15 type=bool
-  LogicalOp line=15 type=bool
-    RelationalOp line=15 type=bool
-      MemoryRead line=15 type=int
-      MemoryRead line=15 type=int
-    MemoryRead line=15 type=bool
-Statement[14] line=16 type=void
-  If line=16 type=void
-    LogicalOp line=16 type=bool
-      RelationalOp line=16 type=bool
-        MemoryRead line=16 type=int
-        MemoryRead line=16 type=int
-      MemoryRead line=16 type=bool
-    MemoryWrite line=16 type=int
-      BinaryOp line=16 type=int
-        MemoryRead line=16 type=int
-        MemoryRead line=16 type=int
-Statement[15] line=17 type=void
-  While line=17 type=void
+    Number line=14 type=int
+    Number line=14 type=int
+Statement[11] line=15 type=int
+  BinaryOp line=15 type=int
+    MemoryRead line=15 type=int
+    Number line=15 type=int
+Statement[12] line=16 type=int
+  BinaryOp line=16 type=int
+    ResultRef line=16 type=int
+    ResultRef line=16 type=int
+Statement[13] line=17 type=bool
+  LogicalOp line=17 type=bool
     RelationalOp line=17 type=bool
       MemoryRead line=17 type=int
-      Number line=17 type=int
-    MemoryWrite line=17 type=int
-      BinaryOp line=17 type=int
-        MemoryRead line=17 type=int
-        Number line=17 type=int
+      MemoryRead line=17 type=int
+    MemoryRead line=17 type=bool
+Statement[14] line=18 type=bool
+  LogicalOp line=18 type=bool
+    RelationalOp line=18 type=bool
+      MemoryRead line=18 type=int
+      MemoryRead line=18 type=int
+    LogicalNot line=18 type=bool
+      MemoryRead line=18 type=bool
+Statement[15] line=19 type=bool
+  RelationalOp line=19 type=bool
+    MemoryRead line=19 type=int
+    MemoryRead line=19 type=int
+Statement[16] line=20 type=bool
+  RelationalOp line=20 type=bool
+    MemoryRead line=20 type=int
+    MemoryRead line=20 type=int
+Statement[17] line=21 type=bool
+  RelationalOp line=21 type=bool
+    MemoryRead line=21 type=int
+    MemoryRead line=21 type=int
+Statement[18] line=22 type=bool
+  RelationalOp line=22 type=bool
+    MemoryRead line=22 type=int
+    MemoryRead line=22 type=int
+Statement[19] line=23 type=void
+  If line=23 type=void
+    LogicalOp line=23 type=bool
+      RelationalOp line=23 type=bool
+        MemoryRead line=23 type=int
+        MemoryRead line=23 type=int
+      MemoryRead line=23 type=bool
+    MemoryWrite line=23 type=int
+      BinaryOp line=23 type=int
+        MemoryRead line=23 type=int
+        MemoryRead line=23 type=int
+Statement[20] line=24 type=int
+  IfElse line=24 type=int
+    RelationalOp line=24 type=bool
+      MemoryRead line=24 type=int
+      MemoryRead line=24 type=int
+    MemoryWrite line=24 type=int
+      BinaryOp line=24 type=int
+        MemoryRead line=24 type=int
+        MemoryRead line=24 type=int
+    MemoryWrite line=24 type=int
+      BinaryOp line=24 type=int
+        MemoryRead line=24 type=int
+        Number line=24 type=int
+Statement[21] line=25 type=int
+  Sequence line=25 type=int
+    MemoryWrite line=25 type=int
+      BinaryOp line=25 type=int
+        MemoryRead line=25 type=int
+        Number line=25 type=int
+    MemoryWrite line=25 type=int
+      BinaryOp line=25 type=int
+        MemoryRead line=25 type=int
+        Number line=25 type=int
+Statement[22] line=26 type=void
+  While line=26 type=void
+    RelationalOp line=26 type=bool
+      MemoryRead line=26 type=int
+      Number line=26 type=int
+    MemoryWrite line=26 type=int
+      BinaryOp line=26 type=int
+        MemoryRead line=26 type=int
+        Number line=26 type=int
 ```
