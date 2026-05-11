@@ -1,6 +1,6 @@
 {
   "type": "Program",
-  "statement_count": 15,
+  "statement_count": 22,
   "statements": [
     {
       "ordinal": 1,
@@ -75,49 +75,49 @@
     },
     {
       "ordinal": 5,
-      "source_line": 7,
+      "source_line": 9,
       "tree": {
         "type": "BinaryOp",
         "operator": "+",
-        "line": 7,
+        "line": 9,
         "column": 40,
         "left": {
           "type": "MemoryRead",
           "name": "N",
-          "line": 7,
+          "line": 9,
           "column": 3
         },
         "right": {
           "type": "MemoryRead",
           "name": "D",
-          "line": 7,
+          "line": 9,
           "column": 37
         }
       }
     },
     {
       "ordinal": 6,
-      "source_line": 8,
+      "source_line": 10,
       "tree": {
         "type": "BinaryOp",
         "operator": "-",
-        "line": 8,
+        "line": 10,
         "column": 16,
         "left": {
           "type": "BinaryOp",
           "operator": "+",
-          "line": 8,
+          "line": 10,
           "column": 11,
           "left": {
             "type": "MemoryRead",
             "name": "N",
-            "line": 8,
+            "line": 10,
             "column": 4
           },
           "right": {
             "type": "MemoryRead",
             "name": "D",
-            "line": 8,
+            "line": 10,
             "column": 8
           }
         },
@@ -125,7 +125,7 @@
           "type": "Number",
           "value": 2.0,
           "lexeme": "2",
-          "line": 8,
+          "line": 10,
           "column": 14,
           "is_integer_literal": true
         }
@@ -133,28 +133,28 @@
     },
     {
       "ordinal": 7,
-      "source_line": 9,
+      "source_line": 11,
       "tree": {
         "type": "BinaryOp",
         "operator": "+",
-        "line": 9,
+        "line": 11,
         "column": 22,
         "left": {
           "type": "BinaryOp",
           "operator": "*",
-          "line": 9,
+          "line": 11,
           "column": 9,
           "left": {
             "type": "MemoryRead",
             "name": "N",
-            "line": 9,
+            "line": 11,
             "column": 4
           },
           "right": {
             "type": "Number",
             "value": 2.0,
             "lexeme": "2",
-            "line": 9,
+            "line": 11,
             "column": 7,
             "is_integer_literal": true
           }
@@ -162,19 +162,19 @@
         "right": {
           "type": "BinaryOp",
           "operator": "*",
-          "line": 9,
+          "line": 11,
           "column": 19,
           "left": {
             "type": "MemoryRead",
             "name": "D",
-            "line": 9,
+            "line": 11,
             "column": 14
           },
           "right": {
             "type": "Number",
             "value": 3.0,
             "lexeme": "3",
-            "line": 9,
+            "line": 11,
             "column": 17,
             "is_integer_literal": true
           }
@@ -183,62 +183,10 @@
     },
     {
       "ordinal": 8,
-      "source_line": 10,
-      "tree": {
-        "type": "BinaryOp",
-        "operator": "/",
-        "line": 10,
-        "column": 7,
-        "left": {
-          "type": "Number",
-          "value": 27.0,
-          "lexeme": "27",
-          "line": 10,
-          "column": 2,
-          "is_integer_literal": true
-        },
-        "right": {
-          "type": "Number",
-          "value": 5.0,
-          "lexeme": "5",
-          "line": 10,
-          "column": 5,
-          "is_integer_literal": true
-        }
-      }
-    },
-    {
-      "ordinal": 9,
-      "source_line": 11,
-      "tree": {
-        "type": "BinaryOp",
-        "operator": "|",
-        "line": 11,
-        "column": 9,
-        "left": {
-          "type": "Number",
-          "value": 27.0,
-          "lexeme": "27.0",
-          "line": 11,
-          "column": 2,
-          "is_integer_literal": false
-        },
-        "right": {
-          "type": "Number",
-          "value": 5.0,
-          "lexeme": "5",
-          "line": 11,
-          "column": 7,
-          "is_integer_literal": true
-        }
-      }
-    },
-    {
-      "ordinal": 10,
       "source_line": 12,
       "tree": {
         "type": "BinaryOp",
-        "operator": "%",
+        "operator": "/",
         "line": 12,
         "column": 7,
         "left": {
@@ -260,24 +208,76 @@
       }
     },
     {
-      "ordinal": 11,
+      "ordinal": 9,
       "source_line": 13,
       "tree": {
         "type": "BinaryOp",
-        "operator": "^",
+        "operator": "|",
         "line": 13,
+        "column": 9,
+        "left": {
+          "type": "Number",
+          "value": 27.0,
+          "lexeme": "27.0",
+          "line": 13,
+          "column": 2,
+          "is_integer_literal": false
+        },
+        "right": {
+          "type": "Number",
+          "value": 5.0,
+          "lexeme": "5",
+          "line": 13,
+          "column": 7,
+          "is_integer_literal": true
+        }
+      }
+    },
+    {
+      "ordinal": 10,
+      "source_line": 14,
+      "tree": {
+        "type": "BinaryOp",
+        "operator": "%",
+        "line": 14,
+        "column": 7,
+        "left": {
+          "type": "Number",
+          "value": 27.0,
+          "lexeme": "27",
+          "line": 14,
+          "column": 2,
+          "is_integer_literal": true
+        },
+        "right": {
+          "type": "Number",
+          "value": 5.0,
+          "lexeme": "5",
+          "line": 14,
+          "column": 5,
+          "is_integer_literal": true
+        }
+      }
+    },
+    {
+      "ordinal": 11,
+      "source_line": 15,
+      "tree": {
+        "type": "BinaryOp",
+        "operator": "^",
+        "line": 15,
         "column": 8,
         "left": {
           "type": "MemoryRead",
           "name": "D",
-          "line": 13,
+          "line": 15,
           "column": 3
         },
         "right": {
           "type": "Number",
           "value": 2.0,
           "lexeme": "2",
-          "line": 13,
+          "line": 15,
           "column": 6,
           "is_integer_literal": true
         }
@@ -285,117 +285,245 @@
     },
     {
       "ordinal": 12,
-      "source_line": 14,
+      "source_line": 16,
       "tree": {
         "type": "BinaryOp",
         "operator": "+",
-        "line": 14,
+        "line": 16,
         "column": 18,
         "left": {
           "type": "ResultRef",
           "offset": 2,
-          "line": 14,
+          "line": 16,
           "column": 5
         },
         "right": {
           "type": "ResultRef",
           "offset": 1,
-          "line": 14,
+          "line": 16,
           "column": 13
         }
       }
     },
     {
       "ordinal": 13,
-      "source_line": 15,
+      "source_line": 17,
       "tree": {
         "type": "LogicalOp",
         "operator": "AND",
-        "line": 15,
+        "line": 17,
         "column": 23,
         "left": {
           "type": "RelationalOp",
           "operator": ">=",
-          "line": 15,
+          "line": 17,
           "column": 11,
           "left": {
             "type": "MemoryRead",
             "name": "N",
-            "line": 15,
+            "line": 17,
             "column": 4
           },
           "right": {
             "type": "MemoryRead",
             "name": "D",
-            "line": 15,
+            "line": 17,
             "column": 8
           }
         },
         "right": {
           "type": "MemoryRead",
           "name": "ATIVO",
-          "line": 15,
+          "line": 17,
           "column": 16
         }
       }
     },
     {
       "ordinal": 14,
-      "source_line": 16,
+      "source_line": 18,
+      "tree": {
+        "type": "LogicalOp",
+        "operator": "OR",
+        "line": 18,
+        "column": 28,
+        "left": {
+          "type": "RelationalOp",
+          "operator": "<",
+          "line": 18,
+          "column": 11,
+          "left": {
+            "type": "MemoryRead",
+            "name": "N",
+            "line": 18,
+            "column": 4
+          },
+          "right": {
+            "type": "MemoryRead",
+            "name": "D",
+            "line": 18,
+            "column": 8
+          }
+        },
+        "right": {
+          "type": "LogicalNot",
+          "operator": "NOT",
+          "line": 18,
+          "column": 23,
+          "operand": {
+            "type": "MemoryRead",
+            "name": "ATIVO",
+            "line": 18,
+            "column": 16
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 15,
+      "source_line": 19,
+      "tree": {
+        "type": "RelationalOp",
+        "operator": ">",
+        "line": 19,
+        "column": 10,
+        "left": {
+          "type": "MemoryRead",
+          "name": "N",
+          "line": 19,
+          "column": 3
+        },
+        "right": {
+          "type": "MemoryRead",
+          "name": "D",
+          "line": 19,
+          "column": 7
+        }
+      }
+    },
+    {
+      "ordinal": 16,
+      "source_line": 20,
+      "tree": {
+        "type": "RelationalOp",
+        "operator": "<=",
+        "line": 20,
+        "column": 10,
+        "left": {
+          "type": "MemoryRead",
+          "name": "N",
+          "line": 20,
+          "column": 3
+        },
+        "right": {
+          "type": "MemoryRead",
+          "name": "D",
+          "line": 20,
+          "column": 7
+        }
+      }
+    },
+    {
+      "ordinal": 17,
+      "source_line": 21,
+      "tree": {
+        "type": "RelationalOp",
+        "operator": "==",
+        "line": 21,
+        "column": 10,
+        "left": {
+          "type": "MemoryRead",
+          "name": "N",
+          "line": 21,
+          "column": 3
+        },
+        "right": {
+          "type": "MemoryRead",
+          "name": "D",
+          "line": 21,
+          "column": 7
+        }
+      }
+    },
+    {
+      "ordinal": 18,
+      "source_line": 22,
+      "tree": {
+        "type": "RelationalOp",
+        "operator": "!=",
+        "line": 22,
+        "column": 10,
+        "left": {
+          "type": "MemoryRead",
+          "name": "N",
+          "line": 22,
+          "column": 3
+        },
+        "right": {
+          "type": "MemoryRead",
+          "name": "D",
+          "line": 22,
+          "column": 7
+        }
+      }
+    },
+    {
+      "ordinal": 19,
+      "source_line": 23,
       "tree": {
         "type": "If",
-        "line": 16,
+        "line": 23,
         "column": 44,
         "condition": {
           "type": "LogicalOp",
           "operator": "AND",
-          "line": 16,
+          "line": 23,
           "column": 23,
           "left": {
             "type": "RelationalOp",
             "operator": ">",
-            "line": 16,
+            "line": 23,
             "column": 12,
             "left": {
               "type": "MemoryRead",
               "name": "N",
-              "line": 16,
+              "line": 23,
               "column": 5
             },
             "right": {
               "type": "MemoryRead",
               "name": "D",
-              "line": 16,
+              "line": 23,
               "column": 9
             }
           },
           "right": {
             "type": "MemoryRead",
             "name": "ATIVO",
-            "line": 16,
+            "line": 23,
             "column": 16
           }
         },
         "then": {
           "type": "MemoryWrite",
           "name": "N",
-          "line": 16,
+          "line": 23,
           "column": 41,
           "value": {
             "type": "BinaryOp",
             "operator": "-",
-            "line": 16,
+            "line": 23,
             "column": 38,
             "left": {
               "type": "MemoryRead",
               "name": "N",
-              "line": 16,
+              "line": 23,
               "column": 31
             },
             "right": {
               "type": "MemoryRead",
               "name": "D",
-              "line": 16,
+              "line": 23,
               "column": 35
             }
           }
@@ -403,28 +531,166 @@
       }
     },
     {
-      "ordinal": 15,
-      "source_line": 17,
+      "ordinal": 20,
+      "source_line": 24,
+      "tree": {
+        "type": "IfElse",
+        "line": 24,
+        "column": 45,
+        "condition": {
+          "type": "RelationalOp",
+          "operator": ">=",
+          "line": 24,
+          "column": 11,
+          "left": {
+            "type": "MemoryRead",
+            "name": "N",
+            "line": 24,
+            "column": 4
+          },
+          "right": {
+            "type": "MemoryRead",
+            "name": "D",
+            "line": 24,
+            "column": 8
+          }
+        },
+        "then": {
+          "type": "MemoryWrite",
+          "name": "N",
+          "line": 24,
+          "column": 28,
+          "value": {
+            "type": "BinaryOp",
+            "operator": "-",
+            "line": 24,
+            "column": 25,
+            "left": {
+              "type": "MemoryRead",
+              "name": "N",
+              "line": 24,
+              "column": 18
+            },
+            "right": {
+              "type": "MemoryRead",
+              "name": "D",
+              "line": 24,
+              "column": 22
+            }
+          }
+        },
+        "else": {
+          "type": "MemoryWrite",
+          "name": "D",
+          "line": 24,
+          "column": 42,
+          "value": {
+            "type": "BinaryOp",
+            "operator": "+",
+            "line": 24,
+            "column": 39,
+            "left": {
+              "type": "MemoryRead",
+              "name": "D",
+              "line": 24,
+              "column": 34
+            },
+            "right": {
+              "type": "Number",
+              "value": 1.0,
+              "lexeme": "1",
+              "line": 24,
+              "column": 37,
+              "is_integer_literal": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 21,
+      "source_line": 25,
+      "tree": {
+        "type": "Sequence",
+        "line": 25,
+        "column": 30,
+        "first": {
+          "type": "MemoryWrite",
+          "name": "N",
+          "line": 25,
+          "column": 13,
+          "value": {
+            "type": "BinaryOp",
+            "operator": "-",
+            "line": 25,
+            "column": 10,
+            "left": {
+              "type": "MemoryRead",
+              "name": "N",
+              "line": 25,
+              "column": 5
+            },
+            "right": {
+              "type": "Number",
+              "value": 1.0,
+              "lexeme": "1",
+              "line": 25,
+              "column": 8,
+              "is_integer_literal": true
+            }
+          }
+        },
+        "second": {
+          "type": "MemoryWrite",
+          "name": "D",
+          "line": 25,
+          "column": 27,
+          "value": {
+            "type": "BinaryOp",
+            "operator": "+",
+            "line": 25,
+            "column": 24,
+            "left": {
+              "type": "MemoryRead",
+              "name": "D",
+              "line": 25,
+              "column": 19
+            },
+            "right": {
+              "type": "Number",
+              "value": 1.0,
+              "lexeme": "1",
+              "line": 25,
+              "column": 22,
+              "is_integer_literal": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "ordinal": 22,
+      "source_line": 26,
       "tree": {
         "type": "While",
-        "line": 17,
+        "line": 26,
         "column": 26,
         "condition": {
           "type": "RelationalOp",
           "operator": ">",
-          "line": 17,
+          "line": 26,
           "column": 9,
           "left": {
             "type": "MemoryRead",
             "name": "N",
-            "line": 17,
+            "line": 26,
             "column": 4
           },
           "right": {
             "type": "Number",
             "value": 0.0,
             "lexeme": "0",
-            "line": 17,
+            "line": 26,
             "column": 7,
             "is_integer_literal": true
           }
@@ -432,24 +698,24 @@
         "body": {
           "type": "MemoryWrite",
           "name": "N",
-          "line": 17,
+          "line": 26,
           "column": 23,
           "value": {
             "type": "BinaryOp",
             "operator": "-",
-            "line": 17,
+            "line": 26,
             "column": 20,
             "left": {
               "type": "MemoryRead",
               "name": "N",
-              "line": 17,
+              "line": 26,
               "column": 15
             },
             "right": {
               "type": "Number",
               "value": 1.0,
               "lexeme": "1",
-              "line": 17,
+              "line": 26,
               "column": 18,
               "is_integer_literal": true
             }

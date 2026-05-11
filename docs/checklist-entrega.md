@@ -8,6 +8,7 @@
 - [x] Cabecalho obrigatorio nos arquivos principais.
 - [x] README com instituicao, disciplina, professor, integrante, execucao e CPulator.
 - [x] `teste1.txt`, `teste2.txt` e `teste3.txt` disponiveis na mesma pasta do codigo-fonte.
+- [x] `teste4_semantico_invalido.txt` disponivel na raiz para demonstrar erros semanticos intencionais.
 
 ## Funcoes exigidas
 
@@ -33,6 +34,7 @@
 - [x] `docs/cronograma_commits_prs_fase3.md`
 - [x] `docs/bateria_pesada_testes_fase3.md`
 - [x] `docs/gramatica_atribuida.md`
+- [x] `docs/matriz_cobertura_requisitos.md`
 - [x] `docs/regras_tipos_sequentes.md`
 - [x] `docs/estrategia_diagnosticos_acumulados.md`
 - [x] `docs/tabela_simbolos.md`
@@ -46,12 +48,15 @@
 
 - [x] Tres programas validos com 10+ linhas.
 - [x] Copias dos tres programas validos na raiz sincronizadas com `tests/`.
+- [x] Arquivo semantico invalido oficial na raiz.
 - [x] Testes invalidos lexicos, sintaticos e semanticos.
 - [x] Teste com multiplos erros misturados no mesmo arquivo.
 - [x] Comentarios em linha inteira, fim de linha, entre tokens e bloco multilinha.
 - [x] Palavras reservadas nao aceitas como identificadores de memoria.
 - [x] Todos os operadores aritmeticos nos tres arquivos validos.
-- [x] `IF`/`IFELSE`, `WHILE`, `SEQ`, `RES`, leitura e escrita de memoria.
+- [x] Todos os operadores relacionais nos tres arquivos validos.
+- [x] Todos os operadores logicos nos tres arquivos validos.
+- [x] `IF`/`IFELSE`, `WHILE`, `SEQ`, `RES`, leitura e escrita de memoria nos tres validos.
 
 ## Validacao local
 

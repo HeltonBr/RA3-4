@@ -23,16 +23,25 @@ Todos os comandos devem ser executados dentro da pasta do repositorio local:
 cd "C:\Users\Helton\OneDrive - Grupo Marista\Puc PR\Nono Período\Linguagens Formais e Compiladores 2026\Trabalhos\Fase 3 - Analisador Semântico\GitHub"
 ```
 
-Os tres arquivos oficiais de teste ficam na mesma pasta do codigo-fonte, ao lado de `AnalisadorSemantico.py`:
+Os arquivos oficiais da entrega ficam na mesma pasta do codigo-fonte, ao lado de `AnalisadorSemantico.py`:
 
 - `teste1.txt`
 - `teste2.txt`
 - `teste3.txt`
+- `teste4_semantico_invalido.txt`
 
-Para executar um arquivo oficial da raiz:
+Os tres primeiros sao programas semanticamente validos. O quarto contem erros semanticos intencionais para demonstrar mensagens claras, varredura completa e bloqueio de Assembly.
+
+Para executar um arquivo valido da raiz:
 
 ```powershell
 python AnalisadorSemantico.py teste1.txt
+```
+
+Para executar o arquivo semantico invalido oficial:
+
+```powershell
+python AnalisadorSemantico.py teste4_semantico_invalido.txt
 ```
 
 Tambem e possivel manter compatibilidade com o nome antigo:
@@ -52,7 +61,7 @@ O Assembly ARMv7 nao e despejado no console; o programa apenas confirma se ele f
 
 ## Testes
 
-As copias sincronizadas dos tres arquivos oficiais tambem ficam em `tests/` para uso da suite automatizada:
+As copias sincronizadas dos tres arquivos validos oficiais tambem ficam em `tests/` para uso da suite automatizada:
 
 - `tests/teste1.txt`
 - `tests/teste2.txt`
@@ -121,6 +130,7 @@ As regras formais em calculo de sequentes estao em `docs/regras_tipos_sequentes.
 - `docs/gramatica_atribuida.md`: gramatica LL(1) aumentada.
 - `docs/first_follow.md`: conjuntos FIRST/FOLLOW.
 - `docs/tabela_ll1.md`: tabela LL(1).
+- `docs/matriz_cobertura_requisitos.md`: rastreabilidade entre enunciado, testes, implementacao e artefatos.
 - `docs/regras_tipos_sequentes.md`: sistema de tipos em calculo de sequentes.
 - `docs/estrategia_diagnosticos_acumulados.md`: varredura completa e acumulacao de erros.
 - `docs/tabela_simbolos.md`: tabela de simbolos da ultima execucao.

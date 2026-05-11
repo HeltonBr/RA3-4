@@ -1,0 +1,15 @@
+*{ teste invalido oficial: erros semanticos intencionais }*
+(START)
+(10 X) *{ comentario no final da linha }*
+(2.5 R)
+(TRUE FLAG)
+*{ comentario multilinha
+   antes dos erros semanticos }*
+((X) *{ comentario entre tokens }* (R) %)
+((FLAG) 1 +)
+((NAOEXISTE) 2 +)
+((R) X)
+(((X) 0 >) ((R) X) IF)
+((((FLAG) 1 +) X) (((X) 1 +) X) SEQ)
+(((X) 0 >) (((X) 1.5 +) X) WHILE)
+(END)

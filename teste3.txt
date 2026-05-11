@@ -4,6 +4,8 @@
 (4 D)
 (3.25 TAXA)
 (TRUE ATIVO)
+*{ comentario multilinha
+   cobrindo bloco entre declaracoes }*
 ((N) *{ comentario entre tokens }* (D) +)
 (((N) (D) +) 2 -)
 (((N) 2 *) ((D) 3 *) +)
@@ -13,6 +15,13 @@
 ((D) 2 ^)
 ((2 RES) (1 RES) +)
 (((N) (D) >=) (ATIVO) AND)
+(((N) (D) <) ((ATIVO) NOT) OR)
+((N) (D) >)
+((N) (D) <=)
+((N) (D) ==)
+((N) (D) !=)
 ((((N) (D) >) (ATIVO) AND) (((N) (D) -) N) IF)
+(((N) (D) >=) (((N) (D) -) N) (((D) 1 +) D) IFELSE)
+((((N) 1 -) N) (((D) 1 +) D) SEQ)
 (((N) 0 >) (((N) 1 -) N) WHILE)
 (END)

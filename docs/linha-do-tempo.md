@@ -43,3 +43,10 @@ python AnalisadorSemantico.py tests/teste3.txt
 - CLI passou a imprimir relatorio de validacao com lexico, sintatico, semantico, cobertura detectada e status do Assembly.
 - Arvore sintatica pode ser exibida por `--mostrar-arvore` ou `--relatorio-completo`.
 - Assembly permanece apenas em arquivo, com confirmacao de geracao ou bloqueio no console.
+
+## Checkpoint 7 - Matriz e cobertura dos testes
+
+- `teste1.txt`, `teste2.txt` e `teste3.txt` ampliados para cobrir todos os operadores aritmeticos, relacionais e logicos.
+- Os tres programas validos passaram a cobrir `IF`, `IFELSE`, `WHILE`, `SEQ`, `RES`, leitura/escrita de memoria e todos os tipos.
+- `teste4_semantico_invalido.txt` adicionado na raiz para erros semanticos intencionais com lexico e sintaxe validos.
+- `docs/matriz_cobertura_requisitos.md` criada para rastrear requisitos, evidencias e testes automatizados.
