@@ -221,9 +221,10 @@ class AuditoriaEntregaTests(unittest.TestCase):
         )
 
         self.assertEqual(resultado.returncode, 1)
-        self.assertIn("Erro SEMANTICO", resultado.stderr)
-        self.assertIn("operador '%'", resultado.stderr)
-        self.assertIn("NAOEXISTE", resultado.stderr)
+        self.assertIn("Erro SEMANTICO", resultado.stdout)
+        self.assertIn("operador '%'", resultado.stdout)
+        self.assertIn("NAOEXISTE", resultado.stdout)
+        self.assertNotIn("Erro SEMANTICO", resultado.stderr)
 
     def test_import_publico_funciona_sem_py_path_externo(self) -> None:
         resultado = subprocess.run(

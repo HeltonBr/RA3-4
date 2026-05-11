@@ -40,15 +40,17 @@ class KitDefesaTests(unittest.TestCase):
         resultado = self._rodar("demo_erro_lexico.txt")
 
         self.assertEqual(resultado.returncode, 1)
-        self.assertIn("Erro LEXICO", resultado.stderr)
-        self.assertNotIn("Traceback", resultado.stderr)
+        saida = resultado.stdout + resultado.stderr
+        self.assertIn("Erro LEXICO", saida)
+        self.assertNotIn("Traceback", saida)
 
     def test_demo_erro_sintatico_retorna_erro_claro(self) -> None:
         resultado = self._rodar("demo_erro_sintatico.txt")
 
         self.assertEqual(resultado.returncode, 1)
-        self.assertIn("Erro SINTATICO", resultado.stderr)
-        self.assertNotIn("Traceback", resultado.stderr)
+        saida = resultado.stdout + resultado.stderr
+        self.assertIn("Erro SINTATICO", saida)
+        self.assertNotIn("Traceback", saida)
 
 
 if __name__ == "__main__":

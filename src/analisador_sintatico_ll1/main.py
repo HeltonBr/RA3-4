@@ -397,7 +397,8 @@ def main() -> int:
             print("Arvore sintatica reconhecida:")
             print(execution.tree_text.rstrip())
         if execution.diagnostics:
-            print(render_analysis_diagnostics(execution.diagnostics).rstrip(), file=sys.stderr)
+            # Mantem relatorio e diagnosticos no mesmo fluxo para preservar ordem no PowerShell.
+            print(render_analysis_diagnostics(execution.diagnostics).rstrip())
             return 1
         print("Analise completa concluida: 0 erro(s).")
         print("Assembly ARMv7 gerado em: generated/ultimo_assembly.s")
