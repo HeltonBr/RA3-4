@@ -29,3 +29,18 @@ def render_analysis_diagnostics(diagnostics: list[AnalysisDiagnostic]) -> str:
     linhas.extend(diagnostic.format() for diagnostic in sorted_diagnostics)
     linhas.append("Assembly nao gerado porque ha erros lexicos, sintaticos ou semanticos.")
     return "\n".join(linhas) + "\n"
+
+
+def render_console_diagnostics(diagnostics: list[AnalysisDiagnostic]) -> str:
+    if not diagnostics:
+        return "Analise completa concluida: 0 erro(s).\n"
+
+    sorted_diagnostics = sorted(diagnostics, key=lambda item: (item.line, item.column, item.kind, item.code))
+    linhas = [f"Analise completa concluida com {len(sorted_diagnostics)} erro(s):"]
+    for diagnostic in sorted_diagnostics:
+        linhas.append(f"Erro {diagnostic.kind}")
+        linhas.append(f"  linha: {diagnostic.line}")
+        linhas.append(f"  coluna: {diagnostic.column}")
+        linhas.append(f"  detalhe: {diagnostic.message}")
+    linhas.append("Assembly nao gerado porque ha erros lexicos, sintaticos ou semanticos.")
+    return "\n".join(linhas) + "\n"

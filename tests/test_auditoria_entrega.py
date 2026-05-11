@@ -232,6 +232,8 @@ class AuditoriaEntregaTests(unittest.TestCase):
         self.assertIn("NAOEXISTE", resultado.stdout)
         linhas_erro = [line for line in resultado.stdout.splitlines() if line.startswith("Erro SEMANTICO")]
         self.assertEqual(len(linhas_erro), 8)
+        self.assertIn("  linha: 11", resultado.stdout)
+        self.assertIn("  detalhe: variavel 'X' ja foi definida como int e nao pode receber real.", resultado.stdout)
         self.assertNotIn(".Erro SEMANTICO", resultado.stdout)
         self.assertNotIn("Arvore sintatica desenhada:", resultado.stdout)
         self.assertNotIn("Erro SEMANTICO", resultado.stderr)

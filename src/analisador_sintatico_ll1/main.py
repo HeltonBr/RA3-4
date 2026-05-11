@@ -34,6 +34,7 @@ from analisador_sintatico_ll1.core import prepararEntradaSemanticaComDiagnostico
 from analisador_sintatico_ll1.core import salvar_tokens_em_arquivo
 from analisador_sintatico_ll1.diagnostics import AnalysisDiagnostic
 from analisador_sintatico_ll1.diagnostics import render_analysis_diagnostics
+from analisador_sintatico_ll1.diagnostics import render_console_diagnostics
 from analisador_sintatico_ll1.errors import AnalisadorSintaticoError
 from analisador_sintatico_ll1.grammar import salvar_documentacao_gramatica
 from analisador_sintatico_ll1.type_system import SemanticAnalysisResult
@@ -398,7 +399,7 @@ def main() -> int:
             print(execution.tree_text.rstrip())
         if execution.diagnostics:
             # Mantem relatorio e diagnosticos no mesmo fluxo para preservar ordem no PowerShell.
-            for line in render_analysis_diagnostics(execution.diagnostics).splitlines():
+            for line in render_console_diagnostics(execution.diagnostics).splitlines():
                 print(line, flush=True)
             return 1
         print("Analise completa concluida: 0 erro(s).")
