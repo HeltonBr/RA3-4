@@ -17,7 +17,7 @@ A Fase 3 reaproveita a base da Fase 2 e acrescenta analise semantica. O programa
 
 ## Execucao
 
-Todos os comandos devem ser executados dentro da pasta do repositorio local:
+Todos os comandos devem ser executados na pasta que contem `AnalisadorSemantico.py`. No ambiente local desta entrega, essa pasta e:
 
 ```powershell
 cd "C:\Users\Helton\OneDrive - Grupo Marista\Puc PR\Nono Período\Linguagens Formais e Compiladores 2026\Trabalhos\Fase 3 - Analisador Semântico\GitHub"
@@ -44,20 +44,14 @@ Para executar o arquivo semantico invalido oficial:
 python AnalisadorSemantico.py teste4_semantico_invalido.txt
 ```
 
-Tambem e possivel manter compatibilidade com o nome antigo:
+A execucao padrao imprime um relatorio de validacao com as fases executadas, caracteristicas detectadas no arquivo, confirmacao dos artefatos e, para todo programa valido que gera Assembly, a arvore sintatica desenhada com ramos e folhas em ASCII. O Assembly nao e impresso no console; o conteudo fica em `generated/ultimo_assembly.s`.
 
-```powershell
-python AnalisadorSintatico.py teste1.txt
-```
-
-A execucao padrao imprime um relatorio de validacao com as fases executadas, caracteristicas detectadas no arquivo, confirmacao dos artefatos e, para todo programa valido que gera Assembly, a arvore sintatica desenhada com ramos e folhas em ASCII. As opcoes abaixo mantem a arvore explicita em execucoes de verificacao:
+Comandos auxiliares para auditoria da arvore:
 
 ```powershell
 python AnalisadorSemantico.py teste3.txt --mostrar-arvore
 python AnalisadorSemantico.py teste3.txt --relatorio-completo
 ```
-
-O Assembly ARMv7 nao e despejado no console; o programa apenas confirma se ele foi gerado ou bloqueado, e o conteudo fica em `generated/ultimo_assembly.s`.
 
 ## Testes
 
@@ -144,15 +138,10 @@ O Assembly e emitido para ARMv7 DE1-SoC com `.syntax unified`, `.arch armv7-a`, 
 
 ## Rastreabilidade
 
-O repositorio deve ser publico, nomeado com o grupo exato do Canvas e trabalhado por branches e pull requests. Mesmo em grupo individual, os PRs documentam autoria, revisao e integracao.
+Repositorio GitHub: `https://github.com/HeltonBr/RA3-4`.
 
-## Cronograma e congelamento
+O desenvolvimento e documentado por commits, branches e pull requests. Os registros de cronograma, auditoria e congelamento estao nos documentos de apoio:
 
-- Data final de congelamento da pasta principal e do GitHub: **25/05/2026 as 23:59**.
-- Desenvolvimento com commits e pull requests diarios: `docs/cronograma_commits_prs_fase3.md`.
-- Bateria pesada dos 7 dias finais: `docs/bateria_pesada_testes_fase3.md`.
-- Espelho local exato ate o congelamento: `GitHubmirror`, atualizado por:
-
-```powershell
-.\sincronizar_para_githubmirror.ps1
-```
+- `docs/cronograma_commits_prs_fase3.md`
+- `docs/bateria_pesada_testes_fase3.md`
+- `docs/checklist-entrega.md`
