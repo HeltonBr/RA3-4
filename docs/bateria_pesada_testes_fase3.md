@@ -7,7 +7,7 @@ Objetivo: detectar inconsistencias penalizantes antes do congelamento da pasta p
 ## Regras da janela final
 
 - Sempre rodar a suite completa antes e depois de qualquer correcao.
-- Regenerar artefatos com `tests/teste3.txt` apos cada correcao.
+- Regenerar artefatos com `teste3.txt` apos cada correcao.
 - Sincronizar `GitHubmirror` apos cada estado aprovado.
 - Nao alterar regra semantica sem atualizar `docs/regras_tipos_sequentes.md` e testes correspondentes.
 - Nao deixar `generated/ultimo_assembly.s` vindo de execucao invalida.
@@ -16,7 +16,7 @@ Objetivo: detectar inconsistencias penalizantes antes do congelamento da pasta p
 
 | Data | Foco | Comandos e verificacoes |
 | --- | --- | --- |
-| 19/05/2026 | Regressao geral | `python -m unittest discover -s tests -p "test_*.py" -v`; executar `tests/teste1.txt`, `tests/teste2.txt`, `tests/teste3.txt`; conferir `generated/`. |
+| 19/05/2026 | Regressao geral | `python -m unittest discover -s tests -p "test_*.py" -v`; executar `teste1.txt`, `teste2.txt`, `teste3.txt` e `teste4_semantico_invalido.txt`; conferir `generated/`. |
 | 20/05/2026 | Lexico e comentarios | Testar comentario em linha inteira, fim de linha, entre tokens, multiline e nao fechado; verificar linha/coluna dos erros. |
 | 21/05/2026 | Parser LL(1) | Revisar gramatica, FIRST/FOLLOW e tabela LL(1); testar expressoes vazias, END ausente e declaracoes na mesma linha. |
 | 22/05/2026 | Semantica de variaveis e tipos | Testar uso antes da definicao, reatribuicao incompativel, `RES` invalido, `%`/`/` com real, bool em aritmetica e condicao nao bool. |
@@ -59,6 +59,10 @@ Objetivo: detectar inconsistencias penalizantes antes do congelamento da pasta p
 python AnalisadorSemantico.py tests/teste1.txt
 python AnalisadorSemantico.py tests/teste2.txt
 python AnalisadorSemantico.py tests/teste3.txt
+python AnalisadorSemantico.py teste1.txt
+python AnalisadorSemantico.py teste2.txt
+python AnalisadorSemantico.py teste3.txt
+python AnalisadorSemantico.py teste4_semantico_invalido.txt
 python AnalisadorSemantico.py tests/invalidos/lexico_comentario_nao_fechado.txt
 python AnalisadorSemantico.py tests/invalidos/sintaxe_sem_end.txt
 python AnalisadorSemantico.py tests/invalidos/semantico_variavel_nao_definida.txt

@@ -5,29 +5,48 @@ Data final de congelamento: **25/05/2026 as 23:59**. A pasta principal local e o
 Janela de desenvolvimento com commits e PRs diarios: **09/05/2026 a 18/05/2026**.  
 Janela de auditoria pesada e congelamento: **19/05/2026 a 25/05/2026**.
 
+Este planejamento foi atualizado em **11/05/2026**, apos o merge do **PR 04 - Cobertura e matriz de testes** na `main`. A implementacao central ja cobre entrada, parser LL(1), semantica, relatorio de execucao, arquivos oficiais na raiz, arvore sintatica desenhada, diagnosticos acumulados e matriz de requisitos. As proximas etapas devem priorizar endurecimento, evidencias e reducao de risco.
+
+## Estado consolidado ate 11/05/2026
+
+| Data | Marco | Branch/PR | Resultado |
+| --- | --- | --- | --- |
+| 09/05/2026 | Planejamento e congelamento | PR 01 | Cronograma, espelho e documentos de apoio criados. |
+| 10/05/2026 | Entrada e comentarios | PR 02 | Comentarios, palavras reservadas e variacoes de formato reforcadas. |
+| 10/05/2026 | Relatorio de execucao | PR 03 | CLI passou a relatar fases, cobertura detectada e status do Assembly. |
+| 11/05/2026 | Cobertura e matriz de testes | PR 04 | Arquivos oficiais na raiz, cobertura completa dos validos, arvore desenhada por padrao, diagnosticos estruturados e README de entrega atualizados. |
+
 ## Regra operacional
 
 - Cada dia de desenvolvimento deve ter uma branch curta, commits claros e um pull request.
-- O PR diario deve ser aberto mesmo em grupo individual, para registrar evolucao e autoria.
-- A branch `main` so recebe merge apos testes locais e espelhamento para `GitHubmirror`.
+- A branch `main` so recebe merge apos testes locais, validacao manual e sincronizacao para `GitHubmirror`.
 - A pasta `GitHubmirror` deve ser sincronizada todos os dias apos o merge do PR diario.
 - A partir de **19/05/2026**, nao entram features novas: apenas testes, evidencias e correcoes pontuais comprovadas.
+- Ao final de cada etapa, os artefatos devem ser regenerados com um programa valido canonico, preferencialmente `teste3.txt`.
 
-## Plano diario de evolucao
+## Plano atualizado ate a pre-auditoria
 
 | Data | Branch sugerida | Objetivo tecnico | Commit principal sugerido | Pull request sugerido | Criterio de aceite |
 | --- | --- | --- | --- | --- | --- |
-| 09/05/2026 | `feature/01-planejamento-fase3` | Formalizar data final, cronograma, espelho e riscos do dossie. | `docs: define cronograma escalonado da fase 3` | PR 01 - Planejamento e congelamento | Docs revisados e script de espelho criado. |
-| 10/05/2026 | `feature/02-entrada-comentarios` | Consolidar lexico com comentarios e palavras reservadas. | `feat: consolida entrada semantica e comentarios` | PR 02 - Entrada e comentarios | Comentarios em linha inteira, fim de linha e entre tokens testados. |
-| 10/05/2026 | `feature/03-relatorio-execucao-entrega` | Adiantar conformidade de execucao, testes na raiz e relatorio de validacao. | `feat: adiciona relatorio de validacao do cli` | PR 03 - Relatorio de execucao | CLI resume fases, cobertura e arvore opcional; Assembly fica apenas em arquivo. |
-| 11/05/2026 | `feature/04-gramatica-bool-logicos` | Fechar gramatica LL(1) com bool e operadores logicos. | `feat: adiciona bool e operadores logicos a gramatica` | PR 04 - Gramatica aumentada | `docs/gramatica_atribuida.md`, FIRST/FOLLOW e tabela LL(1) atualizados. |
-| 12/05/2026 | `feature/05-tabela-simbolos` | Fortalecer tabela de simbolos, definicoes, usos e reatribuicoes. | `feat: implementa tabela de simbolos semantica` | PR 05 - Tabela de simbolos | Uso antes da definicao e troca de tipo rejeitados. |
-| 13/05/2026 | `feature/06-verificacao-tipos` | Ampliar verificacao de tipos para aritmetica, relacionais, logicos e controle. | `feat: valida regras de tipos da fase 3` | PR 06 - Sistema de tipos | Matriz de compatibilidade testada com validos e invalidos. |
-| 14/05/2026 | `feature/07-arvore-atribuida` | Gerar arvore sintatica atribuida com tipo, status e referencias de simbolo. | `feat: gera arvore sintatica atribuida` | PR 07 - Arvore atribuida | JSON e Markdown da arvore atribuida conferidos. |
-| 15/05/2026 | `feature/08-assembly-semantico` | Garantir que Assembly seja gerado apenas a partir de arvore atribuida valida. | `feat: bloqueia assembly em programas invalidos` | PR 08 - Assembly semantico | Assembly gerado para validos e bloqueado para invalidos. |
-| 16/05/2026 | `feature/09-testes-obrigatorios` | Completar tres testes validos e suite de invalidos lexicos, sintaticos e semanticos. | `test: amplia cobertura obrigatoria da fase 3` | PR 09 - Testes obrigatorios | Todos os requisitos dos tres arquivos validos auditados. |
-| 17/05/2026 | `feature/10-documentacao-defesa` | Fechar README, sequentes, decisoes do dossie, roteiro de defesa e checklist. | `docs: fecha documentacao formal da fase 3` | PR 10 - Documentacao final | README e docs sem referencias antigas conflitantes. |
-| 18/05/2026 | `release/11-pre-auditoria` | Rodar suite completa, regenerar artefatos e preparar congelamento de features. | `chore: prepara pre-auditoria final da fase 3` | PR 11 - Pre-auditoria final | `python -m unittest discover -s tests -p "test_*.py" -v` aprovado e espelho atualizado. |
+| 12/05/2026 | `feature/05-planejamento-pre-auditoria` | Ajustar cronograma pos-PR 04, checklist, roteiro de validacao e reanalise do dossie de inconformidades. | `docs: atualiza planejamento pre-auditoria` | PR 05 - Planejamento pre-auditoria | Cronograma refletindo o estado real da `main`, sem etapas ja superadas, e perguntas ao professor registradas. |
+| 13/05/2026 | `feature/06-auditoria-gramatica-parser` | Auditar gramatica LL(1), FIRST/FOLLOW, tabela LL(1), recuperacao sintatica e mensagens de erro. | `test: reforca auditoria da gramatica ll1` | PR 06 - Auditoria gramatical | Casos de `START`, `END`, expressoes vazias, linhas malformadas, reservadas e aninhamento validados. |
+| 14/05/2026 | `feature/07-auditoria-semantica-tipos` | Expandir testes de tipos para todas as combinacoes relevantes de aritmetica, relacionais, logicos, controle, `RES`, potenciacao e reatribuicao. | `test: amplia matriz semantica de tipos` | PR 07 - Auditoria semantica | Mensagens com tipo, linha, coluna e detalhe; arquivo inteiro varrido sem parar no primeiro erro; regra de expoente positivo decidida. |
+| 15/05/2026 | `feature/08-auditoria-assembly-cpulator` | Revisar geracao ARMv7, bloqueio de Assembly em invalidos, artefatos gerados e roteiro CPulator. | `test: audita assembly e artefatos` | PR 08 - Assembly e artefatos | Validos geram Assembly, invalidos bloqueiam, `generated/ultimo_assembly.s` fica canonico e documentado. |
+| 16/05/2026 | `feature/09-robustez-entradas-professor` | Simular entradas diferentes das entregues, como na prova de autoria: formatos variados, nomes novos, comentarios e erros mistos. | `test: adiciona cenarios de autoria externos` | PR 09 - Robustez para autoria | Testes mostram generalizacao alem dos quatro arquivos oficiais. |
+| 17/05/2026 | `feature/10-documentacao-defesa-final` | Revisar README, sequentes, decisoes do dossie, matriz de cobertura e roteiro de demonstracao. | `docs: fecha documentacao de defesa` | PR 10 - Documentacao de defesa | Documentos sem combinados internos e coerentes com o comportamento real do CLI. |
+| 18/05/2026 | `release/11-pre-auditoria-final` | Rodar suite completa, validar manualmente arquivos oficiais, regenerar artefatos e fechar congelamento de features. | `chore: prepara pre-auditoria final` | PR 11 - Pre-auditoria final | Suite completa OK, README conferido na `main`, `GitHubmirror` sincronizado e nenhuma feature pendente. |
+
+## Semana pesada de testes
+
+| Data | Foco | Saida esperada |
+| --- | --- | --- |
+| 19/05/2026 | Regressao completa | Suite `unittest` OK; `teste1.txt`, `teste2.txt`, `teste3.txt` gerando Assembly; `teste4_semantico_invalido.txt` bloqueando Assembly. |
+| 20/05/2026 | Lexico e comentarios | Comentarios em linha inteira, fim de linha, entre tokens, multilinha e nao fechados verificados com linha/coluna. |
+| 21/05/2026 | Parser LL(1) | Gramatica, FIRST/FOLLOW, tabela LL(1), recuperacao de erro e mensagens sintaticas revisadas. |
+| 22/05/2026 | Semantica e tipos | Variaveis, reatribuicao, `RES`, operadores, controle e acumulacao de erros auditados. |
+| 23/05/2026 | Entradas externas | Arquivos novos simulando prova do professor processados, com validos e invalidos nao copiados da suite. |
+| 24/05/2026 | Assembly e CPulator | `generated/ultimo_assembly.s` revisado e executado no CPulator ARMv7 DE1-SoC. |
+| 25/05/2026 | Auditoria final | README, arquivos oficiais na raiz, docs, GitHub, `GitHubmirror`, suite completa e congelamento as 23:59. |
 
 ## Padrao diario de trabalho
 
@@ -38,14 +57,17 @@ Janela de auditoria pesada e congelamento: **19/05/2026 a 25/05/2026**.
 5. Fazer commit com mensagem clara.
 6. Abrir PR do dia.
 7. Rodar suite completa antes do merge.
-8. Fazer merge.
-9. Rodar `.\sincronizar_para_githubmirror.ps1`.
+8. Fazer merge na `main`.
+9. Sincronizar `GitHubmirror`.
 10. Registrar resultado no PR ou em `docs/linha-do-tempo.md`.
 
-## Padrao de commits complementares
+## Comandos canonicos
 
-- `test: cobre casos invalidos de tipos`
-- `docs: atualiza regras de sequentes`
-- `fix: corrige mensagem sem linha em erro semantico`
-- `chore: regenera artefatos da ultima execucao`
-- `ci: documenta comando de auditoria local`
+```powershell
+python AnalisadorSemantico.py teste1.txt
+python AnalisadorSemantico.py teste2.txt
+python AnalisadorSemantico.py teste3.txt
+python AnalisadorSemantico.py teste4_semantico_invalido.txt
+python -m unittest discover -s tests -p "test_*.py" -v
+.\sincronizar_para_githubmirror.ps1
+```

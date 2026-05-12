@@ -51,3 +51,11 @@ python AnalisadorSemantico.py tests/teste3.txt
 - `teste4_semantico_invalido.txt` adicionado na raiz para erros semanticos intencionais com lexico e sintaxe validos.
 - `docs/matriz_cobertura_requisitos.md` criada para rastrear requisitos, evidencias e testes automatizados.
 - A arvore sintatica passou a ser desenhada por padrao no console para todo programa valido que gera Assembly.
+
+## Checkpoint 8 - Planejamento de pre-auditoria
+
+- PR 04 integrado na `main`, atualizando a pagina principal do GitHub com README e arquivos oficiais na raiz.
+- Cronograma replanejado apos a cobertura central ja implementada, evitando etapas duplicadas.
+- Dossie de inconformidades relido e convertido em quadro de auditoria com decisoes, evidencias e perguntas ao professor.
+- Proximas etapas reorganizadas para auditoria gramatical, semantica, Assembly, entradas externas, documentacao de defesa e pre-auditoria final.
+- Semana pesada de testes mantida de 19/05/2026 a 25/05/2026, sem novas features e com foco em regressao, evidencias e congelamento.

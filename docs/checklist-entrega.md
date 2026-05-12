@@ -33,6 +33,7 @@
 
 - [x] `docs/cronograma_commits_prs_fase3.md`
 - [x] `docs/bateria_pesada_testes_fase3.md`
+- [x] `docs/auditoria_dossie_inconformidades_fase3.md`
 - [x] `docs/gramatica_atribuida.md`
 - [x] `docs/matriz_cobertura_requisitos.md`
 - [x] `docs/regras_tipos_sequentes.md`
@@ -70,8 +71,8 @@ python -m unittest discover -s tests -p "test_*.py" -v
 
 ## Congelamento
 
-- [ ] PRs diarios planejados ate 18/05/2026.
-- [ ] Bateria pesada planejada de 19/05/2026 a 25/05/2026.
+- [x] PRs diarios planejados ate 18/05/2026.
+- [x] Bateria pesada planejada de 19/05/2026 a 25/05/2026.
 - [ ] `GitHubmirror` sincronizado apos cada merge aprovado.
 - [ ] Pasta principal local congelada em 25/05/2026 as 23:59.
 - [ ] Repositorio GitHub congelado em 25/05/2026 as 23:59.

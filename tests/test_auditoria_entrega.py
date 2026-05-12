@@ -45,6 +45,7 @@ ARQUIVOS_OBRIGATORIOS = [
     ROOT / "teste3.txt",
     PROGRAMA_SEMANTICO_INVALIDO_RAIZ,
     ROOT / "docs" / "decisoes_inconformidades_fase3.md",
+    ROOT / "docs" / "auditoria_dossie_inconformidades_fase3.md",
     ROOT / "docs" / "estrategia_diagnosticos_acumulados.md",
     ROOT / "docs" / "gramatica_atribuida.md",
     ROOT / "docs" / "matriz_cobertura_requisitos.md",
@@ -100,6 +101,7 @@ class AuditoriaEntregaTests(unittest.TestCase):
             "cpulator",
             "relatorio de validacao",
             "teste4_semantico_invalido.txt",
+            "auditoria_dossie_inconformidades_fase3.md",
             "tests/invalidos",
             "tests/variacoes",
         ]:
@@ -142,11 +144,15 @@ class AuditoriaEntregaTests(unittest.TestCase):
 
     def test_documentacao_registra_decisoes_para_inconformidades(self) -> None:
         decisoes = (ROOT / "docs" / "decisoes_inconformidades_fase3.md").read_text(encoding="utf-8")
+        auditoria = (ROOT / "docs" / "auditoria_dossie_inconformidades_fase3.md").read_text(encoding="utf-8")
 
         for inc in ["INC-01", "INC-03", "INC-05", "INC-07", "INC-09", "INC-16", "INC-18"]:
             self.assertIn(inc, decisoes)
+            self.assertIn(inc, auditoria)
         self.assertIn("Assembly nao e gerado para programas invalidos", decisoes)
         self.assertIn("varrer o arquivo inteiro", decisoes)
+        self.assertIn("Perguntas prioritarias para o professor", auditoria)
+        self.assertIn("expoente literal `0`", auditoria)
 
     def test_cada_programa_valido_cobre_requisitos_minimos(self) -> None:
         for caminho in PROGRAMAS_VALIDOS:
