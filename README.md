@@ -122,6 +122,7 @@ As regras formais em calculo de sequentes estao em `docs/regras_tipos_sequentes.
 
 - `docs/decisoes_inconformidades_fase3.md`: tratamento das inconsistencias do dossie.
 - `docs/auditoria_dossie_inconformidades_fase3.md`: quadro ponto a ponto das inconformidades, decisoes adotadas e perguntas ao professor.
+- `docs/auditoria_gramatica_parser_fase3.md`: auditoria da gramatica LL(1), parser, recuperacao sintatica e comentarios.
 - `docs/gramatica_atribuida.md`: gramatica LL(1) aumentada.
 - `docs/first_follow.md`: conjuntos FIRST/FOLLOW.
 - `docs/tabela_ll1.md`: tabela LL(1).

@@ -7,7 +7,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -315,13 +314,22 @@ def _inventariar_comentarios(source_path: Path) -> dict[str, int]:
         return {"linha_inteira": 0, "fim_de_linha": 0, "entre_tokens": 0, "multilinha": 0}
 
     counts = {"linha_inteira": 0, "fim_de_linha": 0, "entre_tokens": 0, "multilinha": 0}
-    for match in re.finditer(r"\*\{.*?\}\*", text, flags=re.DOTALL):
-        comment = match.group(0)
-        before_line = text[text.rfind("\n", 0, match.start()) + 1 : match.start()]
-        after_line_end = text.find("\n", match.end())
+    index = 0
+    while index < len(text):
+        start = text.find("*{", index)
+        if start == -1:
+            break
+        end = text.find("}*", start + 2)
+        if end == -1:
+            break
+
+        comment_end = end + 2
+        comment = text[start:comment_end]
+        before_line = text[text.rfind("\n", 0, start) + 1 : start]
+        after_line_end = text.find("\n", comment_end)
         if after_line_end == -1:
             after_line_end = len(text)
-        after_line = text[match.end() : after_line_end]
+        after_line = text[comment_end:after_line_end]
 
         if "\n" in comment:
             counts["multilinha"] += 1
@@ -331,6 +339,7 @@ def _inventariar_comentarios(source_path: Path) -> dict[str, int]:
             counts["fim_de_linha"] += 1
         else:
             counts["entre_tokens"] += 1
+        index = comment_end
     return counts
 
 
