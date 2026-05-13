@@ -47,6 +47,7 @@ ARQUIVOS_OBRIGATORIOS = [
     ROOT / "docs" / "decisoes_inconformidades_fase3.md",
     ROOT / "docs" / "auditoria_dossie_inconformidades_fase3.md",
     ROOT / "docs" / "auditoria_gramatica_parser_fase3.md",
+    ROOT / "docs" / "auditoria_semantica_tipos_fase3.md",
     ROOT / "docs" / "estrategia_diagnosticos_acumulados.md",
     ROOT / "docs" / "gramatica_atribuida.md",
     ROOT / "docs" / "matriz_cobertura_requisitos.md",
@@ -104,6 +105,7 @@ class AuditoriaEntregaTests(unittest.TestCase):
             "teste4_semantico_invalido.txt",
             "auditoria_dossie_inconformidades_fase3.md",
             "auditoria_gramatica_parser_fase3.md",
+            "auditoria_semantica_tipos_fase3.md",
             "tests/invalidos",
             "tests/variacoes",
         ]:

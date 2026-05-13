@@ -99,7 +99,7 @@ python -m unittest discover -s tests -p "test_*.py" -v
 - `int + real` promove o resultado para `real`.
 - `/` e `%` aceitam apenas `int` e `int`.
 - `|` aceita operandos numericos e retorna `real`.
-- `^` exige base numerica e expoente `int`.
+- `^` exige base numerica e expoente `int`; expoente literal `0` e rejeitado.
 - Relacionais de ordem aceitam apenas numeros.
 - `==` e `!=` aceitam numeros compativeis ou `bool` com `bool`.
 - `IF`, `IFELSE` e `WHILE` exigem condicao `bool`.
@@ -123,6 +123,7 @@ As regras formais em calculo de sequentes estao em `docs/regras_tipos_sequentes.
 - `docs/decisoes_inconformidades_fase3.md`: tratamento das inconsistencias do dossie.
 - `docs/auditoria_dossie_inconformidades_fase3.md`: quadro ponto a ponto das inconformidades, decisoes adotadas e perguntas ao professor.
 - `docs/auditoria_gramatica_parser_fase3.md`: auditoria da gramatica LL(1), parser, recuperacao sintatica e comentarios.
+- `docs/auditoria_semantica_tipos_fase3.md`: auditoria da matriz semantica, tipos, `RES`, controle e potenciacao.
 - `docs/gramatica_atribuida.md`: gramatica LL(1) aumentada.
 - `docs/first_follow.md`: conjuntos FIRST/FOLLOW.
 - `docs/tabela_ll1.md`: tabela LL(1).

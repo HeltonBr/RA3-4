@@ -71,12 +71,14 @@ Gamma |- A : int    Gamma |- B : int
 Gamma |- (A B %) : int
 
 [T-POW]
-Gamma |- A : numeric    Gamma |- B : int
-----------------------------------------
+Gamma |- A : numeric    Gamma |- B : int    se B for literal, B > 0
+--------------------------------------------------------------------
 Gamma |- (A B ^) : tipo(A)
 ```
 
 `numeric` significa `int` ou `real`.
+
+Na potenciacao, o analisador rejeita expoente literal inteiro `0`. Quando o expoente vem de memoria ou expressao, a verificacao estatica garante o tipo `int`, mas nao tenta provar positividade dinamica.
 
 ## Relacionais e logicos
 

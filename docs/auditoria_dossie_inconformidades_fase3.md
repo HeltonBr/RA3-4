@@ -12,7 +12,7 @@ Objetivo: registrar, em linguagem de entrega, como cada inconformidade do dossie
 4. **INC-07 - arquivos de teste:** a interpretacao correta e manter tres arquivos validos completos e arquivos invalidos separados, em vez de misturar erros em todos os arquivos?
 5. **INC-11 - `RES`:** `N=0` deve ser erro semantico, ja que nao referencia linha anterior?
 6. **INC-12 - comentarios:** comentarios `*{ ... }*` devem ser nao aninhados, com erro lexico quando nao fechados?
-7. **INC-17 - potenciacao:** alem de exigir expoente `int`, devemos rejeitar literalmente expoente `0` para preservar a regra antiga de expoente positivo?
+7. **INC-17 - potenciacao:** para expoente vindo de memoria ou expressao, basta garantir estaticamente o tipo `int`, como o codigo faz hoje, ou o professor espera prova estatica de positividade tambem nesses casos?
 8. **INC-18 - entrada:** a entrega final deve priorizar arquivo-fonte bruto por argumento, mantendo tokens serializados apenas como compatibilidade?
 
 ## Quadro ponto a ponto
@@ -132,9 +132,9 @@ Objetivo: registrar, em linguagem de entrega, como cada inconformidade do dossie
 ### INC-17 - Potenciacao
 
 - **Risco do dossie:** fases anteriores exigiam expoente inteiro positivo; Fase 3 fala apenas em compatibilidade.
-- **Tratamento adotado hoje:** expoente deve ser `int`; base deve ser numerica.
-- **Evidencia:** `docs/regras_tipos_sequentes.md`, `type_system.py`, `README.md`.
-- **Duvida residual:** pendente para PR 07: decidir se expoente literal `0` deve ser erro semantico por nao ser positivo, e documentar a impossibilidade estatica de garantir positividade quando o expoente vem de memoria.
+- **Tratamento adotado:** expoente deve ser `int`; base deve ser numerica; expoente literal `0` e rejeitado como erro semantico por nao ser positivo. Expoente vindo de memoria ou expressao tem tipo verificado, mas a positividade dinamica nao e provada estaticamente.
+- **Evidencia:** `docs/regras_tipos_sequentes.md`, `docs/auditoria_semantica_tipos_fase3.md`, `type_system.py`, `tests/test_auditoria_semantica_tipos.py`, `README.md`.
+- **Duvida residual:** baixa; confirmar com o professor apenas se ele espera prova estatica de positividade tambem para expoente nao literal.
 
 ### INC-18 - Fonte bruto versus tokens serializados
 

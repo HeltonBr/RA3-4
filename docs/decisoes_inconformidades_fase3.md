@@ -20,7 +20,7 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 | INC-14 | Os artefatos semanticos obrigatorios foram explicitados: tabela de simbolos, arvore atribuida, relatorio de erros e Assembly da ultima execucao valida. |
 | INC-15 | Os testes automatizados incluem cenarios lexicos, sintaticos e semanticos, com foco na Fase 3. |
 | INC-16 | A matriz de tipos esta documentada em `docs/regras_tipos_sequentes.md` e implementada em `src/analisador_sintatico_ll1/type_system.py`. |
-| INC-17 | Potenciacao exige expoente `int`. A regra antiga de expoente positivo permanece como ponto de auditoria: PR 07 deve decidir se expoente literal `0` sera rejeitado e documentar o limite da verificacao estatica quando o expoente vier de memoria. |
+| INC-17 | Potenciacao exige expoente `int`; expoente literal `0` e rejeitado por nao ser positivo. Quando o expoente vem de memoria ou expressao, a verificacao estatica garante tipo `int`, mas nao tenta provar positividade dinamica. |
 | INC-18 | A entrada principal e o arquivo-fonte bruto. A leitura de tokens serializados foi mantida apenas por compatibilidade com as fases anteriores. |
 | INC-19 | Como o projeto e Python, o cabecalho obrigatorio usa `#`. |
 | INC-20 | Comentarios foram implementados no scanner caractere a caractere, sem expressoes regulares. |
