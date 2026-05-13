@@ -153,9 +153,9 @@ Objetivo: registrar, em linguagem de entrega, como cada inconformidade do dossie
 ### INC-20 - Regex em comentarios
 
 - **Risco do dossie:** Fase 1 proibia regex no lexico; comentarios poderiam ser implementados como pre-processamento irregular.
-- **Tratamento adotado:** scanner caractere a caractere trata comentarios; regex aparece apenas em inventario/documentacao de relatorio, nao no reconhecimento lexico principal.
-- **Evidencia:** `tokens.py`; `main.py` usa regex apenas para contar comentarios no relatorio.
-- **Duvida residual:** confirmar se o uso de regex para inventario do relatorio, fora do lexico, e aceitavel. Se houver risco, PR 06 pode trocar esse inventario por varredura manual.
+- **Tratamento adotado:** scanner caractere a caractere trata comentarios; na etapa 06 o inventario de comentarios do relatorio tambem passou a usar varredura manual, sem regex.
+- **Evidencia:** `tokens.py`, `main.py`, `tests/test_auditoria_gramatica_parser.py`.
+- **Duvida residual:** baixa; manter como decisao documentada para demonstrar aderencia conservadora ao requisito.
 
 ### INC-21 - CPulator
 
