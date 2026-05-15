@@ -36,6 +36,7 @@
 - [x] `docs/auditoria_dossie_inconformidades_fase3.md`
 - [x] `docs/auditoria_gramatica_parser_fase3.md`
 - [x] `docs/auditoria_semantica_tipos_fase3.md`
+- [x] `docs/auditoria_assembly_cpulator_fase3.md`
 - [x] `docs/gramatica_atribuida.md`
 - [x] `docs/matriz_cobertura_requisitos.md`
 - [x] `docs/regras_tipos_sequentes.md`
@@ -61,6 +62,7 @@
 - [x] Todos os operadores relacionais nos tres arquivos validos.
 - [x] Todos os operadores logicos nos tres arquivos validos.
 - [x] `IF`/`IFELSE`, `WHILE`, `SEQ`, `RES`, leitura e escrita de memoria nos tres validos.
+- [x] Auditoria de Assembly ARMv7/CPulator, incluindo bloqueio para invalidos.
 
 ## Validacao local
 
