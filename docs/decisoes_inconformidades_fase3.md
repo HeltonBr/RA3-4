@@ -4,7 +4,7 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 
 | ID | Decisao adotada |
 | --- | --- |
-| INC-01 | A Fase 3 usa `|` para divisao real e `/` para divisao inteira. O operador bruto `//` nao faz parte da sintaxe canonica da Fase 3; permanece apenas como compatibilidade de leitura de tokens serializados antigos. |
+| INC-01 | A Fase 3 usa `|` para divisao real e `/` para divisao inteira. Por orientacao do professor, `//` tambem e aceito como operador de divisao inteira e normalizado para a mesma regra de `/`. |
 | INC-02 | O lexico reconhece START, END, RES, SEQ, IF, IFELSE, WHILE, TRUE, FALSE, AND, OR, NOT, relacionais e comentarios. |
 | INC-03 | Variavel nunca definida e erro semantico. A regra antiga de retorno 0 fica restrita ao comportamento historico do Assembly, nao ao aceite semantico da Fase 3. |
 | INC-04 | `(V MEM)` define ou reatribui memoria com o tipo inferido de `V`: `int`, `real` ou `bool`. Reatribuicao so e aceita com o mesmo tipo. |
@@ -20,7 +20,7 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 | INC-14 | Os artefatos semanticos obrigatorios foram explicitados: tabela de simbolos, arvore atribuida, relatorio de erros e Assembly da ultima execucao valida. |
 | INC-15 | Os testes automatizados incluem cenarios lexicos, sintaticos e semanticos, com foco na Fase 3. |
 | INC-16 | A matriz de tipos esta documentada em `docs/regras_tipos_sequentes.md` e implementada em `src/analisador_sintatico_ll1/type_system.py`. |
-| INC-17 | Potenciacao exige expoente `int`. A regra antiga de expoente positivo permanece como ponto de auditoria: PR 07 deve decidir se expoente literal `0` sera rejeitado e documentar o limite da verificacao estatica quando o expoente vier de memoria. |
+| INC-17 | Potenciacao exige expoente `int`. Por orientacao do professor, o literal `0` e aceito como inteiro positivo nesta linguagem. |
 | INC-18 | A entrada principal e o arquivo-fonte bruto. A leitura de tokens serializados foi mantida apenas por compatibilidade com as fases anteriores. |
 | INC-19 | Como o projeto e Python, o cabecalho obrigatorio usa `#`. |
 | INC-20 | Comentarios foram implementados no scanner caractere a caractere, sem expressoes regulares. |

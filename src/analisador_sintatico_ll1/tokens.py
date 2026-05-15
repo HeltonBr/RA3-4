@@ -105,6 +105,7 @@ SYMBOLIC_OPERATORS = {
 }
 
 MULTI_CHAR_OPERATORS = {
+    "//": TokenType.OP_INT_DIV,
     ">=": TokenType.OP_GTE,
     "<=": TokenType.OP_LTE,
     "==": TokenType.OP_EQ,

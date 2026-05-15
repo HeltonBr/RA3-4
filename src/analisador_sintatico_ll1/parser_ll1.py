@@ -230,10 +230,11 @@ class RecursiveDescentLL1Parser:
 
         if producao == ["binary_op"]:
             operator = self._parse_binary_op()
+            operator_lexeme = "/" if operator.token_type == TokenType.OP_INT_DIV else operator.lexeme
             self._ensure_expression(first, operator, "operacao aritmetica")
             self._ensure_expression(second, operator, "operacao aritmetica")
             node = BinaryOpNode(
-                operator=operator.lexeme,
+                operator=operator_lexeme,
                 left=first,
                 right=second,
                 line=operator.line,

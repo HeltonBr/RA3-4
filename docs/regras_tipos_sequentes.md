@@ -64,6 +64,7 @@ Gamma |- (A B |) : real
 Gamma |- A : int    Gamma |- B : int
 ------------------------------------
 Gamma |- (A B /) : int
+Gamma |- (A B //) : int
 
 [T-MOD]
 Gamma |- A : int    Gamma |- B : int
@@ -72,11 +73,15 @@ Gamma |- (A B %) : int
 
 [T-POW]
 Gamma |- A : numeric    Gamma |- B : int
-----------------------------------------
+-----------------------------------------
 Gamma |- (A B ^) : tipo(A)
 ```
 
 `numeric` significa `int` ou `real`.
+
+Na divisao inteira, `//` e aceito como alias de `/` e normalizado internamente para a mesma operacao na AST.
+
+Na potenciacao, o analisador exige expoente `int`. Por orientacao do professor, o literal inteiro `0` e aceito como inteiro positivo nesta linguagem. Quando o expoente vem de memoria ou expressao, a verificacao estatica garante o tipo `int`.
 
 ## Relacionais e logicos
 
