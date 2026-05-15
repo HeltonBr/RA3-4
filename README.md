@@ -97,9 +97,9 @@ python -m unittest discover -s tests -p "test_*.py" -v
 - Toda variavel deve ser definida antes do uso.
 - Uma variavel pode ser reatribuida somente com o mesmo tipo.
 - `int + real` promove o resultado para `real`.
-- `/` e `%` aceitam apenas `int` e `int`.
+- `/`, `//` e `%` aceitam apenas `int` e `int`; `//` e tratado como divisao inteira.
 - `|` aceita operandos numericos e retorna `real`.
-- `^` exige base numerica e expoente `int`; expoente literal `0` e rejeitado.
+- `^` exige base numerica e expoente `int`; por orientacao do professor, expoente literal `0` e aceito como inteiro positivo.
 - Relacionais de ordem aceitam apenas numeros.
 - `==` e `!=` aceitam numeros compativeis ou `bool` com `bool`.
 - `IF`, `IFELSE` e `WHILE` exigem condicao `bool`.

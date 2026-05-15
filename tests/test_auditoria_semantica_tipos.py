@@ -54,7 +54,7 @@ class AuditoriaSemanticaTiposTests(unittest.TestCase):
                 "((FLAG) 1 ==)",
                 "((A) (((A) 1 -) A) WHILE)",
                 "((A) (((A) 1 -) A) IF)",
-                "(2 0 ^)",
+                "(2 1.5 ^)",
             ]
         )
 
@@ -67,7 +67,7 @@ class AuditoriaSemanticaTiposTests(unittest.TestCase):
         self.assertIn("RELATIONAL_EQUALITY_TYPE", codigos)
         self.assertIn("WHILE_CONDITION", codigos)
         self.assertIn("IF_CONDITION", codigos)
-        self.assertIn("POW_EXPONENT_POSITIVE", codigos)
+        self.assertIn("POW_TYPE", codigos)
         self.assertGreaterEqual(len(resultado.errors), 9)
 
     def test_res_reatribuicao_e_comando_sem_valor_sao_rejeitados(self) -> None:
@@ -100,6 +100,19 @@ class AuditoriaSemanticaTiposTests(unittest.TestCase):
         )
 
         self.assertFalse(resultado.has_errors, [erro.format() for erro in resultado.errors])
+        self.assertEqual(resultado.statement_types[3], "int")
+
+    def test_zero_em_potenciacao_e_divisao_dupla_sao_aceitos(self) -> None:
+        resultado = self._analisar(
+            [
+                "(10 BASE)",
+                "((BASE) 0 ^)",
+                "((BASE) 2 //)",
+            ]
+        )
+
+        self.assertFalse(resultado.has_errors, [erro.format() for erro in resultado.errors])
+        self.assertEqual(resultado.statement_types[2], "int")
         self.assertEqual(resultado.statement_types[3], "int")
 
     def _analisar(self, linhas: list[str]):

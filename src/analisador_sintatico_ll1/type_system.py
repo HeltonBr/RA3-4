@@ -241,14 +241,6 @@ class SemanticAnalyzer:
 
         if node.operator == "^":
             if left_type in NUMERIC_TYPES and right_type == TYPE_INT:
-                if isinstance(node.right, NumberNode) and node.right.is_integer_literal and node.right.value <= 0:
-                    self._error(
-                        "POW_EXPONENT_POSITIVE",
-                        node.line,
-                        node.column,
-                        "potenciacao '^' exige expoente literal inteiro positivo.",
-                    )
-                    return self._mark(node, TYPE_ERROR)
                 return self._mark(node, TYPE_REAL if left_type == TYPE_REAL else TYPE_INT)
             self._error(
                 "POW_TYPE",

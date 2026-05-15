@@ -6,13 +6,15 @@ Objetivo: registrar, em linguagem de entrega, como cada inconformidade do dossie
 
 ## Perguntas prioritarias para o professor
 
+Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito de divisao inteira, e `0` foi confirmado como inteiro positivo para a regra de potenciacao. Os itens abaixo permanecem como rastreio do que foi perguntado ou ainda merece confirmacao fina.
+
 1. **INC-03 - memoria nao definida:** na Fase 3, a regra de "variavel deve ser definida antes do uso" deve prevalecer sobre a regra historica de `(MEM)` retornar `0` quando nao inicializada?
 2. **INC-05 - booleanos/logicos:** a escolha `TRUE`, `FALSE`, `AND`, `OR`, `NOT` e operadores relacionais simbolicos e aceitavel como convencao documentada pelo grupo?
 3. **INC-06 - controle:** a sintaxe pos-fixada herdada da Fase 2 para `IF`, `IFELSE`, `WHILE` e `SEQ` e suficiente para a prova de autoria?
 4. **INC-07 - arquivos de teste:** a interpretacao correta e manter tres arquivos validos completos e arquivos invalidos separados, em vez de misturar erros em todos os arquivos?
 5. **INC-11 - `RES`:** `N=0` deve ser erro semantico, ja que nao referencia linha anterior?
 6. **INC-12 - comentarios:** comentarios `*{ ... }*` devem ser nao aninhados, com erro lexico quando nao fechados?
-7. **INC-17 - potenciacao:** para expoente vindo de memoria ou expressao, basta garantir estaticamente o tipo `int`, como o codigo faz hoje, ou o professor espera prova estatica de positividade tambem nesses casos?
+7. **INC-17 - potenciacao:** resolvido parcialmente; `0` e aceito como inteiro positivo. Para expoente vindo de memoria ou expressao, o codigo garante estaticamente o tipo `int`.
 8. **INC-18 - entrada:** a entrega final deve priorizar arquivo-fonte bruto por argumento, mantendo tokens serializados apenas como compatibilidade?
 
 ## Quadro ponto a ponto
@@ -20,9 +22,9 @@ Objetivo: registrar, em linguagem de entrega, como cada inconformidade do dossie
 ### INC-01 - Operadores de divisao
 
 - **Risco do dossie:** Fase 1 usava `/` e `//`, enquanto Fase 2/3 usam `|` para divisao real e `/` para divisao inteira.
-- **Tratamento adotado:** codigo-fonte bruto da Fase 3 usa `|` e `/`; `//` fica apenas como compatibilidade de leitura de tokens serializados antigos.
-- **Evidencia:** `README.md`, `docs/regras_tipos_sequentes.md`, `src/analisador_sintatico_ll1/tokens.py`.
-- **Duvida residual:** confirmar se `//` em arquivo-fonte bruto deve ser erro lexico explicito ou basta nao pertencer a sintaxe canonica.
+- **Tratamento adotado:** codigo-fonte bruto da Fase 3 usa `|` para divisao real e aceita `/` e `//` como divisao inteira. O parser normaliza `//` para a mesma operacao de `/` na AST.
+- **Evidencia:** `README.md`, `docs/regras_tipos_sequentes.md`, `src/analisador_sintatico_ll1/tokens.py`, `src/analisador_sintatico_ll1/parser_ll1.py`, `tests/test_auditoria_semantica_tipos.py`.
+- **Duvida residual:** resolvida por orientacao do professor em 15/05/2026.
 
 ### INC-02 - Vocabulario lexico ampliado
 
@@ -132,9 +134,9 @@ Objetivo: registrar, em linguagem de entrega, como cada inconformidade do dossie
 ### INC-17 - Potenciacao
 
 - **Risco do dossie:** fases anteriores exigiam expoente inteiro positivo; Fase 3 fala apenas em compatibilidade.
-- **Tratamento adotado:** expoente deve ser `int`; base deve ser numerica; expoente literal `0` e rejeitado como erro semantico por nao ser positivo. Expoente vindo de memoria ou expressao tem tipo verificado, mas a positividade dinamica nao e provada estaticamente.
+- **Tratamento adotado:** expoente deve ser `int`; base deve ser numerica; expoente literal `0` e aceito como inteiro positivo por orientacao do professor. Expoente vindo de memoria ou expressao tem tipo verificado como `int`.
 - **Evidencia:** `docs/regras_tipos_sequentes.md`, `docs/auditoria_semantica_tipos_fase3.md`, `type_system.py`, `tests/test_auditoria_semantica_tipos.py`, `README.md`.
-- **Duvida residual:** baixa; confirmar com o professor apenas se ele espera prova estatica de positividade tambem para expoente nao literal.
+- **Duvida residual:** resolvida quanto ao literal `0`; manter apenas revisao geral da matriz de tipos na bateria final.
 
 ### INC-18 - Fonte bruto versus tokens serializados
 

@@ -156,7 +156,7 @@ class AuditoriaEntregaTests(unittest.TestCase):
         self.assertIn("Assembly nao e gerado para programas invalidos", decisoes)
         self.assertIn("varrer o arquivo inteiro", decisoes)
         self.assertIn("Perguntas prioritarias para o professor", auditoria)
-        self.assertIn("expoente literal `0`", auditoria)
+        self.assertIn("expoente literal `0` e aceito", auditoria)
 
     def test_cada_programa_valido_cobre_requisitos_minimos(self) -> None:
         for caminho in PROGRAMAS_VALIDOS:
