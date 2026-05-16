@@ -9,7 +9,7 @@ Esta auditoria corresponde ao PR 08 planejado para a Fase 3. O objetivo e garant
 | Ponto | Tratamento adotado | Evidencia |
 | --- | --- | --- |
 | Assembly apenas para validos | `AnalisadorSemantico.py` gera `generated/ultimo_assembly.s` somente quando nao existem erros lexicos, sintaticos ou semanticos. | `tests/test_auditoria_assembly_cpulator.py` |
-| Bloqueio em invalidos | Quando ha erro, `ultimo_assembly.s` recebe apenas marcador textual e nao contem `_start` nem diretivas de programa ARM. | `test_programa_invalido_bloqueia_assembly_e_grava_marcador` |
+| Bloqueio em invalidos | Quando ha erro, a execucao registra o bloqueio no console e nos relatorios, mas nao sobrescreve `ultimo_assembly.s`; assim o CPulator continua recebendo apenas o ultimo Assembly valido. | `test_programa_invalido_bloqueia_assembly_e_preserva_ultimo_valido` |
 | Cabecalho ARMv7 | O Assembly valido contem `.syntax unified`, `.arch armv7-a`, `.fpu vfpv3`, `.global _start`, secao `.text` e `_start`. | `test_programas_validos_geram_assembly_armv7_cpulator` |
 | Saida no CPulator | A rotina JTAG UART usa endereco `0xFF201000` e labels `jtag_putc`, `puts_jtag`, `print_qword_hex_d0` e `print_newline`. | `codegen_arm.py`, `test_programas_validos_geram_assembly_armv7_cpulator` |
 | Rotinas aritmeticas | `/` e `//` usam `intdiv_double`, `%` usa `mod_double`, `^` usa `pow_double_int`, e expoente `0` cai em `pow_double_int_zero`. | `test_operadores_especificos_usam_rotinas_runtime_esperadas` |
@@ -22,6 +22,7 @@ Esta auditoria corresponde ao PR 08 planejado para a Fase 3. O objetivo e garant
 3. Carregar o conteudo no CPulator em ARMv7 DE1-SoC.
 4. Conferir que o programa contem `_start`, loop final `program_end` e rotinas JTAG UART.
 5. Executar e observar saidas em hexadecimal prefixadas por `L<n>: 0x`, uma por declaracao processada.
+6. Executar `python AnalisadorSemantico.py teste4_semantico_invalido.txt` e confirmar que o console bloqueia o Assembly, sem substituir o arquivo `.s` valido usado no CPulator.
 
 ## Validacao manual no CPulator
 

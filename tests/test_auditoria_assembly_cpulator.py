@@ -86,17 +86,23 @@ class AuditoriaAssemblyCpulatorTests(unittest.TestCase):
         ]:
             self.assertIn(trecho, assembly)
 
-    def test_programa_invalido_bloqueia_assembly_e_grava_marcador(self) -> None:
+    def test_programa_invalido_bloqueia_assembly_e_preserva_ultimo_valido(self) -> None:
+        valido = self._executar_cli("teste3.txt")
+        self.assertEqual(valido.returncode, 0, valido.stderr)
+        assembly_valido = ASSEMBLY_PATH.read_text(encoding="utf-8")
+        self.assertIn("_start:", assembly_valido)
+
         resultado = self._executar_cli("teste4_semantico_invalido.txt")
 
         self.assertEqual(resultado.returncode, 1)
         self.assertIn("Assembly nao gerado porque ha erros lexicos, sintaticos ou semanticos.", resultado.stdout)
-        assembly = ASSEMBLY_PATH.read_text(encoding="utf-8")
+        assembly_apos_invalido = ASSEMBLY_PATH.read_text(encoding="utf-8")
         relatorio_execucao = RELATORIO_EXECUCAO_PATH.read_text(encoding="utf-8")
 
-        self.assertIn("Assembly nao gerado", assembly)
-        self.assertNotIn(".global _start", assembly)
-        self.assertNotIn("_start:", assembly)
+        self.assertEqual(assembly_apos_invalido, assembly_valido)
+        self.assertIn(".global _start", assembly_apos_invalido)
+        self.assertIn("_start:", assembly_apos_invalido)
+        self.assertNotIn("Assembly nao gerado", assembly_apos_invalido)
         self.assertIn("- Assembly ARMv7: nao gerado por erros na analise", relatorio_execucao)
 
     def _executar_cli(self, arquivo: str) -> subprocess.CompletedProcess[str]:

@@ -11,7 +11,7 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 | INC-05 | Booleanos literais sao `TRUE` e `FALSE`; logicos sao `AND`, `OR` e `NOT`; relacionais retornam `bool`. |
 | INC-06 | Controle segue a sintaxe pos-fixada da Fase 2: `(<expr> <stmt> IF)`, `(<expr> <stmt> <stmt> IFELSE)`, `(<expr> <stmt> WHILE)` e `(<stmt> <stmt> SEQ)`. Condicoes devem ser `bool`. |
 | INC-07 | Ha tres arquivos validos completos em `tests/teste1.txt`, `tests/teste2.txt`, `tests/teste3.txt` e arquivos invalidos separados em `tests/invalidos/`. Assim a suite cobre programas semanticamente validos e erros intencionais sem misturar as finalidades. |
-| INC-08 | Assembly nao e gerado para programas invalidos. O relatorio explica a interrupcao e `generated/ultimo_assembly.s` recebe apenas um marcador textual quando a ultima execucao falha. |
+| INC-08 | Assembly nao e gerado para programas invalidos. O relatorio explica a interrupcao e `generated/ultimo_assembly.s` nao e sobrescrito quando a ultima execucao falha, preservando apenas o ultimo Assembly valido para uso no CPulator. |
 | INC-09 | O parser constroi AST; a geracao de Assembly ocorre depois da arvore atribuida e da validacao semantica. Isso evita emissao parcial para programa invalido. |
 | INC-10 | A documentacao gera gramatica, FIRST/FOLLOW e tabela LL(1) tambem para a versao aumentada. |
 | INC-11 | `(N RES)` exige `N > 0` e referencia uma declaracao de topo anterior que produza valor utilizavel. START, END e comentarios nao entram na contagem. |

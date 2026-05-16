@@ -71,8 +71,8 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 ### INC-08 - Assembly para validos versus invalidos
 
 - **Risco do dossie:** algumas secoes pedem Assembly, outras bloqueiam Assembly em erro.
-- **Tratamento adotado:** Assembly so e gerado quando nao ha erro lexico, sintatico ou semantico; invalidos recebem relatorio e marcador textual no arquivo de Assembly.
-- **Evidencia:** `main.py`, `tests/test_auditoria_entrega.py`, `tests/test_fase2_pipeline.py`, `generated/ultimo_assembly.s`.
+- **Tratamento adotado:** Assembly so e gerado quando nao ha erro lexico, sintatico ou semantico; invalidos recebem relatorio de bloqueio e nao sobrescrevem o ultimo `.s` valido.
+- **Evidencia:** `main.py`, `tests/test_auditoria_entrega.py`, `tests/test_auditoria_assembly_cpulator.py`, `tests/test_fase2_pipeline.py`, `generated/ultimo_assembly.s`.
 - **Duvida residual:** baixa; manter a mensagem de bloqueio muito clara para avaliacao.
 
 ### INC-09 - Momento de geracao de Assembly

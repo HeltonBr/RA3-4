@@ -125,6 +125,7 @@ As regras formais em calculo de sequentes estao em `docs/regras_tipos_sequentes.
 - `docs/auditoria_gramatica_parser_fase3.md`: auditoria da gramatica LL(1), parser, recuperacao sintatica e comentarios.
 - `docs/auditoria_semantica_tipos_fase3.md`: auditoria da matriz semantica, tipos, `RES`, controle e potenciacao.
 - `docs/auditoria_assembly_cpulator_fase3.md`: auditoria da geracao ARMv7, bloqueio em invalidos e roteiro CPulator.
+- `docs/validacao_humana_completa_fase3.md`: linha de validacao humana com comandos oficiais, entradas surpresa e criterios de aceite.
 - `docs/gramatica_atribuida.md`: gramatica LL(1) aumentada.
 - `docs/first_follow.md`: conjuntos FIRST/FOLLOW.
 - `docs/tabela_ll1.md`: tabela LL(1).

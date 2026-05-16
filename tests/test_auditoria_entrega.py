@@ -49,6 +49,7 @@ ARQUIVOS_OBRIGATORIOS = [
     ROOT / "docs" / "auditoria_gramatica_parser_fase3.md",
     ROOT / "docs" / "auditoria_semantica_tipos_fase3.md",
     ROOT / "docs" / "auditoria_assembly_cpulator_fase3.md",
+    ROOT / "docs" / "validacao_humana_completa_fase3.md",
     ROOT / "docs" / "estrategia_diagnosticos_acumulados.md",
     ROOT / "docs" / "gramatica_atribuida.md",
     ROOT / "docs" / "matriz_cobertura_requisitos.md",

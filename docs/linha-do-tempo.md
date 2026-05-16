@@ -76,4 +76,11 @@ python AnalisadorSemantico.py tests/teste3.txt
 
 - Auditoria especifica criada em `docs/auditoria_assembly_cpulator_fase3.md`.
 - Testes confirmam que programas validos geram Assembly ARMv7 com `_start`, JTAG UART e rotinas de runtime.
-- Testes confirmam que programa invalido bloqueia Assembly executavel e grava marcador textual em `generated/ultimo_assembly.s`.
+- Testes confirmam que programa invalido bloqueia Assembly executavel sem sobrescrever `generated/ultimo_assembly.s`, preservando o ultimo Assembly valido para CPulator.
+
+## Checkpoint 12 - Validacao humana completa
+
+- PR 08 integrado na `main` e `GitHubmirror` sincronizado antes da nova etapa.
+- Entradas surpresa adicionadas em `tests/autoria/` para simular prova de autoria com programas nao copiados dos oficiais.
+- Roteiro `docs/validacao_humana_completa_fase3.md` e script `validar_linha_humana.ps1` criados para repetir a linha completa de validacao manual.
+- Linha humana completa executada em 16/05/2026 com 52 testes automatizados `OK` e artefatos finais regenerados com `teste3.txt`.
