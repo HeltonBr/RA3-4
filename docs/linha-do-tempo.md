@@ -59,3 +59,21 @@ python AnalisadorSemantico.py tests/teste3.txt
 - Dossie de inconformidades relido e convertido em quadro de auditoria com decisoes, evidencias e perguntas ao professor.
 - Proximas etapas reorganizadas para auditoria gramatical, semantica, Assembly, entradas externas, documentacao de defesa e pre-auditoria final.
 - Semana pesada de testes mantida de 19/05/2026 a 25/05/2026, sem novas features e com foco em regressao, evidencias e congelamento.
+
+## Checkpoint 9 - Auditoria gramatical
+
+- Gramatica LL(1), FIRST/FOLLOW e tabela LL(1) auditados em documento proprio.
+- Testes adicionados para recuperacao sintatica, expressoes vazias, declaracoes malformadas, `START`/`END` e comentarios sem regex.
+- PR 06 integrado na `main` antes do inicio da auditoria semantica.
+
+## Checkpoint 10 - Auditoria semantica e tipos
+
+- Matriz de tipos reforcada para aritmetica, relacionais, logicos, controle, reatribuicao e `RES`.
+- Dossie atualizado com orientacoes do professor: `//` aceito como divisao inteira e `0` aceito como inteiro positivo em potenciacao.
+- PR 07 integrado na `main` em 15/05/2026 com suite completa aprovada.
+
+## Checkpoint 11 - Assembly e CPulator
+
+- Auditoria especifica criada em `docs/auditoria_assembly_cpulator_fase3.md`.
+- Testes confirmam que programas validos geram Assembly ARMv7 com `_start`, JTAG UART e rotinas de runtime.
+- Testes confirmam que programa invalido bloqueia Assembly executavel e grava marcador textual em `generated/ultimo_assembly.s`.
