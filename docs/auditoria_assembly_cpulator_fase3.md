@@ -23,6 +23,23 @@ Esta auditoria corresponde ao PR 08 planejado para a Fase 3. O objetivo e garant
 4. Conferir que o programa contem `_start`, loop final `program_end` e rotinas JTAG UART.
 5. Executar e observar saidas em hexadecimal prefixadas por `L<n>: 0x`, uma por declaracao processada.
 
+## Validacao manual no CPulator
+
+Validacao realizada em 15/05/2026 com o Assembly gerado por `teste3.txt`.
+
+Resultado de compilacao no CPulator:
+
+```text
+CPUlator has started with system ARMv7 DE1-SoC containing a ARMv7 processor.
+Compiling...
+Code and data loaded from ELF executable into memory. Total size is 3984 bytes.
+Assemble: arm-eabi-as -mfloat-abi=softfp -march=armv7-a -mcpu=cortex-a9 -mfpu=neon-fp16 --gdwarf2
+Link: arm-eabi-ld --script build_arm.ld -e _start -u _start
+Compile succeeded.
+```
+
+Resultado observado no JTAG UART: foram emitidas linhas `L3` a `L26`, cada uma no formato `L<n>: 0x...`, confirmando que o programa entrou em `_start`, avaliou as 22 declaracoes do arquivo valido, imprimiu os resultados por linha e permaneceu no loop final `program_end`.
+
 ## Decisao de entrega
 
 O Assembly e artefato de saida, nao log de console. A saida padrao deve mostrar relatorio, arvore sintatica desenhada e confirmacao do caminho gerado. Para programa invalido, a entrega preserva os demais artefatos de diagnostico, mas bloqueia o Assembly executavel.
