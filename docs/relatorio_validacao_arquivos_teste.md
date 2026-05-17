@@ -29,10 +29,9 @@ A execucao de `teste4_semantico_invalido.txt` deve listar erros semanticos e blo
 
 ```powershell
 python AnalisadorSemantico.py teste3.txt
-python AnalisadorSemantico.py teste3.txt --mostrar-arvore
 ```
 
-Para programas validos, a saida padrao imprime a arvore sintatica desenhada. A arvore tambem fica persistida em:
+Para programas validos, a saida padrao ja imprime a arvore sintatica desenhada. A arvore tambem fica persistida em:
 
 - `docs/arvore_ultima_execucao.md`;
 - `generated/arvore_ultima_execucao.json`;

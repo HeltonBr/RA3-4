@@ -19,12 +19,6 @@ A Fase 3 reaproveita a base da Fase 2 e acrescenta analise semantica. O programa
 
 Apos clonar ou abrir o repositorio, todos os comandos devem ser executados na raiz do projeto, isto e, na pasta que contem `AnalisadorSemantico.py`.
 
-No ambiente local usado para preparar esta entrega, essa pasta e:
-
-```powershell
-cd "C:\Users\Helton\OneDrive - Grupo Marista\Puc PR\Nono Período\Linguagens Formais e Compiladores 2026\Trabalhos\Fase 3 - Analisador Semântico\GitHub"
-```
-
 Os arquivos oficiais da entrega ficam na mesma pasta do codigo-fonte, ao lado de `AnalisadorSemantico.py`:
 
 - `teste1.txt`
@@ -102,7 +96,7 @@ python -m unittest discover -s tests -p "test_*.py" -v
 - `int + real` promove o resultado para `real`.
 - `/`, `//` e `%` aceitam apenas `int` e `int`; `//` e tratado como divisao inteira.
 - `|` aceita operandos numericos e retorna `real`.
-- `^` exige base numerica e expoente `int`; por orientacao do professor, o literal `0` e considerado inteiro positivo nesta linguagem.
+- `^` exige base numerica e expoente `int`; por orientacao do professor, o literal `0` e aceito como caso neutro/valido da potenciacao.
 - Relacionais de ordem aceitam apenas numeros.
 - `==` e `!=` aceitam numeros compativeis ou `bool` com `bool`.
 - `IF`, `IFELSE` e `WHILE` exigem condicao `bool`.

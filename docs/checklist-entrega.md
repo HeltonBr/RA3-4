@@ -70,7 +70,6 @@
 
 ```powershell
 python AnalisadorSemantico.py teste3.txt
-python AnalisadorSemantico.py teste3.txt --mostrar-arvore
 python -m unittest discover -s tests -p "test_*.py" -v
 .\sincronizar_para_githubmirror.ps1
 ```
