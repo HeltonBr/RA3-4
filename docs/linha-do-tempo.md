@@ -41,7 +41,7 @@ python AnalisadorSemantico.py tests/teste3.txt
 
 - `teste1.txt`, `teste2.txt` e `teste3.txt` publicados tambem na raiz do codigo-fonte.
 - CLI passou a imprimir relatorio de validacao com lexico, sintatico, semantico, cobertura detectada e status do Assembly.
-- Arvore sintatica pode ser exibida por `--mostrar-arvore` ou `--relatorio-completo`.
+- Arvore sintatica passou a ser exibida automaticamente na saida padrao dos programas validos.
 - Assembly permanece apenas em arquivo, com confirmacao de geracao ou bloqueio no console.
 
 ## Checkpoint 7 - Matriz e cobertura dos testes
@@ -69,7 +69,7 @@ python AnalisadorSemantico.py tests/teste3.txt
 ## Checkpoint 10 - Auditoria semantica e tipos
 
 - Matriz de tipos reforcada para aritmetica, relacionais, logicos, controle, reatribuicao e `RES`.
-- Dossie atualizado com orientacoes do professor: `//` aceito como divisao inteira e `0` aceito como inteiro positivo em potenciacao.
+- Dossie atualizado com orientacoes do professor: `//` aceito como divisao inteira e `0` aceito como caso neutro/valido da potenciacao.
 - PR 07 integrado na `main` em 15/05/2026 com suite completa aprovada.
 
 ## Checkpoint 11 - Assembly e CPulator
@@ -84,3 +84,9 @@ python AnalisadorSemantico.py tests/teste3.txt
 - Entradas surpresa adicionadas em `tests/autoria/` para simular prova de autoria com programas nao copiados dos oficiais.
 - Roteiro `docs/validacao_humana_completa_fase3.md` e script `validar_linha_humana.ps1` criados para repetir a linha completa de validacao manual.
 - Linha humana completa executada em 16/05/2026 com 52 testes automatizados `OK` e artefatos finais regenerados com `teste3.txt`.
+
+## Checkpoint 13 - Fechamento documental
+
+- Revisao externa da pasta publica convertida em ajustes documentais sem mudanca de parser, semantica ou geracao de codigo.
+- README ajustado para priorizar execucao pela raiz do repositorio e registrar o expoente `0` como caso neutro/valido da potenciacao por orientacao do professor.
+- Checklist final atualizado para diferenciar itens atendidos de itens futuros de congelamento programado.

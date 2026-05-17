@@ -227,6 +227,7 @@ class AuditoriaEntregaTests(unittest.TestCase):
         self.assertIn("|-- Statement[1]", resultado.stdout)
         self.assertIn("`--", resultado.stdout)
         self.assertIn("|       `-- MemoryWrite name=D\n|           `-- BinaryOp operator='+'", resultado.stdout)
+        self.assertIn("`-- Statement[22] line=26\n    `-- While", resultado.stdout)
         self.assertNotIn("_start:", resultado.stdout)
         self.assertNotIn("puts_jtag", resultado.stdout)
 

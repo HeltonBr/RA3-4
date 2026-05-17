@@ -6,7 +6,7 @@ Objetivo: registrar, em linguagem de entrega, como cada inconformidade do dossie
 
 ## Perguntas prioritarias para o professor
 
-Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito de divisao inteira, e `0` foi confirmado como inteiro positivo para a regra de potenciacao. Os itens abaixo permanecem como rastreio do que foi perguntado ou ainda merece confirmacao fina.
+Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito de divisao inteira, e `0` foi confirmado pelo professor como caso neutro/valido da potenciacao. Os itens abaixo permanecem como rastreio do que foi perguntado ou ainda merece confirmacao fina.
 
 1. **INC-03 - memoria nao definida:** na Fase 3, a regra de "variavel deve ser definida antes do uso" deve prevalecer sobre a regra historica de `(MEM)` retornar `0` quando nao inicializada?
 2. **INC-05 - booleanos/logicos:** a escolha `TRUE`, `FALSE`, `AND`, `OR`, `NOT` e operadores relacionais simbolicos e aceitavel como convencao documentada pelo grupo?
@@ -14,7 +14,7 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 4. **INC-07 - arquivos de teste:** a interpretacao correta e manter tres arquivos validos completos e arquivos invalidos separados, em vez de misturar erros em todos os arquivos?
 5. **INC-11 - `RES`:** `N=0` deve ser erro semantico, ja que nao referencia linha anterior?
 6. **INC-12 - comentarios:** comentarios `*{ ... }*` devem ser nao aninhados, com erro lexico quando nao fechados?
-7. **INC-17 - potenciacao:** resolvido parcialmente; `0` e aceito como inteiro positivo. Para expoente vindo de memoria ou expressao, o codigo garante estaticamente o tipo `int`.
+7. **INC-17 - potenciacao:** resolvido parcialmente; `0` e aceito como caso neutro/valido da potenciacao. Para expoente vindo de memoria ou expressao, o codigo garante estaticamente o tipo `int`.
 8. **INC-18 - entrada:** a entrega final deve priorizar arquivo-fonte bruto por argumento, mantendo tokens serializados apenas como compatibilidade?
 
 ## Quadro ponto a ponto
@@ -133,8 +133,8 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 
 ### INC-17 - Potenciacao
 
-- **Risco do dossie:** fases anteriores exigiam expoente inteiro positivo; Fase 3 fala apenas em compatibilidade.
-- **Tratamento adotado:** expoente deve ser `int`; base deve ser numerica; expoente literal `0` e aceito como inteiro positivo por orientacao do professor. Expoente vindo de memoria ou expressao tem tipo verificado como `int`.
+- **Risco do dossie:** fases anteriores indicavam restricao positiva para expoente; Fase 3 fala apenas em compatibilidade.
+- **Tratamento adotado:** expoente deve ser `int`; base deve ser numerica; expoente literal `0` e aceito como caso neutro/valido da potenciacao por orientacao do professor. Expoente vindo de memoria ou expressao tem tipo verificado como `int`.
 - **Evidencia:** `docs/regras_tipos_sequentes.md`, `docs/auditoria_semantica_tipos_fase3.md`, `type_system.py`, `tests/test_auditoria_semantica_tipos.py`, `README.md`.
 - **Duvida residual:** resolvida quanto ao literal `0`; manter apenas revisao geral da matriz de tipos na bateria final.
 

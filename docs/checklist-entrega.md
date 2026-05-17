@@ -2,7 +2,7 @@
 
 ## Identificacao
 
-- [ ] Nome do repositorio igual ao grupo Canvas: `RA3-4` ou nome exato confirmado.
+- [x] Nome do repositorio igual ao grupo Canvas: `RA3-4`.
 - [x] Data final de congelamento documentada: 25/05/2026 as 23:59.
 - [x] Ponto de entrada principal: `AnalisadorSemantico.py`.
 - [x] Cabecalho obrigatorio nos arquivos principais.
@@ -70,12 +70,11 @@
 
 ```powershell
 python AnalisadorSemantico.py teste3.txt
-python AnalisadorSemantico.py teste3.txt --mostrar-arvore
 python -m unittest discover -s tests -p "test_*.py" -v
 .\sincronizar_para_githubmirror.ps1
 ```
 
-## Congelamento
+## Congelamento programado
 
 - [x] PRs diarios planejados ate 18/05/2026.
 - [x] Bateria pesada planejada de 19/05/2026 a 25/05/2026.
