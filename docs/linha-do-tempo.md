@@ -84,3 +84,9 @@ python AnalisadorSemantico.py tests/teste3.txt
 - Entradas surpresa adicionadas em `tests/autoria/` para simular prova de autoria com programas nao copiados dos oficiais.
 - Roteiro `docs/validacao_humana_completa_fase3.md` e script `validar_linha_humana.ps1` criados para repetir a linha completa de validacao manual.
 - Linha humana completa executada em 16/05/2026 com 52 testes automatizados `OK` e artefatos finais regenerados com `teste3.txt`.
+
+## Checkpoint 13 - Fechamento documental
+
+- Revisao externa da pasta publica convertida em ajustes documentais sem mudanca de parser, semantica ou geracao de codigo.
+- README ajustado para priorizar execucao pela raiz do repositorio e registrar o expoente `0` como inteiro positivo nesta linguagem por orientacao do professor.
+- Checklist final atualizado para diferenciar itens atendidos de itens futuros de congelamento programado.

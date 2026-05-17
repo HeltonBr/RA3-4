@@ -17,7 +17,9 @@ A Fase 3 reaproveita a base da Fase 2 e acrescenta analise semantica. O programa
 
 ## Execucao
 
-Todos os comandos devem ser executados na pasta que contem `AnalisadorSemantico.py`. No ambiente local desta entrega, essa pasta e:
+Apos clonar ou abrir o repositorio, todos os comandos devem ser executados na raiz do projeto, isto e, na pasta que contem `AnalisadorSemantico.py`.
+
+No ambiente local usado para preparar esta entrega, essa pasta e:
 
 ```powershell
 cd "C:\Users\Helton\OneDrive - Grupo Marista\Puc PR\Nono Período\Linguagens Formais e Compiladores 2026\Trabalhos\Fase 3 - Analisador Semântico\GitHub"
@@ -44,14 +46,15 @@ Para executar o arquivo semantico invalido oficial:
 python AnalisadorSemantico.py teste4_semantico_invalido.txt
 ```
 
-A execucao padrao imprime um relatorio de validacao com as fases executadas, caracteristicas detectadas no arquivo, confirmacao dos artefatos e, para todo programa valido que gera Assembly, a arvore sintatica desenhada com ramos e folhas em ASCII. O Assembly nao e impresso no console; o conteudo fica em `generated/ultimo_assembly.s`.
-
-Comandos auxiliares para auditoria da arvore:
+Para executar o `teste3.txt`, arquivo usado como referencia canonica dos artefatos finais:
 
 ```powershell
-python AnalisadorSemantico.py teste3.txt --mostrar-arvore
-python AnalisadorSemantico.py teste3.txt --relatorio-completo
+python AnalisadorSemantico.py teste3.txt
 ```
+
+A execucao padrao imprime um relatorio de validacao com as fases executadas, caracteristicas detectadas no arquivo, confirmacao dos artefatos e, para todo programa valido que gera Assembly, a arvore sintatica desenhada com ramos e folhas em ASCII. Portanto, ao executar `teste3.txt`, a arvore sintatica ja e exibida automaticamente no console conforme solicitado na atividade. O Assembly nao e impresso no console; o conteudo fica em `generated/ultimo_assembly.s`.
+
+Em qualquer arquivo analisado, valido ou invalido, o analisador procura varrer a entrada ate o final e acumular todos os erros lexicos, sintaticos e semanticos que for capaz de identificar, sem interromper a auditoria no primeiro problema encontrado.
 
 ## Testes
 
@@ -99,12 +102,12 @@ python -m unittest discover -s tests -p "test_*.py" -v
 - `int + real` promove o resultado para `real`.
 - `/`, `//` e `%` aceitam apenas `int` e `int`; `//` e tratado como divisao inteira.
 - `|` aceita operandos numericos e retorna `real`.
-- `^` exige base numerica e expoente `int`; por orientacao do professor, expoente literal `0` e aceito como inteiro positivo.
+- `^` exige base numerica e expoente `int`; por orientacao do professor, o literal `0` e considerado inteiro positivo nesta linguagem.
 - Relacionais de ordem aceitam apenas numeros.
 - `==` e `!=` aceitam numeros compativeis ou `bool` com `bool`.
 - `IF`, `IFELSE` e `WHILE` exigem condicao `bool`.
 - Assembly nao e gerado para programas com erro lexico, sintatico ou semantico.
-- A analise do CLI varre o arquivo inteiro e acumula erros lexicos, sintaticos e semanticos; ela nao para no primeiro problema encontrado.
+- A analise do CLI varre o arquivo inteiro e acumula erros lexicos, sintaticos e semanticos que for capaz de identificar; ela nao para no primeiro problema encontrado.
 
 As regras formais em calculo de sequentes estao em `docs/regras_tipos_sequentes.md`.
 
