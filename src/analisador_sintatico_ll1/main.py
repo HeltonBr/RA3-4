@@ -145,12 +145,7 @@ def executar_pipeline(arquivo: Path) -> PipelineExecution:
     )
     salvar_documentacao_gramatica(entrada.grammar, docs_dir)
 
-    if diagnostics:
-        (generated_dir / "ultimo_assembly.s").write_text(
-            "@ Assembly nao gerado: a ultima execucao possui erros lexicos, sintaticos ou semanticos.\n",
-            encoding="utf-8",
-        )
-    else:
+    if not diagnostics:
         assembly = gerarAssembly(arvore_atribuida)
         (generated_dir / "ultimo_assembly.s").write_text(assembly, encoding="utf-8")
 

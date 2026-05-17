@@ -57,9 +57,11 @@ Os tres arquivos validos tambem ficam sincronizados em `tests/teste1.txt`, `test
 | Tabela de simbolos | `generated/tabela_simbolos_ultima_execucao.json` e `docs/tabela_simbolos.md` | `test_pipeline_semantico_end_to_end_em_memoria` |
 | Arvore sintatica atribuida | `generated/arvore_atribuida_ultima_execucao.json` e `docs/arvore_atribuida_ultima_execucao.md` | `test_pipeline_semantico_end_to_end_em_memoria` |
 | Arvore sintatica desenhada no console | Saida padrao de programas validos imprime raiz, ramos e folhas em ASCII | `test_cli_processa_programa_valido_e_atualiza_artefatos` |
-| Assembly apenas para programa valido | `generated/ultimo_assembly.s` | `test_semantico_bloqueia_assembly_com_erro`, `test_programa_invalido_bloqueia_assembly_e_grava_marcador` |
+| Assembly apenas para programa valido | `generated/ultimo_assembly.s` | `test_semantico_bloqueia_assembly_com_erro`, `test_programa_invalido_bloqueia_assembly_e_preserva_ultimo_valido` |
 | Assembly nao impresso no console | CLI apenas confirma caminho do arquivo | `test_cli_processa_programa_valido_e_atualiza_artefatos` |
 | Compatibilidade CPulator ARMv7 | Diretivas ARMv7, `_start`, JTAG UART e rotinas aritmeticas em `generated/ultimo_assembly.s` | `test_programas_validos_geram_assembly_armv7_cpulator`, `test_operadores_especificos_usam_rotinas_runtime_esperadas` |
+| Entradas externas do professor | Arquivos surpresa validos e invalidos em `tests/autoria/` | `test_entradas_surpresa_simulam_prova_do_professor` |
+| Validacao humana completa | Roteiro e script com a sequencia manual de suite, oficiais, invalidos e entradas surpresa | `test_roteiro_e_script_de_validacao_humana_estao_presentes` |
 
 ## Comando de auditoria
 

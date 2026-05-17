@@ -46,7 +46,7 @@ O Assembly nao e impresso no console. Para programas validos, o CLI confirma:
 Assembly ARMv7 gerado em: generated/ultimo_assembly.s
 ```
 
-Para programas invalidos, o arquivo `generated/ultimo_assembly.s` recebe apenas uma mensagem de bloqueio, preservando a regra de nao gerar codigo a partir de entrada invalida.
+Para programas invalidos, o console e os relatorios registram o bloqueio e `generated/ultimo_assembly.s` nao e sobrescrito. Assim, se havia um Assembly valido anterior, ele continua sendo o unico arquivo `.s` carregavel no CPulator.
 
 ## Testes automatizados
 
