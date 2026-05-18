@@ -56,18 +56,14 @@ Na validacao final da entrega, `teste3.txt` deve ser executado por ultimo para d
 
 ## Testes
 
-As copias sincronizadas dos tres arquivos validos oficiais tambem ficam em `tests/` para uso da suite automatizada:
+A entrega oficial usa os quatro arquivos de teste localizados na raiz do projeto, ao lado de `AnalisadorSemantico.py`: `teste1.txt`, `teste2.txt`, `teste3.txt` e `teste4_semantico_invalido.txt`.
 
-- `tests/teste1.txt`
-- `tests/teste2.txt`
-- `tests/teste3.txt`
-
-Casos complementares ficam separados por finalidade:
+A pasta `tests/` nao substitui os arquivos oficiais da raiz. Ela e apenas infraestrutura de regressao automatizada do projeto, com casos complementares separados por finalidade:
 
 - `tests/invalidos/`: entradas com erros lexicos, sintaticos e semanticos intencionais.
 - `tests/variacoes/`: entradas com variacoes de formato, comentarios e espacamento.
 
-Exemplos de execucao manual:
+Exemplos opcionais de execucao manual desses casos complementares:
 
 ```powershell
 python AnalisadorSemantico.py tests\variacoes\comentario_multilinha.txt
