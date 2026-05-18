@@ -19,7 +19,7 @@ A Fase 3 integra analise lexica, parser LL(1), analise semantica, tabela de simb
 
 Apos clonar ou abrir o repositorio, todos os comandos devem ser executados na raiz do projeto, isto e, na pasta que contem `AnalisadorSemantico.py`.
 
-O programa recebe sempre o arquivo de teste por argumento de linha de comando e nao possui menu interativo.
+O programa recebe sempre o arquivo-fonte por argumento de linha de comando e nao possui menu interativo.
 
 Os arquivos oficiais da entrega ficam na mesma pasta do codigo-fonte, ao lado de `AnalisadorSemantico.py`:
 
@@ -52,36 +52,20 @@ A execucao padrao imprime um relatorio de validacao com as fases executadas, car
 
 Em qualquer arquivo analisado, valido ou invalido, o analisador procura varrer a entrada ate o final e acumular todos os erros lexicos, sintaticos e semanticos que for capaz de identificar, sem interromper a auditoria no primeiro problema encontrado.
 
+Todos os arquivos-fonte usados como entrada de validacao ficam na raiz do projeto, ao lado de `AnalisadorSemantico.py`. Nao ha separacao em subpastas para entradas validas, invalidas ou complementares.
+
 Na validacao final da entrega, `teste3.txt` deve ser executado por ultimo para deixar os artefatos finais alinhados com um programa semanticamente valido.
 
-## Testes
-
-Todos os arquivos-fonte usados como entrada de teste ficam na raiz do projeto, ao lado de `AnalisadorSemantico.py`. Isso inclui os quatro arquivos oficiais da entrega e os casos complementares de auditoria, sem separar entradas validas ou invalidas em subpastas.
-
-Exemplos opcionais de execucao manual de casos complementares localizados na raiz:
+Sequencia final de validacao recomendada para os arquivos oficiais da raiz:
 
 ```powershell
-python AnalisadorSemantico.py comentario_multilinha.txt
-python AnalisadorSemantico.py semantico_mod_com_real.txt
-```
-
-Suite completa:
-
-```powershell
-python -m unittest discover -s tests -p "test_*.py" -v
-```
-
-Sequencia final de validacao recomendada:
-
-```powershell
-python -m unittest discover -s tests -p "test_*.py" -v
 python AnalisadorSemantico.py teste1.txt
 python AnalisadorSemantico.py teste2.txt
 python AnalisadorSemantico.py teste4_semantico_invalido.txt
 python AnalisadorSemantico.py teste3.txt
 ```
 
-Essa ordem valida a suite automatizada, executa os arquivos oficiais validos, confirma que o arquivo invalido acumula erros e bloqueia Assembly, e encerra com `teste3.txt` como base canonica de `generated/ultimo_assembly.s`, `generated/relatorio_execucao_ultima_execucao.txt`, `generated/arvore_ultima_execucao.json` e `generated/arvore_atribuida_ultima_execucao.json`.
+Essa ordem executa os arquivos oficiais validos da raiz, confirma que o arquivo invalido acumula erros e bloqueia Assembly, e encerra com `teste3.txt` como base canonica de `generated/ultimo_assembly.s`, `generated/relatorio_execucao_ultima_execucao.txt`, `generated/arvore_ultima_execucao.json` e `generated/arvore_atribuida_ultima_execucao.json`.
 
 ## Linguagem suportada
 
@@ -168,13 +152,13 @@ A geracao de Assembly usa a arvore sintatica atribuida como entrada e so ocorre 
 - `docs/gramatica_atribuida.md`: gramatica LL(1) aumentada.
 - `docs/first_follow.md`: conjuntos FIRST/FOLLOW.
 - `docs/tabela_ll1.md`: tabela LL(1).
-- `docs/matriz_cobertura_requisitos.md`: rastreabilidade entre enunciado, testes, implementacao e artefatos.
+- `docs/matriz_cobertura_requisitos.md`: rastreabilidade entre enunciado, arquivos-fonte de entrada, implementacao e artefatos.
 - `docs/regras_tipos_sequentes.md`: sistema de tipos em calculo de sequentes.
 - `docs/estrategia_diagnosticos_acumulados.md`: varredura completa e acumulacao de erros.
 - `docs/tabela_simbolos.md`: tabela de simbolos da ultima execucao.
 - `docs/arvore_atribuida_ultima_execucao.md`: arvore sintatica atribuida.
 - `docs/relatorio_erros_semanticos.md`: erros semanticos da ultima execucao.
-- `docs/relatorio_validacao_arquivos_teste.md`: roteiro de validacao dos arquivos de teste.
+- `docs/relatorio_validacao_arquivos_teste.md`: roteiro de validacao dos arquivos-fonte da raiz.
 
 ## CPulator
 
@@ -189,5 +173,4 @@ Repositorio GitHub: `https://github.com/HeltonBr/RA3-4`.
 O desenvolvimento e documentado por commits, branches e pull requests. Os registros de cronograma, auditoria e congelamento estao nos documentos de apoio:
 
 - `docs/cronograma_commits_prs_fase3.md`
-- `docs/bateria_pesada_testes_fase3.md`
 - `docs/checklist-entrega.md`
