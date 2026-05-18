@@ -1,83 +1,40 @@
-# Checklist Final de Entrega - Fase 3
+# Checklist de Entrega - Fase 3
 
-## Identificacao
+## Estrutura
 
-- [x] Nome do repositorio igual ao grupo Canvas: `RA3-4`.
-- [x] Data final de congelamento documentada: 25/05/2026 as 23:59.
-- [x] Ponto de entrada principal: `AnalisadorSemantico.py`.
-- [x] Cabecalho obrigatorio nos arquivos principais.
-- [x] README com instituicao, disciplina, professor, integrante, execucao e CPulator.
-- [x] `teste1.txt`, `teste2.txt` e `teste3.txt` disponiveis na mesma pasta do codigo-fonte.
-- [x] `teste4_semantico_invalido.txt` disponivel na raiz para demonstrar erros semanticos intencionais.
+- [x] `AnalisadorSemantico.py` na raiz.
+- [x] Entrada por argumento de linha de comando.
+- [x] Sem menu interativo.
+- [x] Arquivos oficiais na raiz: `teste1.txt`, `teste2.txt`, `teste3.txt`, `teste4_semantico_invalido.txt`.
+- [x] Sem subpastas para arquivos-fonte de entrada da linguagem.
 
-## Funcoes exigidas
+## Analise
 
-- [x] `prepararEntradaSemantica`
-- [x] `construirTabelaSimbolos`
-- [x] `verificarTipos`
-- [x] `gerarArvoreAtribuida`
-- [x] `gerarAssembly`
-
-## Semantica
-
-- [x] Comentarios `*{ ... }*`.
-- [x] Variavel definida antes do uso.
-- [x] Tabela de simbolos com tipo, definicao e usos.
-- [x] Tipos `int`, `real` e `bool`.
-- [x] Reatribuicao apenas com mesmo tipo.
-- [x] Condicoes de `IF`, `IFELSE` e `WHILE` obrigatoriamente `bool`.
-- [x] Bloqueio de Assembly em caso de erro.
-- [x] Varredura completa do arquivo com acumulacao de erros; o CLI nao interrompe no primeiro erro.
+- [x] Lexico integrado.
+- [x] Parser LL(1) integrado.
+- [x] Analise semantica com tabela de simbolos.
+- [x] Regras de tipos documentadas.
+- [x] Arvore sintatica atribuida gerada.
+- [x] Diagnosticos com linha, coluna e detalhe.
+- [x] Varredura completa dos erros recuperaveis.
 
 ## Artefatos
 
-- [x] `docs/cronograma_commits_prs_fase3.md`
-- [x] `docs/bateria_pesada_testes_fase3.md`
-- [x] `docs/auditoria_dossie_inconformidades_fase3.md`
-- [x] `docs/auditoria_gramatica_parser_fase3.md`
-- [x] `docs/auditoria_semantica_tipos_fase3.md`
-- [x] `docs/auditoria_assembly_cpulator_fase3.md`
-- [x] `docs/validacao_humana_completa_fase3.md`
-- [x] `docs/gramatica_atribuida.md`
-- [x] `docs/matriz_cobertura_requisitos.md`
-- [x] `docs/regras_tipos_sequentes.md`
-- [x] `docs/estrategia_diagnosticos_acumulados.md`
-- [x] `docs/tabela_simbolos.md`
-- [x] `docs/arvore_atribuida_ultima_execucao.md`
-- [x] `docs/relatorio_erros_semanticos.md`
-- [x] `docs/relatorio_validacao_arquivos_teste.md`
-- [x] `generated/relatorio_execucao_ultima_execucao.txt`
-- [x] `generated/ultimo_assembly.s`
-- [x] Arvore sintatica desenhada no console para todo programa valido que gera Assembly.
+- [x] `generated/tokens_ultima_execucao.txt`.
+- [x] `generated/arvore_ultima_execucao.json`.
+- [x] `generated/tabela_simbolos_ultima_execucao.json`.
+- [x] `generated/arvore_atribuida_ultima_execucao.json`.
+- [x] `generated/relatorio_erros_ultima_execucao.txt`.
+- [x] `generated/relatorio_execucao_ultima_execucao.txt`.
+- [x] `generated/ultimo_assembly.s`.
 
-## Testes
-
-- [x] Tres programas validos com 10+ linhas.
-- [x] Arquivos-fonte de teste mantidos diretamente na raiz do projeto.
-- [x] Arquivo semantico invalido oficial na raiz.
-- [x] Testes invalidos lexicos, sintaticos e semanticos.
-- [x] Teste com multiplos erros misturados no mesmo arquivo.
-- [x] Comentarios em linha inteira, fim de linha, entre tokens e bloco multilinha.
-- [x] Palavras reservadas nao aceitas como identificadores de memoria.
-- [x] Todos os operadores aritmeticos nos tres arquivos validos.
-- [x] Todos os operadores relacionais nos tres arquivos validos.
-- [x] Todos os operadores logicos nos tres arquivos validos.
-- [x] `IF`/`IFELSE`, `WHILE`, `SEQ`, `RES`, leitura e escrita de memoria nos tres validos.
-- [x] Auditoria de Assembly ARMv7/CPulator, incluindo bloqueio para invalidos.
-- [x] Entradas surpresa para simular prova de autoria do professor.
-
-## Validacao local
+## Fechamento
 
 ```powershell
+python AnalisadorSemantico.py teste1.txt
+python AnalisadorSemantico.py teste2.txt
+python AnalisadorSemantico.py teste4_semantico_invalido.txt
 python AnalisadorSemantico.py teste3.txt
-python -m unittest discover -s tests -p "test_*.py" -v
-.\sincronizar_para_githubmirror.ps1
 ```
 
-## Congelamento programado
-
-- [x] PRs diarios planejados ate 18/05/2026.
-- [x] Bateria pesada planejada de 19/05/2026 a 25/05/2026.
-- [ ] `GitHubmirror` sincronizado apos cada merge aprovado.
-- [ ] Pasta principal local congelada em 25/05/2026 as 23:59.
-- [ ] Repositorio GitHub congelado em 25/05/2026 as 23:59.
+O `teste3.txt` fica por ultimo como execucao canonica valida.

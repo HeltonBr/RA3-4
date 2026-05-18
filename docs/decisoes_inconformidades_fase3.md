@@ -1,6 +1,6 @@
 # Decisoes para Inconformidades da Fase 3
 
-Este documento registra como o projeto trata as inconsistencias detectadas no dossie. A regra usada na implementacao deve coincidir com a documentacao e com os testes.
+Este documento registra como o projeto trata as inconsistencias detectadas no dossie. A regra usada na implementacao deve coincidir com a documentacao e com os arquivos oficiais da entrega.
 
 | ID | Decisao adotada |
 | --- | --- |
@@ -10,7 +10,7 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 | INC-04 | `(V MEM)` define ou reatribui memoria com o tipo inferido de `V`: `int`, `real` ou `bool`. Reatribuicao so e aceita com o mesmo tipo. |
 | INC-05 | Booleanos literais sao `TRUE` e `FALSE`; logicos sao `AND`, `OR` e `NOT`; relacionais retornam `bool`. |
 | INC-06 | Controle segue a sintaxe pos-fixada definida para esta entrega: `(<expr> <stmt> IF)`, `(<expr> <stmt> <stmt> IFELSE)`, `(<expr> <stmt> WHILE)` e `(<stmt> <stmt> SEQ)`. Condicoes devem ser `bool`. |
-| INC-07 | Ha tres arquivos validos completos em `teste1.txt`, `teste2.txt`, `teste3.txt` e um invalido oficial em `teste4_semantico_invalido.txt`. Os demais arquivos-fonte de teste tambem ficam na raiz, junto de `AnalisadorSemantico.py`, sem subpastas para entradas validas ou invalidas. |
+| INC-07 | Ha tres arquivos validos completos em `teste1.txt`, `teste2.txt`, `teste3.txt` e um invalido oficial em `teste4_semantico_invalido.txt`. Esses quatro arquivos ficam na raiz, junto de `AnalisadorSemantico.py`, sem subpastas para entradas validas ou invalidas. |
 | INC-08 | Assembly nao e gerado para programas invalidos. O relatorio explica a interrupcao e `generated/ultimo_assembly.s` nao e sobrescrito quando a ultima execucao falha, preservando apenas o ultimo Assembly valido para uso no CPulator. |
 | INC-09 | O parser constroi AST; a geracao de Assembly ocorre depois da arvore atribuida e da validacao semantica. Isso evita emissao parcial para programa invalido. |
 | INC-10 | A documentacao gera gramatica, FIRST/FOLLOW e tabela LL(1) tambem para a versao aumentada. |
@@ -18,7 +18,7 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 | INC-12 | O lexico verifica `*{` antes de tratar `*` como multiplicacao, preserva linha/coluna e acusa comentario nao fechado. Comentarios nao sao aninhados. |
 | INC-13 | START, END, RES, SEQ, IF, IFELSE, WHILE, TRUE, FALSE, AND, OR e NOT sao reservadas e nao podem ser nomes de memoria. |
 | INC-14 | Os artefatos semanticos obrigatorios foram explicitados: tabela de simbolos, arvore atribuida, relatorio de erros e Assembly da ultima execucao valida. |
-| INC-15 | Os testes automatizados incluem cenarios lexicos, sintaticos e semanticos, com foco na Fase 3. |
+| INC-15 | A validacao publica da entrega usa os quatro arquivos oficiais da raiz, cobrindo programas validos e um programa invalido semantico. |
 | INC-16 | A matriz de tipos esta documentada em `docs/regras_tipos_sequentes.md` e implementada em `src/analisador_sintatico_ll1/type_system.py`. |
 | INC-17 | Potenciacao exige expoente `int`. Por orientacao do professor, o literal `0` e aceito como caso neutro/valido da potenciacao. |
 | INC-18 | A entrada de avaliacao da Fase 3 e sempre o arquivo-fonte bruto por argumento. A lista de tokens e apenas artefato gerado em `generated/tokens_ultima_execucao.txt`, nao entrada aceita pelo CLI. |

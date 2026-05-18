@@ -1,30 +1,17 @@
 # Auditoria Gramatical e Sintatica - Fase 3
 
-## Escopo
+Esta auditoria registra a situacao final da gramatica LL(1) usada pela entrega.
 
-Esta auditoria corresponde ao PR 06 planejado para a Fase 3. O objetivo e verificar se a gramatica LL(1), os conjuntos FIRST/FOLLOW, a tabela preditiva, o parser e a recuperacao de diagnosticos sintaticos permanecem coerentes com os requisitos do projeto e com o dossie de inconformidades.
+## Pontos verificados
 
-## Pontos auditados nesta primeira rodada
+| Item | Evidencia |
+| --- | --- |
+| Programa completo delimitado por `(START)` e `(END)` | `docs/gramatica_atribuida.md`, `docs/first_follow.md`, `docs/tabela_ll1.md` |
+| Operadores aritmeticos, relacionais, logicos, memoria, `RES` e controle | `teste1.txt`, `teste2.txt`, `teste3.txt` |
+| Arquivo invalido oficial reconhecido sintaticamente antes da analise semantica | `teste4_semantico_invalido.txt` |
+| Arvore sintatica desenhada no console para programas validos | Execucao de `python AnalisadorSemantico.py teste3.txt` |
+| Comentarios descartados pelo lexico sem interferir na AST | Arquivos validos oficiais e relatorio de execucao |
 
-| Ponto | Tratamento adotado | Evidencia |
-| --- | --- | --- |
-| Gramatica LL(1) aumentada | A gramatica canonica continua centralizada em `construirGramatica()` e gera FIRST, FOLLOW e tabela LL(1). | `src/analisador_sintatico_ll1/grammar.py`, `docs/gramatica.md`, `docs/first_follow.md`, `docs/tabela_ll1.md` |
-| Tokens criticos da Fase 3 | `START`, `END`, `RES`, `SEQ`, `IF`, `IFELSE`, `WHILE`, booleanos e operadores logicos/relacionais aparecem na tabela LL(1). | `tests/test_auditoria_gramatica_parser.py` |
-| Recuperacao sintatica por arquivo | O CLI acumula erros sintaticos estruturais em linhas diferentes, sem encerrar no primeiro problema. | `test_cli_acumula_erros_sintaticos_estruturais_sem_interromper` |
-| Comentarios sem regex no inventario | O reconhecimento lexico ja era caractere a caractere; agora o inventario do relatorio tambem usa varredura manual. | `src/analisador_sintatico_ll1/main.py`, `test_inventario_de_comentarios_nao_depende_de_regex` |
+## Decisao
 
-## Riscos do dossie tratados aqui
-
-- **INC-01 e INC-02:** tokens novos da Fase 3 e convencoes de booleanos/logicos continuam refletidos na gramatica e tabela LL(1).
-- **INC-06:** formas canonicas de controle permanecem pos-fixadas e documentadas em `docs/sintaxe_controle.md`.
-- **INC-10:** FIRST/FOLLOW e tabela LL(1) sao gerados e testados contra pontos criticos.
-- **INC-12 e INC-20:** comentarios `*{ ... }*` sao processados sem regex no lexico e sem regex no inventario do relatorio.
-- **INC-18:** a entrada de avaliacao aceita arquivo-fonte bruto por argumento; a lista de tokens e apenas artefato de saida em `generated/`.
-
-## Pendencias ainda abertas para o PR 06
-
-- Ampliar testes com entradas validas de aninhamento profundo e variacoes sintaticas fora dos quatro arquivos oficiais.
-- Conferir se todos os casos de `START`/`END` duplicados, ausentes ou fora de posicao possuem mensagens suficientemente claras.
-- Revisar se a tabela LL(1) documentada e regenerada apos cada execucao canonica permanece identica ao comportamento do parser.
-- Registrar no fechamento do PR 06 uma matriz curta ligando cada risco gramatical do dossie ao teste correspondente.
-
+A sintaxe de controle permanece pos-fixada: `IF`, `IFELSE`, `WHILE` e `SEQ` aparecem ao final das respectivas expressoes ou comandos. A validacao publica usa apenas os arquivos oficiais da raiz.

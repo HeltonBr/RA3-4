@@ -1,72 +1,37 @@
 # Matriz de Cobertura dos Requisitos - Fase 3
 
-Esta matriz consolida a rastreabilidade entre o enunciado, os arquivos oficiais, a implementacao e os testes automatizados. Ela deve ser revisada a cada etapa que alterar entrada, CLI, testes, semantica, artefatos ou README.
+Esta matriz registra a cobertura da entrega final usando apenas os arquivos-fonte oficiais que ficam na raiz do projeto, ao lado de `AnalisadorSemantico.py`.
 
-## Arquivos oficiais na raiz
+## Arquivos oficiais
 
-| Arquivo | Papel na entrega | Status |
+| Arquivo | Papel na entrega | Situacao |
 | --- | --- | --- |
-| `teste1.txt` | Programa semanticamente valido com cobertura completa de operadores, memoria, `RES`, controle, tipos e comentarios. | Coberto |
+| `teste1.txt` | Programa semanticamente valido com operadores, memoria, `RES`, controle, tipos e comentarios. | Coberto |
 | `teste2.txt` | Programa semanticamente valido com combinacoes alternativas de booleanos, controle e reatribuicoes validas. | Coberto |
-| `teste3.txt` | Programa semanticamente valido com expressoes aninhadas de complexidade crescente. | Coberto |
-| `teste4_semantico_invalido.txt` | Programa sintaticamente reconhecivel com erros semanticos intencionais acumulados. | Coberto |
+| `teste3.txt` | Programa semanticamente valido usado como execucao canonica final dos artefatos. | Coberto |
+| `teste4_semantico_invalido.txt` | Programa com erros semanticos intencionais para demonstrar diagnosticos acumulados e bloqueio de Assembly. | Coberto |
 
-Todos os arquivos-fonte usados como entrada de teste ficam na raiz do projeto, ao lado de `AnalisadorSemantico.py`. A suite automatizada consome esses arquivos diretamente da raiz.
+## Requisitos principais
 
-## Cobertura por arquivo valido
+| Requisito | Evidencia |
+| --- | --- |
+| Execucao por argumento, sem menu | `python AnalisadorSemantico.py teste1.txt` e demais arquivos oficiais da raiz |
+| Arquivos de entrada no mesmo diretorio do codigo-fonte | `teste1.txt`, `teste2.txt`, `teste3.txt`, `teste4_semantico_invalido.txt` na raiz |
+| Comentarios em posicoes diferentes | Arquivos validos oficiais e relatorio de execucao |
+| Tabela de simbolos | `generated/tabela_simbolos_ultima_execucao.json` e `docs/tabela_simbolos.md` |
+| Arvore sintatica atribuida | `generated/arvore_atribuida_ultima_execucao.json` e `docs/arvore_atribuida_ultima_execucao.md` |
+| Arvore sintatica desenhada no console | Saida padrao dos programas validos |
+| Diagnosticos acumulados | `teste4_semantico_invalido.txt` lista multiplos erros semanticos |
+| Assembly apenas para programa valido | `generated/ultimo_assembly.s`, preservado para a ultima execucao valida |
+| Compatibilidade CPulator ARMv7 | `docs/auditoria_assembly_cpulator_fase3.md` e `generated/ultimo_assembly.s` |
 
-| Requisito | `teste1.txt` | `teste2.txt` | `teste3.txt` |
-| --- | --- | --- | --- |
-| 10 ou mais linhas uteis | Sim | Sim | Sim |
-| `START` e `END` | Sim | Sim | Sim |
-| Operadores aritmeticos `+ - * \| / % ^` | Sim | Sim | Sim |
-| Operadores relacionais `> < >= <= == !=` | Sim | Sim | Sim |
-| Operadores logicos `AND OR NOT` | Sim | Sim | Sim |
-| Literais `int`, `real` e `bool` | Sim | Sim | Sim |
-| Leitura de memoria `(MEM)` | Sim | Sim | Sim |
-| Escrita de memoria `(V MEM)` | Sim | Sim | Sim |
-| Resultado anterior `(N RES)` | Sim | Sim | Sim |
-| Tomada de decisao `IF` | Sim | Sim | Sim |
-| Tomada de decisao `IFELSE` | Sim | Sim | Sim |
-| Laco `WHILE` | Sim | Sim | Sim |
-| Sequenciamento `SEQ` | Sim | Sim | Sim |
-| Comentarios em linha inteira | Sim | Sim | Sim |
-| Comentarios no final de linha | Sim | Sim | Sim |
-| Comentarios entre tokens | Sim | Sim | Sim |
-| Comentarios multilinha | Sim | Sim | Sim |
-| Expressoes aninhadas | Sim | Sim | Sim |
-| Gera Assembly sem erros | Sim | Sim | Sim |
-
-## Cobertura de erros
-
-| Tipo de erro | Evidencia | Verificacao |
-| --- | --- | --- |
-| Lexico | `lexico_*.txt` na raiz | `tests.test_pipeline_fase3`, `tests.test_variacoes_formato` |
-| Sintatico | `sintaxe_*.txt` na raiz | `tests.test_pipeline_fase3`, `tests.test_variacoes_formato` |
-| Semantico | `teste4_semantico_invalido.txt` e `semantico_*.txt` na raiz | `tests.test_auditoria_entrega`, `tests.test_pipeline_fase3` |
-| Multiplos erros no mesmo arquivo | `auditoria_multiplos_erros.txt` | `test_cli_varre_arquivo_inteiro_e_lista_multiplos_erros` |
-
-## Requisitos transversais
-
-| Requisito do enunciado | Evidencia no projeto | Trava automatizada |
-| --- | --- | --- |
-| Execucao por argumento, sem menu | `python AnalisadorSemantico.py teste1.txt` | Suite `unittest` executa CLI por subprocess |
-| Arquivos de teste na mesma pasta do codigo-fonte | Todos os arquivos-fonte `.txt` de entrada na raiz | `test_arquivos_de_teste_obrigatorios_ficam_na_raiz` |
-| README com instrucoes de execucao e locais dos arquivos | `README.md` | `test_readme_cobre_itens_administrativos_e_semanticos` |
-| Varredura completa do arquivo | Diagnosticos acumulados e `docs/estrategia_diagnosticos_acumulados.md` | `test_cli_varre_arquivo_inteiro_e_lista_multiplos_erros` |
-| Tabela de simbolos | `generated/tabela_simbolos_ultima_execucao.json` e `docs/tabela_simbolos.md` | `test_pipeline_semantico_end_to_end_em_memoria` |
-| Arvore sintatica atribuida | `generated/arvore_atribuida_ultima_execucao.json` e `docs/arvore_atribuida_ultima_execucao.md` | `test_pipeline_semantico_end_to_end_em_memoria` |
-| Arvore sintatica desenhada no console | Saida padrao de programas validos imprime raiz, ramos e folhas em ASCII | `test_cli_processa_programa_valido_e_atualiza_artefatos` |
-| Assembly apenas para programa valido | `generated/ultimo_assembly.s` | `test_semantico_bloqueia_assembly_com_erro`, `test_programa_invalido_bloqueia_assembly_e_preserva_ultimo_valido` |
-| Assembly nao impresso no console | CLI apenas confirma caminho do arquivo | `test_cli_processa_programa_valido_e_atualiza_artefatos` |
-| Compatibilidade CPulator ARMv7 | Diretivas ARMv7, `_start`, JTAG UART e rotinas aritmeticas em `generated/ultimo_assembly.s` | `test_programas_validos_geram_assembly_armv7_cpulator`, `test_operadores_especificos_usam_rotinas_runtime_esperadas` |
-| Entradas externas do professor | Arquivos surpresa validos e invalidos na raiz | `test_entradas_surpresa_simulam_prova_do_professor` |
-| Validacao humana completa | Roteiro e script com a sequencia manual de suite, oficiais, invalidos e entradas surpresa | `test_roteiro_e_script_de_validacao_humana_estao_presentes` |
-
-## Comando de auditoria
+## Sequencia oficial de fechamento
 
 ```powershell
-python -m unittest discover -s tests -p "test_*.py" -v
+python AnalisadorSemantico.py teste1.txt
+python AnalisadorSemantico.py teste2.txt
+python AnalisadorSemantico.py teste4_semantico_invalido.txt
+python AnalisadorSemantico.py teste3.txt
 ```
 
-Resultado esperado para fechamento da etapa: todos os testes `OK`, arquivos validos gerando Assembly e `teste4_semantico_invalido.txt` bloqueando Assembly com erros semanticos claros.
+Resultado esperado: `teste1.txt`, `teste2.txt` e `teste3.txt` concluem com lexico, sintatico e semantico `OK`; `teste4_semantico_invalido.txt` acumula erros semanticos e bloqueia Assembly; `teste3.txt` fica por ultimo como base canonica dos artefatos finais.

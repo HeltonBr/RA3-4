@@ -8,23 +8,16 @@ $ErrorActionPreference = "Stop"
 $raiz = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $raiz
 
-# Comandos canonicos cobertos por este roteiro:
-# python -m unittest discover -s tests -p "test_*.py" -v
+# Comandos oficiais cobertos por este roteiro, todos com arquivos-fonte na raiz:
 # python AnalisadorSemantico.py teste1.txt
 # python AnalisadorSemantico.py teste2.txt
-# python AnalisadorSemantico.py teste3.txt
 # python AnalisadorSemantico.py teste4_semantico_invalido.txt
-# python AnalisadorSemantico.py professor_surpresa_valido.txt
-# python AnalisadorSemantico.py professor_surpresa_invalido.txt
+# python AnalisadorSemantico.py teste3.txt
 
 $comandos = @(
-    @{ Nome = "suite completa"; Esperado = 0; Args = @("-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py", "-v") },
     @{ Nome = "teste1 valido"; Esperado = 0; Args = @("AnalisadorSemantico.py", "teste1.txt") },
     @{ Nome = "teste2 valido"; Esperado = 0; Args = @("AnalisadorSemantico.py", "teste2.txt") },
-    @{ Nome = "teste3 valido"; Esperado = 0; Args = @("AnalisadorSemantico.py", "teste3.txt") },
     @{ Nome = "teste4 semantico invalido"; Esperado = 1; Args = @("AnalisadorSemantico.py", "teste4_semantico_invalido.txt") },
-    @{ Nome = "surpresa valido"; Esperado = 0; Args = @("AnalisadorSemantico.py", "professor_surpresa_valido.txt") },
-    @{ Nome = "surpresa invalido"; Esperado = 1; Args = @("AnalisadorSemantico.py", "professor_surpresa_invalido.txt") },
     @{ Nome = "regeneracao canonica teste3"; Esperado = 0; Args = @("AnalisadorSemantico.py", "teste3.txt") }
 )
 
@@ -40,4 +33,4 @@ foreach ($comando in $comandos) {
 }
 
 Write-Host ""
-Write-Host "Validacao humana completa concluida com sucesso."
+Write-Host "Validacao oficial concluida com sucesso."

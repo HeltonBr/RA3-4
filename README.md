@@ -148,7 +148,6 @@ A geracao de Assembly usa a arvore sintatica atribuida como entrada e so ocorre 
 - `docs/auditoria_gramatica_parser_fase3.md`: auditoria da gramatica LL(1), parser, recuperacao sintatica e comentarios.
 - `docs/auditoria_semantica_tipos_fase3.md`: auditoria da matriz semantica, tipos, `RES`, controle e potenciacao.
 - `docs/auditoria_assembly_cpulator_fase3.md`: auditoria da geracao ARMv7, bloqueio em invalidos e roteiro CPulator.
-- `docs/validacao_humana_completa_fase3.md`: linha de validacao humana com comandos oficiais, entradas surpresa e criterios de aceite.
 - `docs/gramatica_atribuida.md`: gramatica LL(1) aumentada.
 - `docs/first_follow.md`: conjuntos FIRST/FOLLOW.
 - `docs/tabela_ll1.md`: tabela LL(1).
@@ -170,7 +169,4 @@ Na validacao final, o Assembly produzido por `teste3.txt` foi compilado no CPula
 
 Repositorio GitHub: `https://github.com/HeltonBr/RA3-4`.
 
-O desenvolvimento e documentado por commits, branches e pull requests. Os registros de cronograma, auditoria e congelamento estao nos documentos de apoio:
-
-- `docs/cronograma_commits_prs_fase3.md`
-- `docs/checklist-entrega.md`
+O desenvolvimento e documentado por commits, branches e pull requests.

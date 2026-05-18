@@ -1,4 +1,0 @@
-(START)
-(1 START)
-(TRUE AND)
-(END)

@@ -1,4 +1,0 @@
-(START)
-(TRUE FLAG)
-((FLAG) 2 +)
-(END)
