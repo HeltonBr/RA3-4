@@ -1,0 +1,11 @@
+*{ teste invalido sintatico oficial }*
+(START)
+(10 X)
+(5 Y)
+(TRUE FLAG)
+((X) (Y) +)
+((X) (Y))
+()
+(((X) (Y) >) (((X) 1 -) X) IF)
+(((X) 0 >) (((X) 1 -) X) WHILE)
+(END)

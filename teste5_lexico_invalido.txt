@@ -1,0 +1,12 @@
+*{ teste invalido lexico oficial }*
+(START)
+(10 X)
+(5 Y)
+(TRUE FLAG)
+((X) (Y) +)
+(12.3.4 Z)
+((X) @ +)
+((FLAG) NOT)
+(((X) (Y) >) (((X) 1 -) X) IF)
+(((X) 0 >) (((X) 1 -) X) WHILE)
+(END)

@@ -8,6 +8,10 @@ Gamma |- expr : tipo
 
 `Gamma` representa a tabela de simbolos do arquivo.
 
+A tabela de simbolos funciona como o ambiente de tipagem `Gamma`: cada entrada `Gamma[x]` registra o identificador, o tipo inferido, a linha e coluna de definicao, os usos posteriores e o estado de declaracao/inicializacao. Cada execucao cria um ambiente novo, pois cada arquivo-fonte representa um escopo independente.
+
+A inferencia ocorre de baixo para cima na AST: literais e leituras de memoria fornecem tipos basicos; operadores aritmeticos, relacionais, logicos e comandos de controle combinam esses tipos e produzem o tipo anotado no no pai. A arvore sintatica atribuida e a AST validada pelo parser LL(1), decorada com tipo inferido, categoria semantica, status de validacao e informacoes necessarias para a geracao de Assembly.
+
 ## Literais e memoria
 
 ```text
@@ -145,4 +149,4 @@ resultado(i - N) = T    N > 0    T != void
 Gamma |- (N RES) : T
 ```
 
-Programas com qualquer erro semantico nao seguem para geracao de Assembly.
+Programas com qualquer erro lexico, sintatico ou semantico nao seguem para geracao de Assembly da execucao corrente. O analisador ainda preserva a auditoria possivel, emitindo diagnosticos com linha, coluna e causa.
