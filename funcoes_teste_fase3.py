@@ -1,3 +1,8 @@
+# Integrantes do grupo (ordem alfabetica):
+# Helton Tessari Brandao - HeltonBr
+#
+# Nome do grupo no Canvas: RA3-4
+
 """Funcoes de teste publicas para a Fase 3.
 
 Este arquivo fica na raiz para preservar a regra da entrega: todos os
@@ -44,6 +49,14 @@ def testar_programa_semantico_invalido_da_raiz() -> None:
     saida = resultado.stdout + resultado.stderr
     exigir(resultado.returncode != 0, "teste4 deveria falhar semanticamente.")
     exigir("Erro SEMANTICO" in saida, "teste4 deveria listar erro semantico.")
+    exigir(
+        "condicao de IF deve ser bool" in saida,
+        "teste4 deveria acusar condicao invalida de IF.",
+    )
+    exigir(
+        "condicao de WHILE deve ser bool" in saida,
+        "teste4 deveria acusar condicao invalida de WHILE.",
+    )
     exigir("Assembly nao gerado" in saida, "teste4 deveria bloquear Assembly.")
 
 
