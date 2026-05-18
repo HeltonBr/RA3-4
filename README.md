@@ -13,7 +13,7 @@ Projeto da disciplina de Linguagens Formais e Compiladores da Pontificia Univers
 
 ## Objetivo
 
-A Fase 3 reaproveita a base da Fase 2 e acrescenta analise semantica. O programa le um arquivo-fonte, executa o lexico, o parser LL(1), constroi a tabela de simbolos, verifica tipos estaticos e fortes, gera a arvore sintatica atribuida e so entao emite Assembly ARMv7 para o CPulator.
+A Fase 3 integra analise lexica, parser LL(1), analise semantica, tabela de simbolos, verificacao de tipos estaticos e fortes, arvore sintatica atribuida e geracao de Assembly ARMv7 para o CPulator. O programa recebe um arquivo-fonte bruto por argumento e executa todo o pipeline da entrega atual.
 
 ## Execucao
 

@@ -19,7 +19,7 @@ Esta auditoria corresponde ao PR 06 planejado para a Fase 3. O objetivo e verifi
 - **INC-06:** formas canonicas de controle permanecem pos-fixadas e documentadas em `docs/sintaxe_controle.md`.
 - **INC-10:** FIRST/FOLLOW e tabela LL(1) sao gerados e testados contra pontos criticos.
 - **INC-12 e INC-20:** comentarios `*{ ... }*` sao processados sem regex no lexico e sem regex no inventario do relatorio.
-- **INC-18:** a entrada principal continua aceitando fonte bruto, alem de tokens serializados herdados da Fase 1.
+- **INC-18:** a entrada de avaliacao aceita arquivo-fonte bruto por argumento; a lista de tokens e apenas artefato de saida em `generated/`.
 
 ## Pendencias ainda abertas para o PR 06
 

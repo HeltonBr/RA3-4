@@ -41,9 +41,9 @@ Todos os arquivos-fonte usados como entrada de teste ficam na raiz do projeto, a
 
 | Tipo de erro | Evidencia | Verificacao |
 | --- | --- | --- |
-| Lexico | `lexico_*.txt` na raiz | `tests.test_fase2_pipeline`, `tests.test_variacoes_formato` |
-| Sintatico | `sintaxe_*.txt` na raiz | `tests.test_fase2_pipeline`, `tests.test_variacoes_formato` |
-| Semantico | `teste4_semantico_invalido.txt` e `semantico_*.txt` na raiz | `tests.test_auditoria_entrega`, `tests.test_fase2_pipeline` |
+| Lexico | `lexico_*.txt` na raiz | `tests.test_pipeline_fase3`, `tests.test_variacoes_formato` |
+| Sintatico | `sintaxe_*.txt` na raiz | `tests.test_pipeline_fase3`, `tests.test_variacoes_formato` |
+| Semantico | `teste4_semantico_invalido.txt` e `semantico_*.txt` na raiz | `tests.test_auditoria_entrega`, `tests.test_pipeline_fase3` |
 | Multiplos erros no mesmo arquivo | `auditoria_multiplos_erros.txt` | `test_cli_varre_arquivo_inteiro_e_lista_multiplos_erros` |
 
 ## Requisitos transversais

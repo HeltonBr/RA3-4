@@ -7,7 +7,6 @@ from __future__ import annotations
 
 import subprocess
 import sys
-import tempfile
 import unittest
 from pathlib import Path
 
@@ -28,7 +27,7 @@ from analisador_sintatico_ll1.errors import SyntaxAnalysisError
 ROOT = Path(__file__).resolve().parents[1]
 
 
-class Fase2PipelineTests(unittest.TestCase):
+class PipelineFase3Tests(unittest.TestCase):
     def test_construir_gramatica_sem_conflitos_com_bool_e_logicos(self) -> None:
         bundle = construirGramatica()
 
@@ -37,34 +36,6 @@ class Fase2PipelineTests(unittest.TestCase):
         self.assertEqual(bundle.parsing_table["item"]["BOOL_LITERAL"], ["BOOL_LITERAL"])
         self.assertEqual(bundle.parsing_table["stmt_after_first"]["OP_NOT"], ["OP_NOT"])
         self.assertEqual(bundle.parsing_table["stmt_after_second"]["OP_AND"], ["logical_op"])
-
-    def test_ler_tokens_serializados_aceita_formato_da_fase_1(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp_dir:
-            arquivo = Path(tmp_dir) / "tokens.txt"
-            arquivo.write_text(
-                "\n".join(
-                    [
-                        "[LINHA 1]",
-                        "type=LPAREN;lexeme=(;line=1;column=1;is_integer_literal=False",
-                        "type=KW_START;lexeme=START;line=1;column=2;is_integer_literal=False",
-                        "type=RPAREN;lexeme=);line=1;column=7;is_integer_literal=False",
-                        "",
-                        "[LINHA 2]",
-                        "type=LPAREN;lexeme=(;line=2;column=1;is_integer_literal=False",
-                        "type=NUMBER;lexeme=10;line=2;column=2;value=10.0;is_integer_literal=True",
-                        "type=IDENTIFIER;lexeme=X;line=2;column=5;is_integer_literal=False",
-                        "type=RPAREN;lexeme=);line=2;column=6;is_integer_literal=False",
-                        "",
-                    ]
-                ),
-                encoding="utf-8",
-            )
-
-            tokens = lerTokens(arquivo)
-
-        self.assertEqual(len(tokens), 2)
-        self.assertEqual([token.token_type.name for token in tokens[0]], ["LPAREN", "KW_START", "RPAREN"])
-        self.assertEqual(tokens[1][1].numeric_value, 10.0)
 
     def test_programas_validos_passam_semantica_e_geram_assembly(self) -> None:
         for nome_arquivo in ["teste1.txt", "teste2.txt", "teste3.txt"]:

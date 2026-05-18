@@ -83,7 +83,7 @@ python AnalisadorSemantico.py teste3.txt
 - PR 08 integrado na `main` e `GitHubmirror` sincronizado antes da nova etapa.
 - Entradas surpresa adicionadas na raiz para simular prova de autoria com programas nao copiados dos oficiais.
 - Roteiro `docs/validacao_humana_completa_fase3.md` e script `validar_linha_humana.ps1` criados para repetir a linha completa de validacao manual.
-- Linha humana completa executada em 16/05/2026 com 52 testes automatizados `OK` e artefatos finais regenerados com `teste3.txt`.
+- Linha humana completa executada em 16/05/2026 e revalidada com 51 testes automatizados `OK` apos a limpeza dos artefatos nao aderentes a Fase 3; artefatos finais regenerados com `teste3.txt`.
 
 ## Checkpoint 13 - Fechamento documental
 

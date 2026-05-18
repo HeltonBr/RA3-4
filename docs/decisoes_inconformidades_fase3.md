@@ -9,7 +9,7 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 | INC-03 | Variavel nunca definida e erro semantico. A regra antiga de retorno 0 fica restrita ao comportamento historico do Assembly, nao ao aceite semantico da Fase 3. |
 | INC-04 | `(V MEM)` define ou reatribui memoria com o tipo inferido de `V`: `int`, `real` ou `bool`. Reatribuicao so e aceita com o mesmo tipo. |
 | INC-05 | Booleanos literais sao `TRUE` e `FALSE`; logicos sao `AND`, `OR` e `NOT`; relacionais retornam `bool`. |
-| INC-06 | Controle segue a sintaxe pos-fixada da Fase 2: `(<expr> <stmt> IF)`, `(<expr> <stmt> <stmt> IFELSE)`, `(<expr> <stmt> WHILE)` e `(<stmt> <stmt> SEQ)`. Condicoes devem ser `bool`. |
+| INC-06 | Controle segue a sintaxe pos-fixada definida para esta entrega: `(<expr> <stmt> IF)`, `(<expr> <stmt> <stmt> IFELSE)`, `(<expr> <stmt> WHILE)` e `(<stmt> <stmt> SEQ)`. Condicoes devem ser `bool`. |
 | INC-07 | Ha tres arquivos validos completos em `teste1.txt`, `teste2.txt`, `teste3.txt` e um invalido oficial em `teste4_semantico_invalido.txt`. Os demais arquivos-fonte de teste tambem ficam na raiz, junto de `AnalisadorSemantico.py`, sem subpastas para entradas validas ou invalidas. |
 | INC-08 | Assembly nao e gerado para programas invalidos. O relatorio explica a interrupcao e `generated/ultimo_assembly.s` nao e sobrescrito quando a ultima execucao falha, preservando apenas o ultimo Assembly valido para uso no CPulator. |
 | INC-09 | O parser constroi AST; a geracao de Assembly ocorre depois da arvore atribuida e da validacao semantica. Isso evita emissao parcial para programa invalido. |
@@ -21,7 +21,7 @@ Este documento registra como o projeto trata as inconsistencias detectadas no do
 | INC-15 | Os testes automatizados incluem cenarios lexicos, sintaticos e semanticos, com foco na Fase 3. |
 | INC-16 | A matriz de tipos esta documentada em `docs/regras_tipos_sequentes.md` e implementada em `src/analisador_sintatico_ll1/type_system.py`. |
 | INC-17 | Potenciacao exige expoente `int`. Por orientacao do professor, o literal `0` e aceito como caso neutro/valido da potenciacao. |
-| INC-18 | A entrada principal e o arquivo-fonte bruto. A leitura de tokens serializados foi mantida apenas por compatibilidade com as fases anteriores. |
+| INC-18 | A entrada de avaliacao da Fase 3 e sempre o arquivo-fonte bruto por argumento. A lista de tokens e apenas artefato gerado em `generated/tokens_ultima_execucao.txt`, nao entrada aceita pelo CLI. |
 | INC-19 | Como o projeto e Python, o cabecalho obrigatorio usa `#`. |
 | INC-20 | Comentarios foram implementados no scanner caractere a caractere, sem expressoes regulares. |
 | INC-21 | A documentacao usa CPulator como grafia operacional do simulador. |

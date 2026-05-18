@@ -112,45 +112,10 @@ MULTI_CHAR_OPERATORS = {
     "!=": TokenType.OP_NEQ,
 }
 
-LEXEME_TOKEN_OVERRIDES = {
-    "(": TokenType.LPAREN,
-    ")": TokenType.RPAREN,
-    "+": TokenType.OP_PLUS,
-    "-": TokenType.OP_MINUS,
-    "*": TokenType.OP_MULT,
-    "|": TokenType.OP_REAL_DIV,
-    "/": TokenType.OP_INT_DIV,
-    "//": TokenType.OP_INT_DIV,
-    "%": TokenType.OP_MOD,
-    "^": TokenType.OP_POW,
-    ">": TokenType.OP_GT,
-    "<": TokenType.OP_LT,
-    ">=": TokenType.OP_GTE,
-    "<=": TokenType.OP_LTE,
-    "==": TokenType.OP_EQ,
-    "!=": TokenType.OP_NEQ,
-    "AND": TokenType.OP_AND,
-    "OR": TokenType.OP_OR,
-    "NOT": TokenType.OP_NOT,
-    "TRUE": TokenType.BOOL_LITERAL,
-    "FALSE": TokenType.BOOL_LITERAL,
-    "START": TokenType.KW_START,
-    "END": TokenType.KW_END,
-    "RES": TokenType.KW_RES,
-    "SEQ": TokenType.KW_SEQ,
-    "IF": TokenType.KW_IF,
-    "IFELSE": TokenType.KW_IFELSE,
-    "WHILE": TokenType.KW_WHILE,
-}
-
-
 def lerTokens(arquivo: str | Path) -> list[list[Token]]:
     caminho = Path(arquivo)
     texto = _ler_texto(caminho)
-    if _parece_tokens_serializados(texto):
-        tokens_por_linha = _ler_tokens_serializados(texto, caminho)
-    else:
-        tokens_por_linha = _tokenizar_programa(texto)
+    tokens_por_linha = _tokenizar_programa(texto)
 
     if not tokens_por_linha:
         raise TokenReadError("A entrada nao contem nenhuma linha processavel.")
@@ -160,24 +125,6 @@ def lerTokens(arquivo: str | Path) -> list[list[Token]]:
 def lerTokensComDiagnosticos(arquivo: str | Path) -> TokenReadResult:
     caminho = Path(arquivo)
     texto = _ler_texto(caminho)
-    if _parece_tokens_serializados(texto):
-        try:
-            tokens_por_linha = _ler_tokens_serializados(texto, caminho)
-        except TokenReadError as exc:
-            return TokenReadResult(
-                tokens_por_linha=[],
-                diagnostics=[
-                    AnalysisDiagnostic(
-                        kind="LEXICO",
-                        code="TOKEN_SERIALIZADO_INVALIDO",
-                        line=1,
-                        column=1,
-                        message=str(exc),
-                    )
-                ],
-            )
-        return TokenReadResult(tokens_por_linha=tokens_por_linha, diagnostics=[])
-
     return _tokenizar_programa_com_diagnosticos(texto)
 
 
@@ -224,15 +171,6 @@ def _ler_texto(caminho: Path) -> str:
         raise TokenReadError(f"Falha ao ler o arquivo como UTF-8: {caminho}") from exc
     except OSError as exc:
         raise TokenReadError(f"Falha ao abrir o arquivo: {caminho}") from exc
-
-
-def _parece_tokens_serializados(texto: str) -> bool:
-    for linha in texto.splitlines():
-        limpa = linha.strip()
-        if not limpa:
-            continue
-        return limpa.startswith("[LINHA ") or limpa.startswith("type=")
-    return False
 
 
 def _tokenizar_programa(texto: str) -> list[list[Token]]:
@@ -579,75 +517,3 @@ def _tokenizar_numero_com_diagnostico(
     )
 
 
-def _ler_tokens_serializados(texto: str, caminho: Path) -> list[list[Token]]:
-    tokens_por_linha: list[list[Token]] = []
-    atual: list[Token] | None = None
-
-    for bruto in texto.splitlines():
-        linha = bruto.strip()
-        if not linha:
-            continue
-        if linha.startswith("[LINHA "):
-            if atual is not None:
-                tokens_por_linha.append(atual)
-            atual = []
-            continue
-        if atual is None:
-            raise TokenReadError(
-                f"Formato invalido em {caminho}: token encontrado antes do cabecalho [LINHA N]."
-            )
-        atual.append(_parse_token_serializado(linha))
-
-    if atual is not None:
-        tokens_por_linha.append(atual)
-
-    if not tokens_por_linha:
-        raise TokenReadError(f"Nenhum token serializado foi encontrado em {caminho}.")
-    return tokens_por_linha
-
-
-def _parse_token_serializado(linha: str) -> Token:
-    campos: dict[str, str] = {}
-    for parte in linha.split(";"):
-        chave, separador, valor = parte.partition("=")
-        if not separador:
-            raise TokenReadError(f"Linha de token invalida: {linha}")
-        campos[chave] = valor
-
-    try:
-        lexema = campos["lexeme"]
-        line = int(campos["line"])
-        column = int(campos["column"])
-        is_integer_literal = campos.get("is_integer_literal", "False").lower() == "true"
-    except KeyError as exc:
-        raise TokenReadError(f"Campo obrigatorio ausente no token serializado: {linha}") from exc
-    except ValueError as exc:
-        raise TokenReadError(f"Campo numerico invalido no token serializado: {linha}") from exc
-
-    numeric_value_raw = campos.get("value") or campos.get("numeric_value")
-    numeric_value = float(numeric_value_raw) if numeric_value_raw is not None else None
-    token_type = _resolver_tipo_serializado(campos["type"], lexema)
-    return Token(
-        token_type=token_type,
-        lexeme=lexema,
-        line=line,
-        column=column,
-        numeric_value=numeric_value,
-        is_integer_literal=is_integer_literal,
-    )
-
-
-def _resolver_tipo_serializado(type_name: str, lexema: str) -> TokenType:
-    if lexema in LEXEME_TOKEN_OVERRIDES:
-        return LEXEME_TOKEN_OVERRIDES[lexema]
-
-    try:
-        return TokenType[type_name]
-    except KeyError:
-        alias_map = {
-            "OP_DIV": TokenType.OP_REAL_DIV if lexema == "|" else TokenType.OP_INT_DIV,
-            "OP_INT_DIV": TokenType.OP_INT_DIV,
-        }
-        if type_name in alias_map:
-            return alias_map[type_name]
-        raise TokenReadError(f"Tipo de token desconhecido: {type_name}")

@@ -10,27 +10,27 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 
 1. **INC-03 - memoria nao definida:** na Fase 3, a regra de "variavel deve ser definida antes do uso" deve prevalecer sobre a regra historica de `(MEM)` retornar `0` quando nao inicializada?
 2. **INC-05 - booleanos/logicos:** a escolha `TRUE`, `FALSE`, `AND`, `OR`, `NOT` e operadores relacionais simbolicos e aceitavel como convencao documentada pelo grupo?
-3. **INC-06 - controle:** a sintaxe pos-fixada herdada da Fase 2 para `IF`, `IFELSE`, `WHILE` e `SEQ` e suficiente para a prova de autoria?
+3. **INC-06 - controle:** a sintaxe pos-fixada adotada para `IF`, `IFELSE`, `WHILE` e `SEQ` e suficiente para a prova de autoria?
 4. **INC-07 - arquivos de teste:** a interpretacao correta e manter todos os arquivos-fonte de teste na raiz do projeto, separando a finalidade pelo nome do arquivo, sem subpastas para entradas?
 5. **INC-11 - `RES`:** `N=0` deve ser erro semantico, ja que nao referencia linha anterior?
 6. **INC-12 - comentarios:** comentarios `*{ ... }*` devem ser nao aninhados, com erro lexico quando nao fechados?
 7. **INC-17 - potenciacao:** resolvido parcialmente; `0` e aceito como caso neutro/valido da potenciacao. Para expoente vindo de memoria ou expressao, o codigo garante estaticamente o tipo `int`.
-8. **INC-18 - entrada:** a entrega final deve priorizar arquivo-fonte bruto por argumento, mantendo tokens serializados apenas como compatibilidade?
+8. **INC-18 - entrada:** a entrega final deve aceitar somente arquivo-fonte bruto por argumento, deixando a lista de tokens apenas como artefato gerado?
 
 ## Quadro ponto a ponto
 
 ### INC-01 - Operadores de divisao
 
-- **Risco do dossie:** Fase 1 usava `/` e `//`, enquanto Fase 2/3 usam `|` para divisao real e `/` para divisao inteira.
+- **Risco do dossie:** havia convencoes distintas para divisao, com `|` para divisao real, `/` para divisao inteira e `//` citado como operador aceito.
 - **Tratamento adotado:** codigo-fonte bruto da Fase 3 usa `|` para divisao real e aceita `/` e `//` como divisao inteira. O parser normaliza `//` para a mesma operacao de `/` na AST.
 - **Evidencia:** `README.md`, `docs/regras_tipos_sequentes.md`, `src/analisador_sintatico_ll1/tokens.py`, `src/analisador_sintatico_ll1/parser_ll1.py`, `tests/test_auditoria_semantica_tipos.py`.
 - **Duvida residual:** resolvida por orientacao do professor em 15/05/2026.
 
 ### INC-02 - Vocabulario lexico ampliado
 
-- **Risco do dossie:** a Fase 3 exige mais tokens que a Fase 1, mas destaca apenas comentarios.
+- **Risco do dossie:** a entrega exige mais tokens que a lista resumida do enunciado destaca, incluindo memoria, controle, booleanos e operadores logicos.
 - **Tratamento adotado:** lexer reconhece `START`, `END`, `RES`, `SEQ`, `IF`, `IFELSE`, `WHILE`, `TRUE`, `FALSE`, `AND`, `OR`, `NOT`, operadores relacionais e comentarios.
-- **Evidencia:** `tokens.py`, `docs/gramatica_atribuida.md`, `tests/test_fase2_pipeline.py`, `tests/test_variacoes_formato.py`.
+- **Evidencia:** `tokens.py`, `docs/gramatica_atribuida.md`, `tests/test_pipeline_fase3.py`, `tests/test_variacoes_formato.py`.
 - **Duvida residual:** baixa; manter na auditoria de 13/05 para entradas externas do professor.
 
 ### INC-03 - Variavel antes da definicao versus retorno zero
@@ -72,7 +72,7 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 
 - **Risco do dossie:** algumas secoes pedem Assembly, outras bloqueiam Assembly em erro.
 - **Tratamento adotado:** Assembly so e gerado quando nao ha erro lexico, sintatico ou semantico; invalidos recebem relatorio de bloqueio e nao sobrescrevem o ultimo `.s` valido.
-- **Evidencia:** `main.py`, `tests/test_auditoria_entrega.py`, `tests/test_auditoria_assembly_cpulator.py`, `tests/test_fase2_pipeline.py`, `generated/ultimo_assembly.s`.
+- **Evidencia:** `main.py`, `tests/test_auditoria_entrega.py`, `tests/test_auditoria_assembly_cpulator.py`, `tests/test_pipeline_fase3.py`, `generated/ultimo_assembly.s`.
 - **Duvida residual:** baixa; manter a mensagem de bloqueio muito clara para avaliacao.
 
 ### INC-09 - Momento de geracao de Assembly
@@ -86,7 +86,7 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 
 - **Risco do dossie:** a Fase 3 pede gramatica LL(1), mas nao explicita FIRST/FOLLOW/tabela atualizados.
 - **Tratamento adotado:** projeto gera e versiona gramatica, FIRST/FOLLOW e tabela LL(1) da linguagem aumentada.
-- **Evidencia:** `docs/gramatica_atribuida.md`, `docs/first_follow.md`, `docs/tabela_ll1.md`, `tests/test_fase2_pipeline.py`.
+- **Evidencia:** `docs/gramatica_atribuida.md`, `docs/first_follow.md`, `docs/tabela_ll1.md`, `tests/test_pipeline_fase3.py`.
 - **Duvida residual:** baixa; PR 06 deve auditar conflitos e entradas externas.
 
 ### INC-11 - Semantica de `(N RES)`
@@ -121,7 +121,7 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 
 - **Risco do dossie:** a Fase 3 mistura foco sintatico e semantico.
 - **Tratamento adotado:** suite cobre os dois: parser robusto e semantica forte, incluindo prova de autoria com entradas externas planejada para PR 09.
-- **Evidencia:** `tests/test_fase2_pipeline.py`, `tests/test_auditoria_entrega.py`, `docs/cronograma_commits_prs_fase3.md`.
+- **Evidencia:** `tests/test_pipeline_fase3.py`, `tests/test_auditoria_entrega.py`, `docs/cronograma_commits_prs_fase3.md`.
 - **Duvida residual:** media; PR 09 deve criar arquivos novos nao oficiais para simular codigo fornecido pelo professor.
 
 ### INC-16 - Matriz de compatibilidade de tipos
@@ -133,17 +133,17 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 
 ### INC-17 - Potenciacao
 
-- **Risco do dossie:** fases anteriores indicavam restricao positiva para expoente; Fase 3 fala apenas em compatibilidade.
+- **Risco do dossie:** havia ambiguidade sobre restricao positiva para expoente; a decisao registrada para esta entrega trata `0` como caso neutro/valido.
 - **Tratamento adotado:** expoente deve ser `int`; base deve ser numerica; expoente literal `0` e aceito como caso neutro/valido da potenciacao por orientacao do professor. Expoente vindo de memoria ou expressao tem tipo verificado como `int`.
 - **Evidencia:** `docs/regras_tipos_sequentes.md`, `docs/auditoria_semantica_tipos_fase3.md`, `type_system.py`, `tests/test_auditoria_semantica_tipos.py`, `README.md`.
 - **Duvida residual:** resolvida quanto ao literal `0`; manter apenas revisao geral da matriz de tipos na bateria final.
 
-### INC-18 - Fonte bruto versus tokens serializados
+### INC-18 - Fonte bruto como entrada da entrega
 
-- **Risco do dossie:** fases anteriores falam em tokens salvos; Fase 3 pede rodar os tres analisadores no arquivo.
-- **Tratamento adotado:** entrada principal e arquivo-fonte bruto por argumento; tokens serializados seguem aceitos apenas por compatibilidade.
-- **Evidencia:** `README.md`, `main.py`, `tokens.py`, `tests/test_fase2_pipeline.py`.
-- **Duvida residual:** confirmar que a prova de autoria fornecera fonte bruto, nao arquivo de tokens.
+- **Risco do dossie:** o enunciado pede rodar os analisadores no arquivo-fonte; aceitar outro formato de entrada poderia desviar a avaliacao.
+- **Tratamento adotado:** a entrada do CLI e arquivo-fonte bruto por argumento; a lista de tokens e gerada somente como artefato em `generated/tokens_ultima_execucao.txt`.
+- **Evidencia:** `README.md`, `main.py`, `tokens.py`, `tests/test_pipeline_fase3.py`.
+- **Duvida residual:** nenhuma pendente; a prova de autoria deve usar fonte bruto.
 
 ### INC-19 - Cabecalho Python
 
@@ -154,7 +154,7 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 
 ### INC-20 - Regex em comentarios
 
-- **Risco do dossie:** Fase 1 proibia regex no lexico; comentarios poderiam ser implementados como pre-processamento irregular.
+- **Risco do dossie:** comentarios poderiam ser implementados como pre-processamento irregular.
 - **Tratamento adotado:** scanner caractere a caractere trata comentarios; na etapa 06 o inventario de comentarios do relatorio tambem passou a usar varredura manual, sem regex.
 - **Evidencia:** `tokens.py`, `main.py`, `tests/test_auditoria_gramatica_parser.py`.
 - **Duvida residual:** baixa; manter como decisao documentada para demonstrar aderencia conservadora ao requisito.

@@ -54,7 +54,7 @@ Esta etapa deve terminar com:
 Validacao executada em 16/05/2026:
 
 - `powershell -ExecutionPolicy Bypass -File .\validar_linha_humana.ps1` concluido com sucesso;
-- suite completa com 52 testes `OK`;
+- suite completa com 51 testes `OK`;
 - `teste1.txt`, `teste2.txt`, `teste3.txt` e entrada surpresa valida geraram Assembly;
 - `teste4_semantico_invalido.txt` e entrada surpresa invalida bloquearam Assembly;
 - validacao manual detectou e corrigiu que entradas invalidas nao podem substituir `generated/ultimo_assembly.s` por marcador textual, pois isso causa falso positivo no CPulator;

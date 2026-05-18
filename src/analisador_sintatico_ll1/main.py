@@ -34,7 +34,7 @@ from analisador_sintatico_ll1.core import salvar_tokens_em_arquivo
 from analisador_sintatico_ll1.diagnostics import AnalysisDiagnostic
 from analisador_sintatico_ll1.diagnostics import render_analysis_diagnostics
 from analisador_sintatico_ll1.diagnostics import render_console_diagnostics
-from analisador_sintatico_ll1.errors import AnalisadorSintaticoError
+from analisador_sintatico_ll1.errors import SemanticAnalyzerError
 from analisador_sintatico_ll1.grammar import salvar_documentacao_gramatica
 from analisador_sintatico_ll1.type_system import SemanticAnalysisResult
 
@@ -76,7 +76,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Analisador semantico da Fase 3 para a linguagem RPN LL(1)."
     )
-    parser.add_argument("arquivo", type=Path, help="Arquivo-fonte do programa ou arquivo de tokens serializados.")
+    parser.add_argument("arquivo", type=Path, help="Arquivo-fonte do programa da Fase 3.")
     parser.add_argument(
         "--mostrar-arvore",
         action="store_true",
@@ -409,7 +409,7 @@ def main() -> int:
         print("Analise completa concluida: 0 erro(s).")
         print("Assembly ARMv7 gerado em: generated/ultimo_assembly.s")
         return 0
-    except AnalisadorSintaticoError as exc:
+    except SemanticAnalyzerError as exc:
         print(f"Erro: {exc}", file=sys.stderr)
         return 1
     except Exception as exc:  # pragma: no cover - ultima barreira defensiva

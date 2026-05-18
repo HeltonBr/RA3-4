@@ -6,11 +6,11 @@
 from __future__ import annotations
 
 
-class AnalisadorSintaticoError(Exception):
+class SemanticAnalyzerError(Exception):
     """Classe base para os erros tratados pelo projeto."""
 
 
-class TokenReadError(AnalisadorSintaticoError):
+class TokenReadError(SemanticAnalyzerError):
     """Falha ao ler ou interpretar a entrada de tokens."""
 
 
@@ -18,13 +18,13 @@ class LexicalTokenError(TokenReadError):
     """Falha ao tokenizar um arquivo-fonte da Fase 3."""
 
 
-class GrammarError(AnalisadorSintaticoError):
+class GrammarError(SemanticAnalyzerError):
     """Falha ao construir ou validar a gramatica LL(1)."""
 
 
-class SyntaxAnalysisError(AnalisadorSintaticoError):
+class SyntaxAnalysisError(SemanticAnalyzerError):
     """Falha sintatica detectada durante o parsing."""
 
 
-class AssemblyGenerationError(AnalisadorSintaticoError):
+class AssemblyGenerationError(SemanticAnalyzerError):
     """Falha ao transformar a AST em Assembly ARMv7."""
