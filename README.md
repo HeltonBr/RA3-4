@@ -56,18 +56,13 @@ Na validacao final da entrega, `teste3.txt` deve ser executado por ultimo para d
 
 ## Testes
 
-A entrega oficial usa os quatro arquivos de teste localizados na raiz do projeto, ao lado de `AnalisadorSemantico.py`: `teste1.txt`, `teste2.txt`, `teste3.txt` e `teste4_semantico_invalido.txt`.
+Todos os arquivos-fonte usados como entrada de teste ficam na raiz do projeto, ao lado de `AnalisadorSemantico.py`. Isso inclui os quatro arquivos oficiais da entrega e os casos complementares de auditoria, sem separar entradas validas ou invalidas em subpastas.
 
-A pasta `tests/` nao substitui os arquivos oficiais da raiz. Ela e apenas infraestrutura de regressao automatizada do projeto, com casos complementares separados por finalidade:
-
-- `tests/invalidos/`: entradas com erros lexicos, sintaticos e semanticos intencionais.
-- `tests/variacoes/`: entradas com variacoes de formato, comentarios e espacamento.
-
-Exemplos opcionais de execucao manual desses casos complementares:
+Exemplos opcionais de execucao manual de casos complementares localizados na raiz:
 
 ```powershell
-python AnalisadorSemantico.py tests\variacoes\comentario_multilinha.txt
-python AnalisadorSemantico.py tests\invalidos\semantico_mod_com_real.txt
+python AnalisadorSemantico.py comentario_multilinha.txt
+python AnalisadorSemantico.py semantico_mod_com_real.txt
 ```
 
 Suite completa:

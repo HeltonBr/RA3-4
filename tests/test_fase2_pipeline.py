@@ -69,7 +69,7 @@ class Fase2PipelineTests(unittest.TestCase):
     def test_programas_validos_passam_semantica_e_geram_assembly(self) -> None:
         for nome_arquivo in ["teste1.txt", "teste2.txt", "teste3.txt"]:
             with self.subTest(programa=nome_arquivo):
-                entrada = prepararEntradaSemantica(str(ROOT / "tests" / nome_arquivo))
+                entrada = prepararEntradaSemantica(str(ROOT / nome_arquivo))
                 tabela = construirTabelaSimbolos(entrada)
                 tipos = verificarTipos(entrada, tabela)
                 arvore_atribuida = gerarArvoreAtribuida(entrada, tabela, tipos)
@@ -82,7 +82,7 @@ class Fase2PipelineTests(unittest.TestCase):
                 self.assertIn("while_start_", assembly)
 
     def test_comentarios_sao_descartados_sem_perder_linhas(self) -> None:
-        tokens = lerTokens(ROOT / "tests" / "teste1.txt")
+        tokens = lerTokens(ROOT / "teste1.txt")
         lexemas = [token.lexeme for linha in tokens for token in linha]
 
         self.assertNotIn("*{", lexemas)
@@ -90,13 +90,13 @@ class Fase2PipelineTests(unittest.TestCase):
         self.assertIn("END", lexemas)
 
     def test_parser_detecta_erro_lexico(self) -> None:
-        caminho = ROOT / "tests" / "invalidos" / "lexico_minusculo.txt"
+        caminho = ROOT / "lexico_minusculo.txt"
 
         with self.assertRaises(LexicalTokenError):
             lerTokens(caminho)
 
     def test_parser_detecta_erro_sintatico(self) -> None:
-        caminho = ROOT / "tests" / "invalidos" / "sintaxe_sem_end.txt"
+        caminho = ROOT / "sintaxe_sem_end.txt"
         tokens = lerTokens(caminho)
         bundle = construirGramatica()
 
@@ -104,14 +104,14 @@ class Fase2PipelineTests(unittest.TestCase):
             parsear(tokens, bundle)
 
     def test_semantico_detecta_variavel_antes_da_definicao(self) -> None:
-        entrada = prepararEntradaSemantica(str(ROOT / "tests" / "invalidos" / "semantico_variavel_nao_definida.txt"))
+        entrada = prepararEntradaSemantica(str(ROOT / "semantico_variavel_nao_definida.txt"))
         resultado = construirTabelaSimbolos(entrada)
 
         self.assertTrue(resultado.has_errors)
         self.assertIn("usada antes da definicao", resultado.errors[0].message)
 
     def test_semantico_bloqueia_assembly_com_erro(self) -> None:
-        entrada = prepararEntradaSemantica(str(ROOT / "tests" / "invalidos" / "semantico_tipo_incompativel.txt"))
+        entrada = prepararEntradaSemantica(str(ROOT / "semantico_tipo_incompativel.txt"))
         resultado = construirTabelaSimbolos(entrada)
         arvore_atribuida = gerarArvoreAtribuida(entrada, resultado, resultado)
 
@@ -119,7 +119,7 @@ class Fase2PipelineTests(unittest.TestCase):
             gerarAssembly(arvore_atribuida)
 
     def test_cli_retorna_erro_semantico_sem_traceback(self) -> None:
-        caminho = ROOT / "tests" / "invalidos" / "semantico_condicao_nao_bool.txt"
+        caminho = ROOT / "semantico_condicao_nao_bool.txt"
         resultado = subprocess.run(
             [sys.executable, "AnalisadorSemantico.py", str(caminho)],
             cwd=ROOT,
@@ -134,7 +134,7 @@ class Fase2PipelineTests(unittest.TestCase):
         self.assertNotIn("Traceback", saida)
 
     def test_cli_varre_arquivo_inteiro_e_lista_multiplos_erros(self) -> None:
-        caminho = ROOT / "tests" / "invalidos" / "auditoria_multiplos_erros.txt"
+        caminho = ROOT / "auditoria_multiplos_erros.txt"
         resultado = subprocess.run(
             [sys.executable, "AnalisadorSemantico.py", str(caminho)],
             cwd=ROOT,
@@ -155,7 +155,7 @@ class Fase2PipelineTests(unittest.TestCase):
         self.assertNotIn("Traceback", saida)
 
     def test_cli_retorna_mensagem_clara_para_end_ausente(self) -> None:
-        caminho = ROOT / "tests" / "invalidos" / "sintaxe_sem_end.txt"
+        caminho = ROOT / "sintaxe_sem_end.txt"
         resultado = subprocess.run(
             [sys.executable, "AnalisadorSemantico.py", str(caminho)],
             cwd=ROOT,

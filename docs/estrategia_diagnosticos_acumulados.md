@@ -30,4 +30,4 @@ Assembly nao gerado porque ha erros lexicos, sintaticos ou semanticos.
 
 ## Caso de auditoria
 
-O arquivo `tests/invalidos/auditoria_multiplos_erros.txt` mistura erro lexico, sintatico e semantico no mesmo input. O teste automatizado correspondente exige que a saida liste todos eles, sem traceback e sem parar no primeiro erro.
+O arquivo `auditoria_multiplos_erros.txt` mistura erro lexico, sintatico e semantico no mesmo input. O teste automatizado correspondente exige que a saida liste todos eles, sem traceback e sem parar no primeiro erro.

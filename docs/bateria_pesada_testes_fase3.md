@@ -56,18 +56,18 @@ Objetivo: detectar inconsistencias penalizantes antes do congelamento da pasta p
 ## Comandos canonicos
 
 ```powershell
-python AnalisadorSemantico.py tests/teste1.txt
-python AnalisadorSemantico.py tests/teste2.txt
-python AnalisadorSemantico.py tests/teste3.txt
+python AnalisadorSemantico.py teste1.txt
+python AnalisadorSemantico.py teste2.txt
+python AnalisadorSemantico.py teste3.txt
 python AnalisadorSemantico.py teste1.txt
 python AnalisadorSemantico.py teste2.txt
 python AnalisadorSemantico.py teste3.txt
 python AnalisadorSemantico.py teste4_semantico_invalido.txt
-python AnalisadorSemantico.py tests/invalidos/lexico_comentario_nao_fechado.txt
-python AnalisadorSemantico.py tests/invalidos/sintaxe_sem_end.txt
-python AnalisadorSemantico.py tests/invalidos/semantico_variavel_nao_definida.txt
-python AnalisadorSemantico.py tests/invalidos/semantico_tipo_incompativel.txt
-python AnalisadorSemantico.py tests/invalidos/semantico_condicao_nao_bool.txt
+python AnalisadorSemantico.py lexico_comentario_nao_fechado.txt
+python AnalisadorSemantico.py sintaxe_sem_end.txt
+python AnalisadorSemantico.py semantico_variavel_nao_definida.txt
+python AnalisadorSemantico.py semantico_tipo_incompativel.txt
+python AnalisadorSemantico.py semantico_condicao_nao_bool.txt
 python -m unittest discover -s tests -p "test_*.py" -v
 .\sincronizar_para_githubmirror.ps1
 ```

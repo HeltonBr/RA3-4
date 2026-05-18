@@ -14,8 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VALIDOS_OFICIAIS = ("teste1.txt", "teste2.txt", "teste3.txt")
 INVALIDO_OFICIAL = "teste4_semantico_invalido.txt"
-VALIDO_SURPRESA = ROOT / "tests" / "autoria" / "professor_surpresa_valido.txt"
-INVALIDO_SURPRESA = ROOT / "tests" / "autoria" / "professor_surpresa_invalido.txt"
+VALIDO_SURPRESA = ROOT / "professor_surpresa_valido.txt"
+INVALIDO_SURPRESA = ROOT / "professor_surpresa_invalido.txt"
 
 
 class ValidacaoHumanaCompletaTests(unittest.TestCase):
@@ -60,8 +60,8 @@ class ValidacaoHumanaCompletaTests(unittest.TestCase):
             "python -m unittest discover -s tests -p \"test_*.py\" -v",
             "python AnalisadorSemantico.py teste1.txt",
             "python AnalisadorSemantico.py teste4_semantico_invalido.txt",
-            "tests\\autoria\\professor_surpresa_valido.txt",
-            "tests\\autoria\\professor_surpresa_invalido.txt",
+            "professor_surpresa_valido.txt",
+            "professor_surpresa_invalido.txt",
         ]:
             self.assertIn(trecho, roteiro)
             self.assertIn(trecho, script)

@@ -3,7 +3,7 @@
 ## Demonstracao principal
 
 ```powershell
-python AnalisadorSemantico.py tests/teste3.txt
+python AnalisadorSemantico.py teste3.txt
 ```
 
 Mostrar:
@@ -16,9 +16,9 @@ Mostrar:
 ## Demonstracao de erro
 
 ```powershell
-python AnalisadorSemantico.py tests/invalidos/semantico_variavel_nao_definida.txt
-python AnalisadorSemantico.py tests/invalidos/semantico_condicao_nao_bool.txt
-python AnalisadorSemantico.py tests/invalidos/lexico_comentario_nao_fechado.txt
+python AnalisadorSemantico.py semantico_variavel_nao_definida.txt
+python AnalisadorSemantico.py semantico_condicao_nao_bool.txt
+python AnalisadorSemantico.py lexico_comentario_nao_fechado.txt
 ```
 
 Pontos de fala:

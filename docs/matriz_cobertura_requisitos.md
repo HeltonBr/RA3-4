@@ -11,7 +11,7 @@ Esta matriz consolida a rastreabilidade entre o enunciado, os arquivos oficiais,
 | `teste3.txt` | Programa semanticamente valido com expressoes aninhadas de complexidade crescente. | Coberto |
 | `teste4_semantico_invalido.txt` | Programa sintaticamente reconhecivel com erros semanticos intencionais acumulados. | Coberto |
 
-Os tres arquivos validos tambem ficam sincronizados em `tests/teste1.txt`, `tests/teste2.txt` e `tests/teste3.txt` para uso da suite automatizada.
+Todos os arquivos-fonte usados como entrada de teste ficam na raiz do projeto, ao lado de `AnalisadorSemantico.py`. A suite automatizada consome esses arquivos diretamente da raiz.
 
 ## Cobertura por arquivo valido
 
@@ -41,17 +41,17 @@ Os tres arquivos validos tambem ficam sincronizados em `tests/teste1.txt`, `test
 
 | Tipo de erro | Evidencia | Verificacao |
 | --- | --- | --- |
-| Lexico | `tests/invalidos/lexico_*.txt` | `tests.test_fase2_pipeline`, `tests.test_variacoes_formato` |
-| Sintatico | `tests/invalidos/sintaxe_*.txt` | `tests.test_fase2_pipeline`, `tests.test_variacoes_formato` |
-| Semantico | `teste4_semantico_invalido.txt` e `tests/invalidos/semantico_*.txt` | `tests.test_auditoria_entrega`, `tests.test_fase2_pipeline` |
-| Multiplos erros no mesmo arquivo | `tests/invalidos/auditoria_multiplos_erros.txt` | `test_cli_varre_arquivo_inteiro_e_lista_multiplos_erros` |
+| Lexico | `lexico_*.txt` na raiz | `tests.test_fase2_pipeline`, `tests.test_variacoes_formato` |
+| Sintatico | `sintaxe_*.txt` na raiz | `tests.test_fase2_pipeline`, `tests.test_variacoes_formato` |
+| Semantico | `teste4_semantico_invalido.txt` e `semantico_*.txt` na raiz | `tests.test_auditoria_entrega`, `tests.test_fase2_pipeline` |
+| Multiplos erros no mesmo arquivo | `auditoria_multiplos_erros.txt` | `test_cli_varre_arquivo_inteiro_e_lista_multiplos_erros` |
 
 ## Requisitos transversais
 
 | Requisito do enunciado | Evidencia no projeto | Trava automatizada |
 | --- | --- | --- |
 | Execucao por argumento, sem menu | `python AnalisadorSemantico.py teste1.txt` | Suite `unittest` executa CLI por subprocess |
-| Arquivos de teste na mesma pasta do codigo-fonte | `teste1.txt`, `teste2.txt`, `teste3.txt`, `teste4_semantico_invalido.txt` na raiz | `test_arquivos_de_teste_obrigatorios_ficam_na_raiz_e_sincronizados` |
+| Arquivos de teste na mesma pasta do codigo-fonte | Todos os arquivos-fonte `.txt` de entrada na raiz | `test_arquivos_de_teste_obrigatorios_ficam_na_raiz` |
 | README com instrucoes de execucao e locais dos arquivos | `README.md` | `test_readme_cobre_itens_administrativos_e_semanticos` |
 | Varredura completa do arquivo | Diagnosticos acumulados e `docs/estrategia_diagnosticos_acumulados.md` | `test_cli_varre_arquivo_inteiro_e_lista_multiplos_erros` |
 | Tabela de simbolos | `generated/tabela_simbolos_ultima_execucao.json` e `docs/tabela_simbolos.md` | `test_pipeline_semantico_end_to_end_em_memoria` |
@@ -60,7 +60,7 @@ Os tres arquivos validos tambem ficam sincronizados em `tests/teste1.txt`, `test
 | Assembly apenas para programa valido | `generated/ultimo_assembly.s` | `test_semantico_bloqueia_assembly_com_erro`, `test_programa_invalido_bloqueia_assembly_e_preserva_ultimo_valido` |
 | Assembly nao impresso no console | CLI apenas confirma caminho do arquivo | `test_cli_processa_programa_valido_e_atualiza_artefatos` |
 | Compatibilidade CPulator ARMv7 | Diretivas ARMv7, `_start`, JTAG UART e rotinas aritmeticas em `generated/ultimo_assembly.s` | `test_programas_validos_geram_assembly_armv7_cpulator`, `test_operadores_especificos_usam_rotinas_runtime_esperadas` |
-| Entradas externas do professor | Arquivos surpresa validos e invalidos em `tests/autoria/` | `test_entradas_surpresa_simulam_prova_do_professor` |
+| Entradas externas do professor | Arquivos surpresa validos e invalidos na raiz | `test_entradas_surpresa_simulam_prova_do_professor` |
 | Validacao humana completa | Roteiro e script com a sequencia manual de suite, oficiais, invalidos e entradas surpresa | `test_roteiro_e_script_de_validacao_humana_estao_presentes` |
 
 ## Comando de auditoria

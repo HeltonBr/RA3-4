@@ -14,8 +14,8 @@ Set-Location $raiz
 # python AnalisadorSemantico.py teste2.txt
 # python AnalisadorSemantico.py teste3.txt
 # python AnalisadorSemantico.py teste4_semantico_invalido.txt
-# python AnalisadorSemantico.py tests\autoria\professor_surpresa_valido.txt
-# python AnalisadorSemantico.py tests\autoria\professor_surpresa_invalido.txt
+# python AnalisadorSemantico.py professor_surpresa_valido.txt
+# python AnalisadorSemantico.py professor_surpresa_invalido.txt
 
 $comandos = @(
     @{ Nome = "suite completa"; Esperado = 0; Args = @("-m", "unittest", "discover", "-s", "tests", "-p", "test_*.py", "-v") },
@@ -23,8 +23,8 @@ $comandos = @(
     @{ Nome = "teste2 valido"; Esperado = 0; Args = @("AnalisadorSemantico.py", "teste2.txt") },
     @{ Nome = "teste3 valido"; Esperado = 0; Args = @("AnalisadorSemantico.py", "teste3.txt") },
     @{ Nome = "teste4 semantico invalido"; Esperado = 1; Args = @("AnalisadorSemantico.py", "teste4_semantico_invalido.txt") },
-    @{ Nome = "surpresa valido"; Esperado = 0; Args = @("AnalisadorSemantico.py", "tests\autoria\professor_surpresa_valido.txt") },
-    @{ Nome = "surpresa invalido"; Esperado = 1; Args = @("AnalisadorSemantico.py", "tests\autoria\professor_surpresa_invalido.txt") },
+    @{ Nome = "surpresa valido"; Esperado = 0; Args = @("AnalisadorSemantico.py", "professor_surpresa_valido.txt") },
+    @{ Nome = "surpresa invalido"; Esperado = 1; Args = @("AnalisadorSemantico.py", "professor_surpresa_invalido.txt") },
     @{ Nome = "regeneracao canonica teste3"; Esperado = 0; Args = @("AnalisadorSemantico.py", "teste3.txt") }
 )
 

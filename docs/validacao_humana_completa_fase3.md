@@ -14,8 +14,8 @@ python AnalisadorSemantico.py teste1.txt
 python AnalisadorSemantico.py teste2.txt
 python AnalisadorSemantico.py teste3.txt
 python AnalisadorSemantico.py teste4_semantico_invalido.txt
-python AnalisadorSemantico.py tests\autoria\professor_surpresa_valido.txt
-python AnalisadorSemantico.py tests\autoria\professor_surpresa_invalido.txt
+python AnalisadorSemantico.py professor_surpresa_valido.txt
+python AnalisadorSemantico.py professor_surpresa_invalido.txt
 python AnalisadorSemantico.py teste3.txt
 ```
 
@@ -28,8 +28,8 @@ A ultima execucao de `teste3.txt` deve ser mantida para deixar `generated/ultimo
 | Suite automatizada | Todos os testes `OK`. |
 | `teste1.txt`, `teste2.txt`, `teste3.txt` | Retorno `0`, lexico/sintatico/semantico `OK`, arvore sintatica desenhada e Assembly gerado. |
 | `teste4_semantico_invalido.txt` | Retorno `1`, varios erros semanticos listados, sem traceback e Assembly bloqueado. |
-| `tests\autoria\professor_surpresa_valido.txt` | Programa diferente dos oficiais, com comentarios, `//`, expoente `0`, controle e memoria; deve gerar Assembly. |
-| `tests\autoria\professor_surpresa_invalido.txt` | Programa diferente dos oficiais, com erros semanticos acumulados; deve bloquear Assembly. |
+| `professor_surpresa_valido.txt` | Programa diferente dos oficiais, com comentarios, `//`, expoente `0`, controle e memoria; deve gerar Assembly. |
+| `professor_surpresa_invalido.txt` | Programa diferente dos oficiais, com erros semanticos acumulados; deve bloquear Assembly. |
 | Console | Deve mostrar relatorio e arvore para validos, sem despejar o Assembly. |
 | CPulator apos invalido | Um invalido nao deve sobrescrever `generated/ultimo_assembly.s`; o arquivo `.s` deve continuar sendo o ultimo Assembly valido. |
 | `generated/` | Deve conter tokens, AST, arvore atribuida, tabela de simbolos, relatorios e `ultimo_assembly.s`. |

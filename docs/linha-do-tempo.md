@@ -28,7 +28,7 @@
 - Artefatos finais regenerados com:
 
 ```powershell
-python AnalisadorSemantico.py tests/teste3.txt
+python AnalisadorSemantico.py teste3.txt
 ```
 
 ## Checkpoint 5 - Entrada e comentarios
@@ -81,7 +81,7 @@ python AnalisadorSemantico.py tests/teste3.txt
 ## Checkpoint 12 - Validacao humana completa
 
 - PR 08 integrado na `main` e `GitHubmirror` sincronizado antes da nova etapa.
-- Entradas surpresa adicionadas em `tests/autoria/` para simular prova de autoria com programas nao copiados dos oficiais.
+- Entradas surpresa adicionadas na raiz para simular prova de autoria com programas nao copiados dos oficiais.
 - Roteiro `docs/validacao_humana_completa_fase3.md` e script `validar_linha_humana.ps1` criados para repetir a linha completa de validacao manual.
 - Linha humana completa executada em 16/05/2026 com 52 testes automatizados `OK` e artefatos finais regenerados com `teste3.txt`.
 

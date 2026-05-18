@@ -11,7 +11,7 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 1. **INC-03 - memoria nao definida:** na Fase 3, a regra de "variavel deve ser definida antes do uso" deve prevalecer sobre a regra historica de `(MEM)` retornar `0` quando nao inicializada?
 2. **INC-05 - booleanos/logicos:** a escolha `TRUE`, `FALSE`, `AND`, `OR`, `NOT` e operadores relacionais simbolicos e aceitavel como convencao documentada pelo grupo?
 3. **INC-06 - controle:** a sintaxe pos-fixada herdada da Fase 2 para `IF`, `IFELSE`, `WHILE` e `SEQ` e suficiente para a prova de autoria?
-4. **INC-07 - arquivos de teste:** a interpretacao correta e manter tres arquivos validos completos e arquivos invalidos separados, em vez de misturar erros em todos os arquivos?
+4. **INC-07 - arquivos de teste:** a interpretacao correta e manter todos os arquivos-fonte de teste na raiz do projeto, separando a finalidade pelo nome do arquivo, sem subpastas para entradas?
 5. **INC-11 - `RES`:** `N=0` deve ser erro semantico, ja que nao referencia linha anterior?
 6. **INC-12 - comentarios:** comentarios `*{ ... }*` devem ser nao aninhados, com erro lexico quando nao fechados?
 7. **INC-17 - potenciacao:** resolvido parcialmente; `0` e aceito como caso neutro/valido da potenciacao. Para expoente vindo de memoria ou expressao, o codigo garante estaticamente o tipo `int`.
@@ -37,21 +37,21 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 
 - **Risco do dossie:** o texto antigo de `(MEM)` retornar `0` conflita com a regra semantica de definicao obrigatoria.
 - **Tratamento adotado:** na Fase 3, variavel nunca definida e erro semantico; a regra de retorno `0` nao autoriza uso sem definicao.
-- **Evidencia:** `docs/decisoes_inconformidades_fase3.md`, `type_system.py`, `tests/invalidos/semantico_variavel_nao_definida.txt`.
+- **Evidencia:** `docs/decisoes_inconformidades_fase3.md`, `type_system.py`, `semantico_variavel_nao_definida.txt`.
 - **Duvida residual:** confirmar com o professor que a regra nova de semantica forte prevalece sobre a heranca operacional antiga.
 
 ### INC-04 - `(V MEM)` e tipos estaticos
 
 - **Risco do dossie:** o texto fala em armazenar real, mas a Fase 3 exige `int`, `real` e `bool`.
 - **Tratamento adotado:** `(V MEM)` define o tipo pelo valor `V`; reatribuicao so e aceita com o mesmo tipo.
-- **Evidencia:** `docs/regras_tipos_sequentes.md`, `type_system.py`, `tests/invalidos/semantico_redefinicao_tipo.txt`.
+- **Evidencia:** `docs/regras_tipos_sequentes.md`, `type_system.py`, `semantico_redefinicao_tipo.txt`.
 - **Duvida residual:** confirmar se a inferencia pelo valor e suficiente, ja que a linguagem nao fornece declaracao explicita de tipo.
 
 ### INC-05 - Sintaxe de bool, logicos e relacionais
 
 - **Risco do dossie:** a Fase 3 exige bool/logicos, mas nao padroniza lexemas.
 - **Tratamento adotado:** literais `TRUE` e `FALSE`; logicos `AND`, `OR`, `NOT`; relacionais `>`, `<`, `>=`, `<=`, `==`, `!=`; todos em pos-fixo.
-- **Evidencia:** `README.md`, `docs/sintaxe_controle.md`, `docs/regras_tipos_sequentes.md`, `tests/teste1.txt`, `tests/teste2.txt`, `tests/teste3.txt`.
+- **Evidencia:** `README.md`, `docs/sintaxe_controle.md`, `docs/regras_tipos_sequentes.md`, `teste1.txt`, `teste2.txt`, `teste3.txt`.
 - **Duvida residual:** confirmar se o professor aceita essa convencao lexical em testes externos.
 
 ### INC-06 - Estruturas de controle
@@ -93,21 +93,21 @@ Situacao apos a conversa de 15/05/2026: `//` foi confirmado como operador aceito
 
 - **Risco do dossie:** falta definir `N=0`, estouro de historico e comandos sem valor.
 - **Tratamento adotado:** `N > 0`; referencia apenas declaracao de topo anterior com valor utilizavel; `void` e erro nao podem ser usados.
-- **Evidencia:** `docs/regras_tipos_sequentes.md`, `type_system.py`, `tests/invalidos/semantico_res_invalido.txt`.
+- **Evidencia:** `docs/regras_tipos_sequentes.md`, `type_system.py`, `semantico_res_invalido.txt`.
 - **Duvida residual:** confirmar se `RES` deve contar apenas declaracoes de topo, como hoje, ou tambem comandos internos de `IF`, `WHILE` e `SEQ`.
 
 ### INC-12 - Comentarios e conflito com `*`
 
 - **Risco do dossie:** comentario comeca em `*{`, mas `*` tambem e multiplicacao.
 - **Tratamento adotado:** scanner testa `*{` antes de `*`, descarta comentarios sem perder linha/coluna, aceita multilinha e rejeita comentario nao fechado.
-- **Evidencia:** `tokens.py`, `tests/variacoes/comentario_multilinha.txt`, `tests/invalidos/lexico_comentario_nao_fechado.txt`.
+- **Evidencia:** `tokens.py`, `comentario_multilinha.txt`, `lexico_comentario_nao_fechado.txt`.
 - **Duvida residual:** confirmar que comentarios aninhados nao sao exigidos; hoje nao sao suportados como aninhamento.
 
 ### INC-13 - Palavras reservadas
 
 - **Risco do dossie:** apenas `RES` e explicitamente reservada, mas ha outros lexemas estruturais.
 - **Tratamento adotado:** `START`, `END`, `RES`, `SEQ`, `IF`, `IFELSE`, `WHILE`, `TRUE`, `FALSE`, `AND`, `OR`, `NOT` sao reservadas.
-- **Evidencia:** `tokens.py`, `tests/invalidos/sintaxe_palavra_reservada_memoria.txt`, `tests/test_variacoes_formato.py`.
+- **Evidencia:** `tokens.py`, `sintaxe_palavra_reservada_memoria.txt`, `tests/test_variacoes_formato.py`.
 - **Duvida residual:** baixa; manter cobertura para nomes reservados nos testes externos.
 
 ### INC-14 - Artefatos do GitHub

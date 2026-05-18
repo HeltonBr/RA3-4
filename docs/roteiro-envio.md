@@ -10,7 +10,7 @@ Data final de congelamento: **25/05/2026 as 23:59**.
 6. Rodar:
 
 ```powershell
-python AnalisadorSemantico.py tests/teste3.txt
+python AnalisadorSemantico.py teste3.txt
 python -m unittest discover -s tests -p "test_*.py" -v
 .\sincronizar_para_githubmirror.ps1
 ```

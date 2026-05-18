@@ -13,4 +13,4 @@ Comando:
 python AnalisadorSemantico.py defesa/demo_valido_base.txt
 ```
 
-Para erros semanticos, usar os casos em `tests/invalidos/semantico_*.txt`.
+Para erros semanticos, usar os casos `semantico_*.txt` localizados na raiz do projeto.

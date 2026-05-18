@@ -57,7 +57,7 @@ A suite valida que:
 
 - `teste1.txt`, `teste2.txt` e `teste3.txt` existem na raiz;
 - `teste4_semantico_invalido.txt` existe na raiz e e rejeitado semanticamente;
-- as copias da raiz e de `tests/` permanecem sincronizadas;
+- todos os arquivos-fonte de teste permanecem diretamente na raiz do projeto;
 - cada valido cobre todos os operadores aritmeticos, relacionais, logicos e controles obrigatorios;
 - a saida padrao nao despeja Assembly no console;
 - a saida padrao imprime a arvore desenhada para programas validos que geram Assembly;

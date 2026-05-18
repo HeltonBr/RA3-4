@@ -108,8 +108,6 @@ class AuditoriaEntregaTests(unittest.TestCase):
             "auditoria_dossie_inconformidades_fase3.md",
             "auditoria_gramatica_parser_fase3.md",
             "auditoria_semantica_tipos_fase3.md",
-            "tests/invalidos",
-            "tests/variacoes",
         ]:
             self.assertIn(trecho, readme)
 
@@ -131,15 +129,15 @@ class AuditoriaEntregaTests(unittest.TestCase):
         ]:
             self.assertIn(trecho, matriz)
 
-    def test_arquivos_de_teste_obrigatorios_ficam_na_raiz_e_sincronizados(self) -> None:
+    def test_arquivos_de_teste_obrigatorios_ficam_na_raiz(self) -> None:
         for nome in NOMES_PROGRAMAS_VALIDOS:
             with self.subTest(programa=nome):
                 raiz = ROOT / nome
-                suite = ROOT / "tests" / nome
 
                 self.assertTrue(raiz.exists())
-                self.assertTrue(suite.exists())
-                self.assertEqual(raiz.read_text(encoding="utf-8"), suite.read_text(encoding="utf-8"))
+
+        entradas_txt_em_tests = list((ROOT / "tests").rglob("*.txt"))
+        self.assertEqual(entradas_txt_em_tests, [])
 
     def test_arquivo_semantico_invalido_oficial_fica_na_raiz(self) -> None:
         self.assertTrue(PROGRAMA_SEMANTICO_INVALIDO_RAIZ.exists())

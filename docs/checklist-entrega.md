@@ -53,7 +53,7 @@
 ## Testes
 
 - [x] Tres programas validos com 10+ linhas.
-- [x] Copias dos tres programas validos na raiz sincronizadas com `tests/`.
+- [x] Arquivos-fonte de teste mantidos diretamente na raiz do projeto.
 - [x] Arquivo semantico invalido oficial na raiz.
 - [x] Testes invalidos lexicos, sintaticos e semanticos.
 - [x] Teste com multiplos erros misturados no mesmo arquivo.
