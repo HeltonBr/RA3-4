@@ -27,8 +27,10 @@ Os arquivos oficiais da entrega ficam na mesma pasta do codigo-fonte, ao lado de
 - `teste2.txt`
 - `teste3.txt`
 - `teste4_semantico_invalido.txt`
+- `teste5_lexico_invalido.txt`
+- `teste6_sintatico_invalido.txt`
 
-Os tres primeiros sao programas semanticamente validos. O quarto contem erros semanticos intencionais para demonstrar mensagens claras, varredura completa e bloqueio de Assembly.
+Os tres primeiros sao programas semanticamente validos. O `teste4_semantico_invalido.txt` contem erros semanticos intencionais, incluindo condicoes invalidas em estruturas de controle. O `teste5_lexico_invalido.txt` contem erros lexicos intencionais. O `teste6_sintatico_invalido.txt` contem erros sintaticos intencionais. Todos demonstram mensagens claras, varredura completa quando recuperavel e bloqueio de Assembly.
 
 Para executar um arquivo valido da raiz:
 
@@ -40,6 +42,13 @@ Para executar o arquivo semantico invalido oficial:
 
 ```powershell
 python AnalisadorSemantico.py teste4_semantico_invalido.txt
+```
+
+Para executar os arquivos invalidos lexico e sintatico oficiais:
+
+```powershell
+python AnalisadorSemantico.py teste5_lexico_invalido.txt
+python AnalisadorSemantico.py teste6_sintatico_invalido.txt
 ```
 
 Para executar o `teste3.txt`, arquivo usado como referencia canonica dos artefatos finais:
@@ -62,10 +71,18 @@ Sequencia final de validacao recomendada para os arquivos oficiais da raiz:
 python AnalisadorSemantico.py teste1.txt
 python AnalisadorSemantico.py teste2.txt
 python AnalisadorSemantico.py teste4_semantico_invalido.txt
+python AnalisadorSemantico.py teste5_lexico_invalido.txt
+python AnalisadorSemantico.py teste6_sintatico_invalido.txt
 python AnalisadorSemantico.py teste3.txt
 ```
 
-Essa ordem executa os arquivos oficiais validos da raiz, confirma que o arquivo invalido acumula erros e bloqueia Assembly, e encerra com `teste3.txt` como base canonica de `generated/ultimo_assembly.s`, `generated/relatorio_execucao_ultima_execucao.txt`, `generated/arvore_ultima_execucao.json` e `generated/arvore_atribuida_ultima_execucao.json`.
+Essa ordem executa os arquivos oficiais validos da raiz, confirma que os arquivos invalidos lexicos, sintaticos e semanticos bloqueiam Assembly, e encerra com `teste3.txt` como base canonica de `generated/ultimo_assembly.s`, `generated/relatorio_execucao_ultima_execucao.txt`, `generated/arvore_ultima_execucao.json` e `generated/arvore_atribuida_ultima_execucao.json`.
+
+As funcoes de teste publicas da Fase 3 ficam em `funcoes_teste_fase3.py`, tambem na raiz. Elas exercitam os arquivos oficiais sem criar subpastas de teste:
+
+```powershell
+python funcoes_teste_fase3.py
+```
 
 ## Linguagem suportada
 
