@@ -169,4 +169,4 @@ Na validacao final, o Assembly produzido por `teste3.txt` foi compilado no CPula
 
 Repositorio GitHub: `https://github.com/HeltonBr/RA3-4`.
 
-O desenvolvimento e documentado por commits, branches e pull requests.
+O desenvolvimento e documentado pelo historico publico de commits, branches e pull requests do GitHub.
