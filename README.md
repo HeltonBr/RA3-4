@@ -21,6 +21,8 @@ Apos clonar ou abrir o repositorio, todos os comandos devem ser executados na ra
 
 O programa recebe sempre o arquivo-fonte por argumento de linha de comando e nao possui menu interativo.
 
+Os arquivos-fonte devem estar em UTF-8. Entradas UTF-8 com BOM tambem sao aceitas, para evitar falha artificial quando o arquivo for salvo por editores ou ferramentas Windows que inserem BOM no inicio do texto.
+
 Os arquivos oficiais da entrega ficam na mesma pasta do codigo-fonte, ao lado de `AnalisadorSemantico.py`:
 
 - `teste1.txt`
@@ -77,6 +79,8 @@ python AnalisadorSemantico.py teste3.txt
 ```
 
 Essa ordem executa os arquivos oficiais validos da raiz, confirma que os arquivos invalidos lexicos, sintaticos e semanticos bloqueiam Assembly, e encerra com `teste3.txt` como base canonica de `generated/ultimo_assembly.s`, `generated/relatorio_execucao_ultima_execucao.txt`, `generated/arvore_ultima_execucao.json` e `generated/arvore_atribuida_ultima_execucao.json`.
+
+Apos a sequencia final de validacao, nao execute arquivos invalidos novamente se o objetivo for congelar a entrega, pois eles atualizam os relatorios da ultima execucao. Para congelamento, a ultima execucao deve permanecer em `teste3.txt`.
 
 As funcoes de teste publicas da Fase 3 ficam em `funcoes_teste_fase3.py`, tambem na raiz. Elas exercitam os arquivos oficiais sem criar subpastas de teste:
 
