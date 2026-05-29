@@ -166,7 +166,7 @@ def _ler_texto(caminho: Path) -> str:
     if not caminho.is_file():
         raise TokenReadError(f"O caminho informado nao e um arquivo: {caminho}")
     try:
-        return caminho.read_text(encoding="utf-8")
+        return caminho.read_text(encoding="utf-8-sig")
     except UnicodeDecodeError as exc:
         raise TokenReadError(f"Falha ao ler o arquivo como UTF-8: {caminho}") from exc
     except OSError as exc:
