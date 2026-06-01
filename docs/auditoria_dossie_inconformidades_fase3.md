@@ -9,7 +9,8 @@ Este documento registra as decisoes finais adotadas para a entrega da Fase 3.
 | Entrada do analisador | Sempre arquivo-fonte bruto passado por argumento de linha de comando. |
 | Local dos arquivos de entrada | Somente a raiz do projeto, no mesmo diretorio de `AnalisadorSemantico.py`. |
 | Arquivos oficiais validos | `teste1.txt`, `teste2.txt`, `teste3.txt`. |
-| Arquivo oficial invalido | `teste4_semantico_invalido.txt`. |
+| Arquivos oficiais invalidos | `teste4_semantico_invalido.txt`, `teste5_lexico_invalido.txt`, `teste6_sintatico_invalido.txt`. |
+| Funcoes publicas de teste | `funcoes_teste_fase3.py`, tambem na raiz, exercita os arquivos oficiais sem criar subpastas de teste. |
 | Comentarios | `*{ ... }*`, descartados pelo lexico, com preservacao de linha e coluna para diagnosticos. |
 | Memoria | `(NOME)` para leitura e `(V NOME)` para escrita ou definicao. |
 | Tipos | `int`, `real` e `bool`, com reatribuicao permitida apenas para o mesmo tipo. |
@@ -24,6 +25,8 @@ Este documento registra as decisoes finais adotadas para a entrega da Fase 3.
 python AnalisadorSemantico.py teste1.txt
 python AnalisadorSemantico.py teste2.txt
 python AnalisadorSemantico.py teste4_semantico_invalido.txt
+python AnalisadorSemantico.py teste5_lexico_invalido.txt
+python AnalisadorSemantico.py teste6_sintatico_invalido.txt
 python AnalisadorSemantico.py teste3.txt
 ```
 
