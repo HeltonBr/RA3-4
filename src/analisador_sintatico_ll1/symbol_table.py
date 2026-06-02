@@ -6,9 +6,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from typing import Tuple
 
 
-Location = tuple[int, int]
+Location = Tuple[int, int]
 
 
 @dataclass

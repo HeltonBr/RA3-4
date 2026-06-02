@@ -19,6 +19,8 @@ A Fase 3 integra analise lexica, parser LL(1), analise semantica, tabela de simb
 
 Apos clonar ou abrir o repositorio, todos os comandos devem ser executados na raiz do projeto, isto e, na pasta que contem `AnalisadorSemantico.py`.
 
+Requisito de ambiente: Python 3.8 ou superior. O projeto nao depende de bibliotecas externas para executar a analise.
+
 O programa recebe sempre o arquivo-fonte por argumento de linha de comando e nao possui menu interativo.
 
 Os arquivos-fonte devem estar em UTF-8. Entradas UTF-8 com BOM tambem sao aceitas, para evitar falha artificial quando o arquivo for salvo por editores ou ferramentas Windows que inserem BOM no inicio do texto.
