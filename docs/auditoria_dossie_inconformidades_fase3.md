@@ -1,6 +1,6 @@
 # Auditoria do Dossie de Inconformidades - Fase 3
 
-Este documento registra as decisoes finais adotadas para a entrega da Fase 3.
+Este documento registra as decisoes finais adotadas para a entrega da Fase 3, ja considerando a especificacao revisada e os seis arquivos oficiais mantidos na raiz do projeto.
 
 ## Decisoes consolidadas
 
@@ -15,13 +15,15 @@ Este documento registra as decisoes finais adotadas para a entrega da Fase 3.
 | Memoria | `(NOME)` para leitura e `(V NOME)` para escrita ou definicao. |
 | Tipos | `int`, `real` e `bool`, com reatribuicao permitida apenas para o mesmo tipo. |
 | Resultado anterior | `(N RES)` exige `N > 0` e referencia declaracao anterior valida. |
-| Controle | Sintaxe pos-fixada para `IF`, `IFELSE`, `WHILE` e `SEQ`. |
+| Controle | Sintaxe pos-fixada para `IF`, `IFELSE`, `WHILE` e `SEQ`; condicoes devem ser `bool`. |
 | Potenciacao | Expoente deve ser `int`; literal `0` e aceito como caso neutro/valido conforme orientacao do professor. |
 | Assembly | Gerado somente quando nao ha erro lexico, sintatico ou semantico. |
+| Testes invalidos | `teste4` cobre erros semanticos, incluindo condicoes invalidas em `IF` e `WHILE`; `teste5` cobre erros lexicos; `teste6` cobre erros sintaticos. |
 
 ## Sequencia de validacao
 
 ```powershell
+python funcoes_teste_fase3.py
 python AnalisadorSemantico.py teste1.txt
 python AnalisadorSemantico.py teste2.txt
 python AnalisadorSemantico.py teste4_semantico_invalido.txt
